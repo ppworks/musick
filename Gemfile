@@ -6,6 +6,17 @@ gem 'jquery-rails', '>= 1.0.10'
 
 group :development, :test do
   gem 'heroku'
+  gem 'webrat'
+  gem 'rspec-rails'
+  gem 'nifty-generators'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'spork', '~> 0.9.0.rc8'
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+  gem 'growl'
 end
 
 group :production do
