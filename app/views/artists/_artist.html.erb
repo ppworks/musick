@@ -1,4 +1,5 @@
 <section class="artist">
   <h1 class="name"><%= artist.name %></h1>
+  <h2 class="aliases"><%= artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
   <time><%= time_ago_in_words artist.created_at, true %></time>
 </section>

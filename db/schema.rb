@@ -11,10 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903135314) do
+ActiveRecord::Schema.define(:version => 20110903142009) do
+
+  create_table "artist_aliases", :force => true do |t|
+    t.integer  "artist_id",  :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artist_aliases", ["artist_id"], :name => "idx_artist_id_on_artist_aliases"
 
   create_table "artists", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
