@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.page params[:page]
   end
 end

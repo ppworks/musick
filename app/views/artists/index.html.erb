@@ -1,5 +1,8 @@
-<ul>
+<ul class="artist pagination_content">
 <% @artists.each do |artist| %>
   <li><%= render artist %></li>
 <% end %>
 </ul>
+<div id="paginator">
+  <%= paginate @artists, :remote => true %>
+</div>
