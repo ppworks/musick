@@ -1,7 +1,6 @@
 $(function(e) {
   
   function listen_auto_paging() {
-    $.fancybox.hideActivity();
     function loadOnScroll() {
       var content = $('.pagination_content');
       
@@ -9,7 +8,6 @@ $(function(e) {
         $(this)
           .unbind('ajax:success', listen_auto_paging)
           .bind('ajax:success', listen_auto_paging);
-        $.fancybox.showActivity();
         $('#paginator a').click();
         $(window).unbind('scroll');
       }
@@ -17,6 +15,29 @@ $(function(e) {
     if ($('#paginator a').size() > 0) {
       $(window).scroll(loadOnScroll);
     }
+  }
+  
+  function listen_remote_true() {
+    $('form').live('submit', function(e) {
+      $.fancybox.showActivity();
+      var find_key = "input[type='text'].auto_clear, textarea.auto_clear";
+      $(this).find(find_key).attr('readonly', 'readonly');
+      $(this)
+      .unbind('ajax:success')
+      .bind('ajax:success', function (ee) {
+         $(this).find(find_key)
+         .val('')
+         .removeAttr('readonly');
+         $.fancybox.hideActivity();
+      });
+    });
+    $($.rails.linkClickSelector)
+      .live('ajax:beforeSend', function(e) {
+          $.fancybox.showActivity();
+      })
+      .live('ajax:complete', function(e) {
+          $.fancybox.hideActivity();
+    });
   }
   
   function round_image() {
@@ -39,6 +60,7 @@ $(function(e) {
   
   function init() {
     listen_auto_paging();
+    listen_remote_true();
     round_image();
     $.musick = {};
     $.musick.init = function() {
