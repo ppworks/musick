@@ -4,7 +4,8 @@ $(function(e) {
     $.fancybox.hideActivity();
     function loadOnScroll() {
       var content = $('.pagination_content');
-      if (content.offset().top + content.height() < $(document).scrollTop() + $(window).height()) {
+      
+      if (content.offset().top + content.height() <= $(document).scrollTop() + $(window).height()) {
         $(this)
           .unbind('ajax:success', listen_auto_paging)
           .bind('ajax:success', listen_auto_paging);
@@ -18,8 +19,29 @@ $(function(e) {
     }
   }
   
+  function round_image() {
+    $(".rounded-img1, .rounded-img2").load(function() {
+      $(this).wrap(function(){
+        return '<span class="' + $(this).attr('class') + '" style="background:url(' + $(this).attr('src') + ') no-repeat center center; width: ' + $(this).width() + 'px; height: ' + $(this).height() + 'px;" />';
+      });
+      $(this).css("opacity","0");
+    });
+    $("a .rounded-img1").hover(function(e) {
+      $(this).removeClass("rounded-img1");
+      $(this).parent().removeClass("rounded-img1");
+      $(this).addClass("rounded-img2");
+      $(this).parent().addClass("rounded-img2");
+    }, function(e) {
+      $(this).removeClass("rounded-img2");
+      $(this).parent().removeClass("rounded-img2");
+      $(this).addClass("rounded-img1");
+      $(this).parent().addClass("rounded-img1");
+    });
+  }
+  
   function init() {
     listen_auto_paging();
+    round_image();
   }
   
   init();

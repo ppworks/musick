@@ -1,0 +1,13 @@
+<% content_for :body_class, 'show'%>
+<section class="artist">
+  <h1 class="name"><%= @artist.name %></h1>
+  <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
+  <% if @artist.artist_images.length > 0 %>
+  <ul class="images">
+    <% @artist.artist_images.sort_by{rand}[0...24].each do |artist_image| %>
+    <li><%= image_tag artist_image.url, :class => 'rounded-img2' %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <time><%= time_ago_in_words @artist.created_at, true %></time>
+</section>

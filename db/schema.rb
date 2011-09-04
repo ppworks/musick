@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903165535) do
+ActiveRecord::Schema.define(:version => 20110904045451) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110903165535) do
     t.datetime "updated_at"
   end
 
+  add_index "artist_aliases", ["artist_id", "name"], :name => "idx_artist_id_name_on_artist_aliases", :unique => true
   add_index "artist_aliases", ["artist_id"], :name => "idx_artist_id_on_artist_aliases"
 
   create_table "artist_images", :force => true do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110903165535) do
     t.datetime "updated_at"
   end
 
+  add_index "artist_images", ["artist_id", "url"], :name => "idx_artist_id_url_on_artist_images", :unique => true
   add_index "artist_images", ["artist_id"], :name => "idx_artist_id_on_artist_images"
 
   create_table "artists", :force => true do |t|

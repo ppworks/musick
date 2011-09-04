@@ -1,5 +1,11 @@
 <section class="artist">
-  <h1 class="name"><%= artist.name %></h1>
-  <h2 class="aliases"><%= artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
+  <h1 class="name"><%= link_to artist.name, artist_path(artist.id) %></h1>
+  <% if artist.artist_images.length > 0 %>
+  <ul class="images">
+    <% artist.artist_images.sort_by{rand}[0...12].each do |artist_image| %>
+    <li><%= link_to image_tag(artist_image.url, :class => 'rounded-img1'), artist_path(artist.id) %></li>
+    <% end %>
+  </ul>
+  <% end %>
   <time><%= time_ago_in_words artist.created_at, true %></time>
 </section>

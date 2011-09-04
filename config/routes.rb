@@ -1,6 +1,6 @@
 Musick::Application.routes.draw do
-  
-  get 'artists/page/:page' => 'artists#index'
-  get "artists/index"
+  resources :artists, :only => [:index, :show] do
+    get 'page/:page', :action => :index, :on => :collection
+  end
   root :to => 'artists#index'
 end

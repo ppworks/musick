@@ -1,15 +1,28 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. -->
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Musick</title>
+<%= render 'share/og_common' %>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="stylesheet" type="text/css" href="/_/css/style.css">
 <link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <%= stylesheet_link_tag :all %>
+<script src="/_/js/modernizr-1.7.min.js"></script>
 <%= javascript_include_tag :defaults %>
 <%= csrf_meta_tag %>
 </head>
-<body>
-
+<body id="<%= yield :body_id %>" class="<%= yield :body_class %>">
+<h1><%= link_to root_path do %>Music<small>k</small>.info<% end %></h1>
+<div id="container">
 <%= yield %>
-
+</div>
 </body>
 </html>
