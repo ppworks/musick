@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe ArtistImage do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'aritist image data' do
+    it 'artist image should have url' do
+      artist_image = Factory(:artist_image_larc)
+      artist_image.url.should be_instance_of(String)
+    end
+  end
 end
