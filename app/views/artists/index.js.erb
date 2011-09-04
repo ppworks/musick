@@ -3,3 +3,4 @@ $('<li><%= escape_javascript render(:partial => 'artists/artist', :collection =>
 .fadeIn(100, function(e) {
 });
 $('div#paginator').html('<%=escape_javascript(paginate @artists, :remote => true) %>');
+$.musick.init();

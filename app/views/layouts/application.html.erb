@@ -20,7 +20,10 @@
 <%= csrf_meta_tag %>
 </head>
 <body id="<%= yield :body_id %>" class="<%= yield :body_class %>">
+<header>
 <h1><%= link_to root_path do %>Music<small>k</small>.info<% end %></h1>
+<%= yield :search_form %>
+</header>
 <div id="container">
 <%= yield %>
 </div>

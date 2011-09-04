@@ -25,7 +25,8 @@ time {
     color: #dad8d3;
 }
 
-body>h1 {
+body>header {
+    overflow: hidden;
     padding: 15px 5px;
     color: #dad8d3;
     background: #000000;
@@ -33,12 +34,17 @@ body>h1 {
     font-family: "Helvetica", "Arial"
 }
 
-body>h1 a {
+body>header>h1 {
+    float: left;
+    width: 120px;
+}
+
+body>header>h1 a {
     color: #dad8d3;
     text-decoration: none;
 }
 
-body>h1 small {
+body>header>h1 small {
     color: #f8a41a;
     font-size: 24px;
 }
@@ -47,6 +53,7 @@ body>h1 small {
  * layout
  */
 div#container {
+    clear: both;
     width: 788px;
     margin: 0 auto 10px;
 }
@@ -81,7 +88,17 @@ section.artist time {
     text-align: right;
 }
 
+/**
+ * search
+ */
+form.search_form {
+    float: right;
+}
 
+form.search_form input[type="search"] {
+    width: 320px;
+    font-size: 1.1em;
+}
 
 /**
  * hide paginator
