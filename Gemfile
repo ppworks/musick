@@ -19,6 +19,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rb-fsevent'
   gem 'growl'
+  gem 'taps'
 end
 
 group :production do
