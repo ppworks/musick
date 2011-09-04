@@ -1,5 +1,7 @@
 en:
   attributes:
-    name: "内容"
+    name: "content"
   musick:
     more: "more"
+    search:
+      placeholder: "search for artist name"

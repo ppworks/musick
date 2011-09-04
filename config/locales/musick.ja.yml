@@ -3,3 +3,5 @@ ja:
     name: "内容"
   musick:
     more: "もっとみる"
+    search:
+      placeholder: "アーティス名で検索"
