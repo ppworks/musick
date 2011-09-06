@@ -40,6 +40,28 @@ $(function(e) {
     });
   }
   
+  function listen_links() {
+
+  }
+  
+  function popup(title, content) {
+    $('#fancybox_inline h1').text('success');
+    $('#fancybox_inline article').html(content);
+    $('#fancybox_inline').show();
+    $.fancybox({
+      'href' : '#fancybox_inline',
+      'hideOnContentClick' : true,
+      'type' : 'inline',
+      'transitionIn' : 'none',
+      'transitionOut' : 'none',
+      'overlayColor': '#fff',
+      'overlayOpacity': 0.6,
+      'centerOnScroll': true,
+      'showCloseButton': false,
+      'onClosed' : function() {$('#fancybox_inline').hide();}
+    });
+  }
+  
   function round_image() {
     $("img.rounded-img1, img.rounded-img2").load(function() {
       
@@ -61,8 +83,10 @@ $(function(e) {
   function init() {
     listen_auto_paging();
     listen_remote_true();
+    listen_links();
     round_image();
     $.musick = {};
+    $.musick.popup = popup;
     $.musick.init = function() {
       round_image();
     };
