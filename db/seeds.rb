@@ -22,3 +22,10 @@ unless Rails.env.test?
     end
   end
 end
+
+# social_user::providers
+if SocialUser::Provider.all.count == 0
+  SocialUser::Provider.create :id =>1, :name => 'facebook'
+  SocialUser::Provider.create :id =>2, :name => 'twitter'
+  SocialUser::Provider.create :id =>3, :name => 'mixi'
+end

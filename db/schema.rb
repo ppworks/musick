@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110904141029) do
+ActiveRecord::Schema.define(:version => 20110907142526) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -49,5 +49,13 @@ ActiveRecord::Schema.define(:version => 20110904141029) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "providers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "providers", ["name"], :name => "idx_name_on_providers", :unique => true
 
 end
