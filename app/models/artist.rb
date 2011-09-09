@@ -13,7 +13,7 @@ class Artist < ActiveRecord::Base
     res = LastfmWrapper::Base.api.artist.get_info :artist => keyword, :autocorrect => 1, :limit => 1
     
     artist_name = res['name']
-    mbid = res['mbid']
+    mbid == res['mbid']
     if mbid = "--- {}\n"
       mbid = ''
     end
