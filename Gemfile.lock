@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/ppworks/ruby-lastfm.git
-  revision: 6b03f7324f49d8f606eef7c1bb6aab656501114a
+  revision: 71ec8c1a30748ae30d45aee12d7594b82f7d033e
   branch: master
   specs:
-    lastfm (0.2.0)
+    lastfm (0.2.1)
       activesupport
       httparty
       xml-simple
