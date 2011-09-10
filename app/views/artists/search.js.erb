@@ -2,5 +2,5 @@ $('ul.artist')
 .html('<li><%= escape_javascript render(:partial => 'artists/artist', :collection => @artists, :spacer_template => 'share/li_separator') %></li>')
 .fadeIn(100, function(e) {
 });
-$('div#paginator').html('<%=escape_javascript(paginate @artists, :remote => true) %>');
+$('div#paginator').html('<%= escape_javascript render(:partial => 'artists/search_lastfm', :locals => {:keyword => params[:keyword]}) %>').show();
 $.musick.init();

@@ -3,5 +3,6 @@ en:
     name: "content"
   musick:
     more: "more"
+    more_lastfm: "search more"
     search:
       placeholder: "search for artist name"

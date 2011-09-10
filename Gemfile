@@ -5,7 +5,6 @@ gem 'mysql2', '~> 0.2.11'
 gem 'jquery-rails', '>= 1.0.10'
 gem 'kaminari'
 gem 'lastfm', :git => 'git://github.com/ppworks/ruby-lastfm.git', :branch => 'master'
-
 group :development, :test do
   gem 'heroku'
   gem 'webrat'

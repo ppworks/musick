@@ -1,11 +1,18 @@
 <% content_for :body_class, 'show'%>
 <section class="artist">
+  <header>
   <h1 class="name"><%= @artist.name %></h1>
   <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
+  <%= image_tag @artist.artist_lastfm.main_image %>
+  </header>
+  <p class="content" data-full-content="<%=@artist.artist_lastfm.content %>">
+    <%= @artist.artist_lastfm.summary %>
+    <%=link_to t('musick.more'), '#more', :class => :read_more if @artist.artist_lastfm.content.present? %>
+  </p>
   <% if @artist.artist_images.length > 0 %>
   <ul class="images">
     <% @artist.artist_images.sort_by{rand}[0...24].each do |artist_image| %>
-    <li><%= image_tag artist_image.url, :class => 'rounded-img2' %></li>
+    <li><%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img2'), artist_image.extralarge, :class => 'popup', :rel => "group#{@artist.id}" %></li>
     <% end %>
   </ul>
   <% end %>

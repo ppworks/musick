@@ -8,43 +8,55 @@ class Artist < ActiveRecord::Base
     where("artists.name LIKE :keyword OR artist_aliases.name LIKE :keyword",
         :keyword => "%#{keyword}%")
   }
+  scope :show, where(:show_flg => TRUE)
   
-  def self.fetch_lastfm keyword
-    res = LastfmWrapper::Base.api.artist.get_info :artist => keyword, :autocorrect => 1, :limit => 1
-    
-    artist_name = res['name']
-    mbid == res['mbid']
-    if mbid = "--- {}\n"
-      mbid = ''
+  def self.create_by_lastfm artist_results
+    if artist_results.instance_of? Hash
+      artist_results = [artist_results]
     end
-    artist_url = res['url']
-    artist = Artist.search_name(artist_name).first
-    if artist.present?
-      return artist
-    end
+    created_artists = []
     
-    artist = Artist.new(:name => artist_name)
+    artist_result_urls = artist_results.map{|artist_result|artist_result[:url]}
+    duplicated_artists = ArtistLastfm.select(:url).find_all_by_url artist_result_urls
+    duplicated_artists_urls = duplicated_artists.map{|duplicated_artist|duplicated_artist.url}
+    artist_results.reject!{|artist_result|duplicated_artists_urls.include? artist_result[:url]}
+
+    artist_results.each do|artist_result|
+      created_artist = self.create_by_artist_hash(artist_result)
+      created_artists << created_artist if created_artist.present?
+    end
+    return created_artists
+  end
+  
+  private
+  def self.create_by_artist_hash artist_result
+    artist_info = LastfmWrapper::Artist.info artist_result[:name]
     artist_images = []
-    res = LastfmWrapper::Base.api.artist.get_images :artist => artist_name, :autocorrect => 1, :limit => 24
-    if res.present?
+    res = LastfmWrapper::Base.api.artist.get_images :artist => artist_result[:name], :autocorrect => 1, :limit => 24
+    logger.info "res.length:#{res.length}"
+    if res.present? && res.length > 0
       url = nil
       res.each do |r|
         next if r['sizes'].nil? || r['sizes']['size'].nil?
+        artist_image = ArtistImage.new()
         r['sizes']['size'].each do |size|
-          if size['name'] == 'largesquare'
-            url = size['content']
-            begin
-              artist_images << ArtistImage.new(:url => url)
-            rescue => e
-              pp e.message
-            end
-          end
+          artist_image.send("#{size['name']}=", size['content'])
         end
+        artist_images << artist_image
       end
+      artist = Artist.new(:name => artist_result[:name])
+      artist.artist_images << artist_images
+      artist.artist_lastfm = ArtistLastfm.new({
+        :mbid => artist_info[:mbid],
+        :url => artist_info[:url],
+        :summary => artist_info[:summary].gsub(/<.*?>/, ''),
+        :content => artist_info[:content].gsub(/<.*?>/, ''),
+        :main_image => artist_info[:main_image]
+      })
+      artist.save!
+      artist
+    else
+      nil
     end
-    artist.artist_images << artist_images
-    artist.artist_lastfm = ArtistLastfm.new(:mbid => mbid, :url => artist_url)
-    artist.save!
-    artist
   end
 end

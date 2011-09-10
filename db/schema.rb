@@ -24,31 +24,42 @@ ActiveRecord::Schema.define(:version => 20110907142526) do
   add_index "artist_aliases", ["artist_id"], :name => "idx_artist_id_on_artist_aliases"
 
   create_table "artist_images", :force => true do |t|
-    t.integer  "artist_id",  :null => false
-    t.string   "url",        :null => false
+    t.integer  "artist_id",                     :null => false
+    t.string   "original",                      :null => false
+    t.string   "large",                         :null => false
+    t.string   "largesquare",                   :null => false
+    t.string   "medium",                        :null => false
+    t.string   "small",                         :null => false
+    t.string   "extralarge",                    :null => false
+    t.boolean  "show_flg",    :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "artist_images", ["artist_id", "url"], :name => "idx_artist_id_url_on_artist_images", :unique => true
-  add_index "artist_images", ["artist_id"], :name => "idx_artist_id_on_artist_images"
+  add_index "artist_images", ["artist_id", "show_flg"], :name => "idx_artist_id_show_flg_on_artist_images"
 
   create_table "artist_lastfms", :force => true do |t|
     t.integer  "artist_id",  :null => false
-    t.string   "mbid",       :null => false
+    t.string   "mbid"
     t.string   "url"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "main_image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "artist_lastfms", ["artist_id"], :name => "idx_artist_id_on_artist_lastfms", :unique => true
-  add_index "artist_lastfms", ["mbid"], :name => "idx_mbid_on_artist_lastfms"
+  add_index "artist_lastfms", ["url"], :name => "idx_url_on_artist_lastfms"
 
   create_table "artists", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",                         :null => false
+    t.boolean  "show_flg",   :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "artists", ["id", "show_flg"], :name => "idx_id_show_flg_on_artists"
 
   create_table "providers", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,4 @@
+<%= form_tag search_lastfm_artists_path, :class => 'search_last_form', :method => :get, :remote => true do %>
+  <%= hidden_field_tag :keyword, keyword %>
+  <%= submit_tag t('musick.more_lastfm') %>
+<% end %>

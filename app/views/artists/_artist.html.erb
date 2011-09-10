@@ -3,7 +3,7 @@
   <% if artist.artist_images.length > 0 %>
   <ul class="images">
     <% artist.artist_images.sort_by{rand}[0...12].each do |artist_image| %>
-    <li><%= link_to image_tag(artist_image.url, :class => 'rounded-img1'), artist_path(artist.id) %></li>
+    <li><%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img1'), artist_path(artist.id) %></li>
     <% end %>
   </ul>
   <% end %>

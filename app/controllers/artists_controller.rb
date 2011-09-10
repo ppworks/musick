@@ -4,35 +4,33 @@ class ArtistsController < ApplicationController
   end
   
   def show
-    @artist = Artist.find params[:id]
+    @artist = Artist.show.find params[:id]
   end
   
   def search
+    keyword = params[:keyword]
     @artists = Artist
       .search_name(params[:keyword])
       .page params[:page]
-    if params[:page].nil? && @artists.blank?
-      logger.info "fetch last.fm"
-      begin
-        res = Artist.fetch_lastfm params[:keyword]
-      rescue Lastfm::ApiError => e
-        logger.info e.message
-      end
-      if res.present?
-        logger.info 'created by last.fm fetch.'
-        @artists = [res]
-        @artists.instance_eval <<-EVAL
-          def current_page
-            #{params[:page] || 1}
-          end
-          def num_pages
-            count
-          end
-          def limit_value
-            20
-          end
-        EVAL
-      end
+    if @artists.blank?
+      search_lastfm
     end
+  end
+  
+  def search_lastfm
+    @artists = @artists || []
+    artists = Artist.create_by_lastfm(LastfmWrapper::Artist.search params[:keyword], {:limit => LastfmWrapper::Artist::SEARCH_LIMIT})
+    @artists = @artists + artists
+    @artists.instance_eval <<-EVAL
+      def current_page
+        #{params[:page] || 1}
+      end
+      def num_pages
+        count
+      end
+      def limit_value
+        #{LastfmWrapper::Artist::SEARCH_LIMIT}
+      end
+    EVAL
   end
 end

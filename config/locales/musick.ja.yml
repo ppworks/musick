@@ -3,5 +3,6 @@ ja:
     name: "内容"
   musick:
     more: "もっとみる"
+    more_lastfm: "もっと検索する"
     search:
       placeholder: "アーティス名で検索"
