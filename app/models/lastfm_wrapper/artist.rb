@@ -21,6 +21,23 @@ class LastfmWrapper::Artist < LastfmWrapper::Base
     }
   end
   
+  def self.images keyword, opts = {}
+    opts.merge! :artist => keyword, :autocorrect => 1, :limit => 24
+    result = self.api.artist.get_images opts
+    artist_images = []
+    if result.present? && result.length > 0
+      result.each do |r|
+        next if r['sizes'].nil? || r['sizes']['size'].nil?
+        artist_image = {}
+        r['sizes']['size'].each do |size|
+          artist_image["#{size['name']}".to_sym] = size['content']
+        end
+        artist_images << artist_image
+      end
+    end
+    artist_images
+  end
+  
   def self.search keyword, opts = {}
     opts.merge! :artist => keyword
     results = self.api.artist.search opts

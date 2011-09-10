@@ -31,32 +31,21 @@ class Artist < ActiveRecord::Base
   private
   def self.create_by_artist_hash artist_result
     artist_info = LastfmWrapper::Artist.info artist_result[:name]
-    artist_images = []
-    res = LastfmWrapper::Base.api.artist.get_images :artist => artist_result[:name], :autocorrect => 1, :limit => 24
-    logger.info "res.length:#{res.length}"
-    if res.present? && res.length > 0
-      url = nil
-      res.each do |r|
-        next if r['sizes'].nil? || r['sizes']['size'].nil?
-        artist_image = ArtistImage.new()
-        r['sizes']['size'].each do |size|
-          artist_image.send("#{size['name']}=", size['content'])
-        end
-        artist_images << artist_image
-      end
-      artist = Artist.new(:name => artist_result[:name])
-      artist.artist_images << artist_images
-      artist.artist_lastfm = ArtistLastfm.new({
-        :mbid => artist_info[:mbid],
-        :url => artist_info[:url],
-        :summary => artist_info[:summary].gsub(/<.*?>/, ''),
-        :content => artist_info[:content].gsub(/<.*?>/, ''),
-        :main_image => artist_info[:main_image]
-      })
-      artist.save!
-      artist
-    else
-      nil
+    artist_images = LastfmWrapper::Artist.images artist_result[:name]
+    return nil if artist_images.blank?
+
+    artist = Artist.new(:name => artist_result[:name])
+    artist_images.each do |artist_image|
+      artist.artist_images << ArtistImage.new(artist_image)
     end
+    artist.artist_lastfm = ArtistLastfm.new({
+      :mbid => artist_info[:mbid],
+      :url => artist_info[:url],
+      :summary => artist_info[:summary].gsub(/<.*?>/, ''),
+      :content => artist_info[:content].gsub(/<.*?>/, ''),
+      :main_image => artist_info[:main_image]
+    })
+    artist.save!
+    artist
   end
 end
