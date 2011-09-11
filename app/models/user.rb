@@ -180,18 +180,35 @@ class User < ActiveRecord::Base
   def make_fb_friend_auto
     # TODO:cache parameter move to config
     if self.last_sign_in_at.nil? || self.last_sign_in_at < 5.minutes.ago
-      friend_user_keys = SocialSync.installed_friends self
-      user_ids = ProvidersUser
-        .where(:provider_id => self.default_provider.id)
+      friend_user_keys = SocialSync.installed_friends self, {:provider_id => Provider.facebook.id}
+      make_friend_auto Provider.facebook.id, friend_user_keys
+    end
+  end
+  
+  def make_twitter_friend_auto
+    friend_user_keys = SocialSync.friends self, {:provider_id => Provider.twitter.id}
+    make_friend_auto Provider.twitter.id, friend_user_keys
+  end
+  
+  def make_mixi_friend_auto
+    response = SocialSync.friends self, {:provider_id => Provider.mixi.id}
+    friend_user_keys = response.map {|f| f["id"]}
+    make_friend_auto Provider.mixi.id, friend_user_keys
+  end
+  
+  private
+  def make_friend_auto provider_id, friend_user_keys
+    user_ids = ProvidersUser
+        .where(:provider_id => Provider.facebook.id)
         .where(:user_key => friend_user_keys)
         .all
         .map!{|user|user.user_id}
       friend_users = User.where(:id => user_ids).all
-      Follow.delete_all(:user_id => self.id)
-      Follow.delete_all(:other_user_id => self.id)
+#      Follow.delete_all(:user_id => self.id)
+#      Follow.delete_all(:other_user_id => self.id)
+      
       friend_users.each do |user|
         self.make_friend user
       end
-    end
   end
 end

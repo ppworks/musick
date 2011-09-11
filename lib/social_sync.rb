@@ -23,15 +23,17 @@ module SocialSync
       raise self::NoProviderException, 'no provider specified.'
     end
     providers_user = user.providers_users.where(:provider_id => provider.id).first
+    params[:providers_user] = providers_user
     begin
-      m = const_get(provider.name.camelcase)
+      m = const_get(provider.name.camelcase, false)
       # call the specific provider's method
-      if @no_param_methods[provider.name].include? method_name
+      if @no_param_methods[provider.name].present? && @no_param_methods[provider.name].include?(method_name)
         m.send method_name
       else
         m.send method_name, providers_user.access_token, params
       end
     rescue NoMethodError => e
+      e.backtrace.each { |line| Artist.logger.error line }
       raise self::NoMethodException, "invalid method('#{method_name}') specified. error_message: #{e.message}"
     rescue NameError => e
       raise self::NoProviderException, "invalid provider(id:'#{provider.id}') specified. error_message: #{e.message}"

@@ -14,7 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     @user = User.find_for_twitter_oauth(env["omniauth.auth"], current_user)
     if @user.persisted?
-      #@user.make_twitter_friend_auto
+      @user.make_twitter_friend_auto
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Twitter"
       sign_in_and_redirect @user, :event => :authentication
     else
@@ -26,7 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def mixi
     @user = User.find_for_mixi_oauth(env["omniauth.auth"], current_user)
     if @user.persisted?
-      #@user.make_mixi_friend_auto
+      @user.make_mixi_friend_auto
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Mixi"
       sign_in_and_redirect @user, :event => :authentication
     else
