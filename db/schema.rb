@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110907142526) do
     t.datetime "updated_at"
   end
 
+  add_index "artist_images", ["artist_id", "original"], :name => "idx_artist_id_original_on_artist_images", :unique => true
   add_index "artist_images", ["artist_id", "show_flg"], :name => "idx_artist_id_show_flg_on_artist_images"
 
   create_table "artist_lastfms", :force => true do |t|
