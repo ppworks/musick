@@ -10,15 +10,15 @@
   <ul>
     <li>
       <%=t('musick.home.login.facebook')%>
-      <%=image_tag '/images/facebook_login_btn.png' %>
+      <%=link_to image_tag('/images/facebook_login_btn.png'), user_omniauth_authorize_path(:facebook) %>
     </li>
     <li>
       <%=t('musick.home.login.twitter')%>
-      <%=image_tag '/images/twitter_login_btn.png' %>
+      <%=link_to image_tag('/images/twitter_login_btn.png'), user_omniauth_authorize_path(:twitter) %>
     </li>
     <li>
       <%=t('musick.home.login.mixi')%>
-      <%=image_tag '/images/mixi_login_btn.png', :class => :mixi %>
+      <%=link_to image_tag('/images/mixi_login_btn.png', :class => :mixi ), user_omniauth_authorize_path(:mixi)%>
     </li>
   </ul>
 </section>

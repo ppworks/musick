@@ -1,4 +1,5 @@
 unless Rails.env.test?
+=begin
   # artists
   if Artist.all.count == 0
     artists = File.read("#{Rails.root}/db/seeds/artists.yml")
@@ -21,11 +22,12 @@ unless Rails.env.test?
       end
     end
   end
+=end
 end
 
-# social_user::providers
-if SocialUser::Provider.all.count == 0
-  SocialUser::Provider.create :id =>1, :name => 'facebook'
-  SocialUser::Provider.create :id =>2, :name => 'twitter'
-  SocialUser::Provider.create :id =>3, :name => 'mixi'
+# providers
+if Provider.all.count == 0
+  Provider.create :id =>1, :name => 'facebook'
+  Provider.create :id =>2, :name => 'twitter'
+  Provider.create :id =>3, :name => 'mixi'
 end

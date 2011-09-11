@@ -1,5 +1,9 @@
 Musick::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
+  devise_scope :user do
+    match '/users/sign_out(.:format)', {:action=>"destroy", :controller=>"devise/sessions", :via => :delete, :as => :destroy_user_session }
+    match '/user/sign_in(.:format)', {:action=>"index", :controller=>"home", :via => :get, :as => :new_user_session }
+  end
 
   resources :artists, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection

@@ -75,6 +75,14 @@ $(function(e) {
       $(this).parent().find('.summary').fadeIn(1000);
       $(this).parent().find('.read_more').fadeIn(1000);
     });
+    $('a[href="/users/auth/facebook"], a[href="/users/auth/twitter"], a[href="/users/auth/mixi"]').click(function(e) {
+      e.preventDefault();
+      $.fancybox.showActivity();
+      var href = $(this).attr('href');
+      setTimeout(function() {
+          window.location.href = href;
+      }, 200);
+    });
   }
   
   function popup(title, content) {
@@ -93,6 +101,12 @@ $(function(e) {
       'showCloseButton': false,
       'onClosed' : function() {$('#fancybox_inline').hide();}
     });
+  }
+  
+  function fix_url() {
+    if (window.location.href.match(/#_=_/)) {
+      window.location.hash = '#\\(^o^)/';
+    }
   }
   
   function round_image() {
@@ -117,6 +131,7 @@ $(function(e) {
     listen_auto_paging();
     listen_remote_true();
     listen_links();
+    fix_url();
     round_image();
     $.musick = {};
     $.musick.popup = popup;
