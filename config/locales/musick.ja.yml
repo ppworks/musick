@@ -7,7 +7,7 @@ ja:
     more_lastfm: "もっと検索する"
     less: "たたむ"
     search:
-      placeholder: "アーティス名で検索"
+      placeholder: "アーティスト名で検索"
     nav:
       artist:
         add: "お気に入りアーティストへ追加"
