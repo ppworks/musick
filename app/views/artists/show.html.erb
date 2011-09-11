@@ -1,5 +1,6 @@
 <% content_for :title, "Musick.info - #{@artist.name}" %>
 <% content_for :body_class, 'show'%>
+<% content_for :search_form, render('artists/search_form', :remote => false) %>
 <% content_for :og_meta do%>
   <%=render('share/og_common', 
     :image => @artist.artist_lastfm.main_image

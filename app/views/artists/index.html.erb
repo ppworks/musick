@@ -1,6 +1,6 @@
 <% content_for :title, "Musick.info" %>
 <% content_for :body_class, 'index'%>
-<% content_for :search_form, render('search_form') %>
+<% content_for :search_form, render('search_form', :remote => true) %>
 <% content_for :og_meta do%>
   <%= render('share/og_common', 
     :site_name => 'Musick.info' ,

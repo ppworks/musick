@@ -15,6 +15,10 @@ class ArtistsController < ApplicationController
     if @artists.blank?
       search_lastfm
     end
+    respond_to do |format|
+      format.js
+      format.html {render 'index'}
+    end
   end
   
   def search_lastfm
