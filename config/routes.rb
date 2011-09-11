@@ -1,4 +1,6 @@
 Musick::Application.routes.draw do
+  devise_for :users
+
   resources :artists, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
     get 'search', :action => :search, :on => :collection
