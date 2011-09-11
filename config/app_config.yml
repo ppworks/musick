@@ -1,0 +1,17 @@
+development:
+  domain: musick.localhost:3000
+  ga_id: 'UA-XXXXXX-XX'
+
+test:
+  domain: test.host
+  ga_id: 'UA-XXXXXX-XX'
+  
+staging:
+  domain: musick-dev.herokuapp.com
+  a_id: 'UA-XXXXXX-XX'
+
+  
+production:
+  domain: musick.info
+  ga_id: 'UA-25643488-1'
+

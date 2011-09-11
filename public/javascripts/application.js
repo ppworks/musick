@@ -1,5 +1,13 @@
 $(function(e) {
-  
+  window.fbAsyncInit = function() {
+    FB.init({
+        appId: $.fb_app_id,
+        status: true,
+        cookie: true,
+        xfbml: true
+    })
+  }
+    
   function listen_auto_paging() {
     function loadOnScroll() {
       var content = $('.pagination_content');
