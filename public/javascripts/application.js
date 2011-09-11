@@ -55,7 +55,17 @@ $(function(e) {
     
     $('a.read_more').click(function(e){
       e.preventDefault();
-      $(this).parent().html($(this).parent().data('full-content')).hide().fadeIn(1000);
+      $(this).hide();
+      $(this).parent().find('.summary').hide();
+      $(this).parent().find('.content').fadeIn(1000);
+      $(this).parent().find('.read_less').fadeIn(1000);
+    });
+    $('a.read_less').click(function(e){
+      e.preventDefault();
+      $(this).hide();
+      $(this).parent().find('.content').hide();
+      $(this).parent().find('.summary').fadeIn(1000);
+      $(this).parent().find('.read_more').fadeIn(1000);
     });
   }
   

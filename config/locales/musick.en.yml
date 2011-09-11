@@ -4,5 +4,11 @@ en:
   musick:
     more: "more"
     more_lastfm: "search more"
+    less: "close"
     search:
       placeholder: "search for artist name"
+    nav:
+      artist:
+        add: "add favorite artist"
+      album:
+        search: "search alubm"

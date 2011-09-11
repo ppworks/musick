@@ -4,5 +4,11 @@ ja:
   musick:
     more: "もっとみる"
     more_lastfm: "もっと検索する"
+    less: "たたむ"
     search:
       placeholder: "アーティス名で検索"
+    nav:
+      artist:
+        add: "お気に入りアーティストへ追加"
+      album:
+        search: "作品検索"

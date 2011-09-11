@@ -5,10 +5,18 @@
   <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
   <%= image_tag @artist.artist_lastfm.main_image %>
   </header>
-  <p class="content" data-full-content="<%=@artist.artist_lastfm.content %>">
-    <%= @artist.artist_lastfm.summary %>
+  <nav>
+    <ul>
+      <li><%=link_to t('musick.nav.artist.add'), '#', :class => 'button' %></li>
+      <li><%=link_to t('musick.nav.album.search'), '#', :class => 'button' %></li>
+    </ul>
+  </nav>
+  <div class="description">
+    <%=simple_format(@artist.artist_lastfm.summary, :class => 'summary') %>
     <%=link_to t('musick.more'), '#more', :class => :read_more if @artist.artist_lastfm.content.present? %>
-  </p>
+    <%=simple_format(@artist.artist_lastfm.content, :class => 'content') %>
+    <%=link_to t('musick.less'), '#less', :class => [:read_less, :hidden] if @artist.artist_lastfm.content.present? %>
+  </div>
   <% if @artist.artist_images.length > 0 %>
   <ul class="images">
     <% @artist.artist_images.sort_by{rand}[0...24].each do |artist_image| %>
@@ -16,5 +24,6 @@
     <% end %>
   </ul>
   <% end %>
+  <%= render 'share/fb_comment_page', :url => request.url.gsub(/(#|\?).*/, '')%>
   <time><%= time_ago_in_words @artist.created_at, true %></time>
 </section>
