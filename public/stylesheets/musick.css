@@ -73,7 +73,7 @@ time {
 
 body>header {
     overflow: hidden;
-    padding: 15px 5px 15px 0;
+    padding: 15px 0 15px 10px;
     color: #dad8d3;
     background: #000000;
     font-size: 24px;
@@ -121,7 +121,19 @@ div#container {
  * like page
  */
 nav.like_page {
+    position: relative;
     margin: 20px 0;
+    width: 788px;
+}
+
+nav.like_page li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+nav.like_page li.hatena_bookmark {
+    position: absolute;
+    right: 0;
 }
 
 /**

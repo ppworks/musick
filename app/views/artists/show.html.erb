@@ -2,8 +2,6 @@
 <% content_for :body_class, 'show'%>
 <% content_for :og_meta do%>
   <%=render('share/og_common', 
-    :site_name => "Musick.info - #{@artist.name}", 
-    :url => current_url,
     :image => @artist.artist_lastfm.main_image
   ) %>
 <% end %>
