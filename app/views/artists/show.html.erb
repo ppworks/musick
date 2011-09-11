@@ -1,6 +1,12 @@
 <% content_for :title, "Musick.info - #{@artist.name}" %>
 <% content_for :body_class, 'show'%>
-<% content_for :og_meta, render('share/og_common', :site_name => "Musick.info - #{@artist.name}", :url => current_url) %>
+<% content_for :og_meta do%>
+  <%=render('share/og_common', 
+    :site_name => "Musick.info - #{@artist.name}", 
+    :url => current_url,
+    :image => @artist.artist_lastfm.main_image
+  ) %>
+<% end %>
 <section class="artist">
   <header>
   <h1 class="name"><%= @artist.name %></h1>
