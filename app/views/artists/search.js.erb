@@ -4,3 +4,4 @@ $('ul.artist')
 });
 $('div#paginator').html('<%= escape_javascript render(:partial => 'artists/search_lastfm', :locals => {:keyword => params[:keyword]}) %>').show();
 $.musick.init();
+$.fancybox.hideActivity();

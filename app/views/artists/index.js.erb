@@ -4,3 +4,4 @@ $('<li><%= escape_javascript render(:partial => 'artists/artist', :collection =>
 });
 $('div#paginator').html('<%=escape_javascript(paginate @artists, :remote => true) %>');
 $.musick.init();
+$.fancybox.hideActivity();

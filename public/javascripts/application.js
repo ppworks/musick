@@ -31,7 +31,7 @@ $(function(e) {
       var find_key = "input[type='text'].auto_clear, textarea.auto_clear";
       $(this).find(find_key).attr('readonly', 'readonly');
       $(this)
-      .bind('ajax:complete', function (ee) {
+      .bind('ajax:success', function (ee) {
          $(this).find(find_key)
          .val('')
          .removeAttr('readonly');
