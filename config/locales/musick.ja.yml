@@ -26,3 +26,11 @@ ja:
         facebook: "Facebookのアカウントでログインします。"
         twitter: "Twitterのアカウントでログインします。"
         mixi: "mixiのアカウントでログインします。"
+    logout:
+      label: "ログアウトする"
+    external:
+      share:
+        web:
+          label: "Musick.infoを始めたことを伝える"
+          h1: "Musick.infoを始めたことを友人に教えよう！"
+          content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusick.infoを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"

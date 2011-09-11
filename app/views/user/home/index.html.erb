@@ -1,0 +1,7 @@
+<% content_for :body_id, :user %>
+<nav>
+  <ul>
+    <li><%= link_to t('musick.external.share.web.label'), external_share_path(:web), :remote => true, :class => :button %></li>
+    <li><%= link_to t('musick.logout.label'), destroy_user_session_path, :method => :delete, :class => :button %></li>
+  </ul>
+</nav>

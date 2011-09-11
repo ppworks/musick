@@ -86,7 +86,7 @@ $(function(e) {
   }
   
   function popup(title, content) {
-    $('#fancybox_inline h1').text('success');
+    $('#fancybox_inline h1').text(title);
     $('#fancybox_inline article').html(content);
     $('#fancybox_inline').show();
     $.fancybox({
@@ -95,8 +95,8 @@ $(function(e) {
       'type' : 'inline',
       'transitionIn' : 'none',
       'transitionOut' : 'none',
-      'overlayColor': '#fff',
-      'overlayOpacity': 0.6,
+      'overlayColor': '#000',
+      'overlayOpacity': 0.2,
       'centerOnScroll': true,
       'showCloseButton': false,
       'onClosed' : function() {$('#fancybox_inline').hide();}
