@@ -1,5 +1,7 @@
+<% content_for :title, "Musick.info" %>
 <% content_for :body_class, 'index'%>
 <% content_for :search_form, render('search_form') %>
+<% content_for :og_meta, render('share/og_common', :site_name => 'Musick.info' ,:url => current_url) %>
 <ul class="artist pagination_content">
 <% @artists.each do |artist| %>
   <li><%= render artist %></li>

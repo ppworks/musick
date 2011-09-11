@@ -1,4 +1,6 @@
+<% content_for :title, "Musick.info - #{@artist.name}" %>
 <% content_for :body_class, 'show'%>
+<% content_for :og_meta, render('share/og_common', :site_name => "Musick.info - #{@artist.name}", :url => current_url) %>
 <section class="artist">
   <header>
   <h1 class="name"><%= @artist.name %></h1>
@@ -24,6 +26,6 @@
     <% end %>
   </ul>
   <% end %>
-  <%= render 'share/fb_comment_page', :url => request.url.gsub(/(#|\?).*/, '')%>
+  <%= render 'share/fb_comment_page', :url => current_url %>
   <time><%= time_ago_in_words @artist.created_at, true %></time>
 </section>

@@ -2,6 +2,7 @@ en:
   attributes:
     name: "content"
   musick:
+    description: "Musick.info is community for music lovers"
     more: "more"
     more_lastfm: "search more"
     less: "close"

@@ -17,4 +17,8 @@ module ApplicationHelper
         :en
     end
   end
+  
+  def current_url
+    request.url.gsub(/(#|\?).*/, '')
+  end
 end

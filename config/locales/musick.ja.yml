@@ -2,6 +2,7 @@ ja:
   attributes:
     name: "内容"
   musick:
+    description: "Musick.infoは音楽を通じたコミュニケーションを目的としたサイトです。"
     more: "もっとみる"
     more_lastfm: "もっと検索する"
     less: "たたむ"
