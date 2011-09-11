@@ -13,3 +13,12 @@ ja:
         add: "お気に入りアーティストへ追加"
       album:
         search: "作品検索"
+    home:
+      welcome:
+        h1: "Musick.infoって？"
+        content: "Musick.infoでは、アーティスト、楽曲を軸にしたコメントやいいね！のやりとりでコミュニケーションをすることができます。\n\n利用出来るアカウントはFacebook、Mixi、Twitterとなっております。"
+      login:
+        h1: "ログインしてみよう！"
+        facebook: "Facebookのアカウントでログインします。"
+        twitter: "Twitterのアカウントでログインします。"
+        mixi: "mixiのアカウントでログインします。"

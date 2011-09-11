@@ -13,3 +13,12 @@ en:
         add: "add favorite artist"
       album:
         search: "search alubm"
+    home:
+      welcome:
+        h1: "What's Musick.info"
+        content: "Musick.info is community for music lovers\n\nUse your facebook, twitter, or mixi account to sign in, you can comunicate with friends"
+      login:
+        h1: "Check out!"
+        facebook: "Use your facebook account"
+        twitter: "User your twitter account"
+        mixi: "User your mixi account"

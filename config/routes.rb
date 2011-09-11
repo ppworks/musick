@@ -4,5 +4,5 @@ Musick::Application.routes.draw do
     get 'search', :action => :search, :on => :collection
     get 'search_lastfm', :action => :search_lastfm, :on => :collection
   end
-  root :to => 'artists#index'
+  root :to => 'home#index'
 end
