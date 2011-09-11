@@ -10,9 +10,13 @@ en:
       placeholder: "search for artist name"
     nav:
       artist:
-        add: "add favorite artist"
+        add: "Add favorite artist"
+        update: "Update artist info"
+        share: "Share artist info"
       album:
-        search: "search alubm"
+        search: "Search alubm or track"
+      lastfm:
+        update: "Update artist images fetch from Last.fm"
     home:
       welcome:
         h1: "What's Musick.info"

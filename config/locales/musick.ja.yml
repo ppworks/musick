@@ -11,8 +11,12 @@ ja:
     nav:
       artist:
         add: "お気に入りアーティストへ追加"
+        update: "アーティスト情報を更新"
+        share: "このアーティストを友人にオススメする"
       album:
         search: "作品検索"
+      lastfm:
+        update: "Last.fmから最新アーティスト画像を取得する"
     home:
       welcome:
         h1: "Musick.infoって？"
