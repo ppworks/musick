@@ -39,10 +39,10 @@ $(function(e) {
       });
     });
     $($.rails.linkClickSelector)
-      .bind('ajax:beforeSend', function(e) {
+      .live('ajax:beforeSend', function(e) {
           $.fancybox.showActivity();
       })
-      .bind('ajax:complete', function(e) {
+      .live('ajax:complete', function(e) {
           $.fancybox.hideActivity();
       });
   }
