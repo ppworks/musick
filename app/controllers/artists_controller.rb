@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   end
   
   def show
-    @artist = Artist.show.find params[:id]
+    @artist = Artist.find_and_update_lastfm params[:id]
   end
   
   def search
@@ -23,7 +23,7 @@ class ArtistsController < ApplicationController
   
   def search_lastfm
     @artists = @artists || []
-    artists = Artist.create_by_lastfm(LastfmWrapper::Artist.search params[:keyword], {:limit => LastfmWrapper::Artist::SEARCH_LIMIT})
+    artists = Artist.create_by_lastfm(params[:keyword])
     @artists = @artists + artists
     @artists.instance_eval <<-EVAL
       def current_page

@@ -40,7 +40,9 @@ class LastfmWrapper::Artist < LastfmWrapper::Base
   
   def self.search keyword, opts = {}
     opts.merge! :artist => keyword
-    results = self.api.artist.search opts
+    results = Rails.cache.fetch "lastfm_wrapper_search_#{Digest::SHA256.hexdigest(keyword)}", :expires_in => 12.hours do
+      self.api.artist.search opts
+    end
     if results.blank? || results['artistmatches']['artist'].nil?
       return []
     end
@@ -60,13 +62,18 @@ class LastfmWrapper::Artist < LastfmWrapper::Base
   private
   def self.format_search_result artist
     return false if artist['image'].reject{|image|image['content'].nil?}.blank?
+    return false if artist['image'].select{|image|image['content'] =~ /mistagged/}.present?
     return false if artist['url'].blank?
     mbid = (artist['mbid']=~/[0-9a-zA-Z]/) ? artist['mbid'] : nil
-    {
+    result = {
       :name => artist['name'],
       :mbid => mbid,
       :url => artist['url'],
       :streamable => artist['streamable'],
     }
+    artist['image'].each do |image|
+      result[image['size'].to_sym] = image['content']
+    end
+    result
   end
 end

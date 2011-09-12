@@ -128,7 +128,7 @@ $(function(e) {
   }
   
   function init() {
-    listen_auto_paging();
+    //listen_auto_paging();
     listen_remote_true();
     listen_links();
     fix_url();

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911082332) do
+ActiveRecord::Schema.define(:version => 20110912100006) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20110911082332) do
   add_index "artist_images", ["artist_id", "show_flg"], :name => "idx_artist_id_show_flg_on_artist_images"
 
   create_table "artist_lastfms", :force => true do |t|
-    t.integer  "artist_id",  :null => false
+    t.integer  "artist_id",       :null => false
     t.string   "mbid"
     t.string   "url"
     t.text     "summary"
@@ -48,16 +48,18 @@ ActiveRecord::Schema.define(:version => 20110911082332) do
     t.string   "main_image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail_image"
   end
 
   add_index "artist_lastfms", ["artist_id"], :name => "idx_artist_id_on_artist_lastfms", :unique => true
   add_index "artist_lastfms", ["url"], :name => "idx_url_on_artist_lastfms"
 
   create_table "artists", :force => true do |t|
-    t.string   "name",                         :null => false
-    t.boolean  "show_flg",   :default => true, :null => false
+    t.string   "name",                                :null => false
+    t.boolean  "show_flg",          :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "image_searched_at"
   end
 
   add_index "artists", ["id", "show_flg"], :name => "idx_id_show_flg_on_artists"

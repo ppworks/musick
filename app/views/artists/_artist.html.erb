@@ -1,11 +1,6 @@
 <section class="artist">
   <h1 class="name"><%= link_to artist.name, artist_path(artist.id) %></h1>
-  <% if artist.artist_images.length > 0 %>
-  <ul class="images">
-    <% artist.artist_images.sort_by{rand}[0...12].each do |artist_image| %>
-    <li><%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img1'), artist_path(artist.id) %></li>
-    <% end %>
-  </ul>
+  <% if artist.artist_lastfm.present? && artist.artist_lastfm.thumbnail_image.present? %>
+    <%= link_to image_tag(artist.artist_lastfm.thumbnail_image, :class => 'rounded-img1'), artist_path(artist.id) %>
   <% end %>
-  <time><%= time_ago_in_words artist.created_at, true %></time>
 </section>
