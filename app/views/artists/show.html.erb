@@ -22,7 +22,7 @@
   <nav>
     <ul>
       <li><%=link_to t('musick.nav.artist.update'), '#', :class => 'button' %></li>
-      <li><%=link_to t('musick.nav.lastfm.update'), '#', :class => 'button' %></li>
+      <li><%=link_to t('musick.nav.artist.update_images'), artist_images_path(@artist.id), :remote => true, :class => 'button' %></li>
     </ul>
   </nav>
   <div class="description">
@@ -31,13 +31,9 @@
     <%=simple_format(@artist.artist_lastfm.content, :class => 'content') %>
     <%=link_to t('musick.less'), '#less', :class => [:read_less, :hidden] if @artist.artist_lastfm.content.present? %>
   </div>
-  <% if @artist.artist_images.length > 0 %>
   <ul class="images">
-    <% @artist.artist_images.sort_by{rand}[0...24].each do |artist_image| %>
-    <li><%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img2'), artist_image.extralarge, :class => 'popup', :rel => "group#{@artist.id}" %></li>
-    <% end %>
+    <%= render 'artist/images/list', :images => @artist.artist_images %>
   </ul>
-  <% end %>
   <%= render 'share/fb_comment_page', :url => current_url %>
   <time><%= time_ago_in_words @artist.created_at, true %></time>
 </section>

@@ -44,7 +44,6 @@ class Artist < ActiveRecord::Base
       }
       artist.artist_lastfm.save!
     end
-    self.find_images id
     artist.save!
     artist.reload
     artist
@@ -52,12 +51,15 @@ class Artist < ActiveRecord::Base
   
   def self.find_images id
     artist = self.show.find id
+    artist_image_ids = []
     if artist.image_searched_at.nil? || artist.image_searched_at < 7.weeks.ago
       artist_images = LastfmWrapper::Artist.images artist.name
       return nil if artist_images.blank?
       begin
         artist_images.each do |artist_image|
-          artist.artist_images << ArtistImage.new(artist_image)
+          new_image = ArtistImage.new(artist_image)
+          artist.artist_images << new_image
+          artist_image_ids << new_image.id
         end
       rescue ::ActiveRecord::RecordNotUnique => e
       ensure
@@ -65,7 +67,7 @@ class Artist < ActiveRecord::Base
         artist.save!
       end
     end
-    artist.artist_images
+    artist.artist_images.find artist_image_ids
   end
   
   private

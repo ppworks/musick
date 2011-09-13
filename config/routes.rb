@@ -13,6 +13,10 @@ Musick::Application.routes.draw do
     get 'search_lastfm', :action => :search_lastfm, :on => :collection
   end
   
+  namespace :artist do
+    get '/:artist_id/images' => 'images#index', :as => :images
+  end
+  
   namespace :user do
     get '/' => 'home#index', :as => :home
   end
