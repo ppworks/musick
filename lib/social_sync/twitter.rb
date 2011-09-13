@@ -9,7 +9,7 @@ module SocialSync
     end
     
     # fetch post
-    def self.post token, params
+    def self.post! token, params
       self.configure_twitter token, params[:providers_user].secret
       res = ::Twitter.update(params[:message])
       

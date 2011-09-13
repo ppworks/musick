@@ -5,23 +5,7 @@
   <h1><%=t('musick.home.welcome.h1')%></h1>
   <%=simple_format t('musick.home.welcome.content')%>
 </section>
-<section class="login">
-  <h1><%=t('musick.home.login.h1')%></h1>
-  <ul>
-    <li>
-      <%=t('musick.home.login.facebook')%>
-      <%=link_to image_tag('/images/facebook_login_btn.png'), user_omniauth_authorize_path(:facebook) %>
-    </li>
-    <li>
-      <%=t('musick.home.login.twitter')%>
-      <%=link_to image_tag('/images/twitter_login_btn.png'), user_omniauth_authorize_path(:twitter) %>
-    </li>
-    <li>
-      <%=t('musick.home.login.mixi')%>
-      <%=link_to image_tag('/images/mixi_login_btn.png', :class => :mixi ), user_omniauth_authorize_path(:mixi)%>
-    </li>
-  </ul>
-</section>
+<%= render 'share/login_button'%>
 </div>
 <aside class="activity">
   <%= render 'share/fb_activity_feed' %>

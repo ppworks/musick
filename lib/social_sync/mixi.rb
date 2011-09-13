@@ -10,7 +10,7 @@ module SocialSync
     end
     
     # fetch post
-    def self.post token, params
+    def self.post! token, params
       response = self.fetch_mixi params[:providers_user] do |token_obj|
         response = token_obj.post('/2/voice/statuses', {:status => params[:message]})
       end

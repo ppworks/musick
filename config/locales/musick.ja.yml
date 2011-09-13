@@ -28,8 +28,10 @@ ja:
         mixi: "mixiのアカウントでログインします。"
     logout:
       label: "ログアウトする"
-    external:
-      share:
+    social:
+      posts:
+        create: "投稿する"
+        placeholder: "このサイトをオススメする一言をどうぞ！"
         web:
           label: "Musick.infoを始めたことを伝える"
           h1: "Musick.infoを始めたことを友人に教えよう！"

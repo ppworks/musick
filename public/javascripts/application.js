@@ -50,11 +50,11 @@ $(function(e) {
   function listen_links() {
     $('a.popup').fancybox({
       'href' : $(this).attr('href'),
-      'hideOnContentClick' : true,
-      'transitionIn' : 'none',
-      'transitionOut' : 'none',
+      'hideOnContentClick' : false,
+      'transitionIn' : 'ease.in',
+      'transitionOut' : 'ease.out',
       'overlayColor': '#000',
-      'overlayOpacity': 0.6,
+      'overlayOpacity': 0.3,
       'centerOnScroll': true,
       'showCloseButton': false,
       'showNavArrows' : true,

@@ -66,9 +66,33 @@ input[type=reset]:active {
 a.button {
     text-decoration: none;
 }
+nav li a.button {
+    display: inline-block;
+}
 
 time {
     color: #dad8d3;
+}
+
+textarea, input[type=text] {
+    outline: none;
+    resize: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333;
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));
+    background: -moz-linear-gradient(top, #eee, #fff);
+    filter:progid:DXImageTransform.Microsoft.gradient
+        (startColorstr=#ffeeeeee,endColorstr=#ffffffff);
+    zoom: 1;
+    
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -moz-box-shadow: 1px 1px 1px #fff;
+    box-shadow: 1px 1px 1px #fff;
 }
 
 body>header {
@@ -444,4 +468,49 @@ form.search_form input[type="search"] {
 
 #fancybox-outer .fancybox-bg {
     background-image: none;
+}
+
+/**
+ * ソーシャル 投稿
+ */
+section.new_post {
+    margin: 20px;
+    width: 330px;
+    text-align: center;
+}
+
+section.new_post form textarea {
+    padding: 10px;
+    width: 300px;
+    height: 150px;
+}
+
+section.new_post form ul.providers {
+    display: inline-block;
+    padding: 7px 10px;
+    background: #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+section.new_post form ul.providers li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+section.new_post form ul.providers li:last-child {
+    margin-right: 0;
+}
+
+section.new_post form progress {
+    display: inline-block;
+    width: 60px;
+}
+
+section.new_post form input[type=submit] {
+    clear: both;
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 150px;
 }

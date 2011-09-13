@@ -1,4 +1,6 @@
 Musick::Application.routes.draw do
+  get "posts/new"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
   devise_scope :user do
     match '/users/sign_out(.:format)', {:action=>"destroy", :controller=>"devise/sessions", :via => :delete, :as => :destroy_user_session }
@@ -30,7 +32,7 @@ Musick::Application.routes.draw do
   end
   
   namespace :social do
-    resource :share, :only => [:new]
+    resource :posts, :only => [:new, :create]
   end
   
   root :to => 'home#index'
