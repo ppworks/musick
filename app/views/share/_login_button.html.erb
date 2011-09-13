@@ -1,17 +1,25 @@
+<% if  !user_signed_in? || !current_user.has_all_provider?%>
 <section class="login">
   <h1><%=t('musick.home.login.h1')%></h1>
   <ul>
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.facebook.id) %>
     <li>
       <%=t('musick.home.login.facebook')%>
       <%=link_to image_tag('/images/facebook_login_btn.png'), user_omniauth_authorize_path(:facebook) %>
     </li>
+    <% end %>
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.twitter.id) %>
     <li>
       <%=t('musick.home.login.twitter')%>
       <%=link_to image_tag('/images/twitter_login_btn.png'), user_omniauth_authorize_path(:twitter) %>
     </li>
+    <% end %>
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.mixi.id) %>
     <li>
       <%=t('musick.home.login.mixi')%>
       <%=link_to image_tag('/images/mixi_login_btn.png', :class => :mixi ), user_omniauth_authorize_path(:mixi)%>
     </li>
+    <% end %>
   </ul>
 </section>
+<% end %>

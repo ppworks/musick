@@ -168,6 +168,14 @@ class User < ActiveRecord::Base
     Provider.select('id, name').find self.default_provider_id
   end
   
+  def has_provider? provider_id
+    self.providers_users.select(:provider_id).map{|providers_user|providers_user.provider_id}.include? provider_id
+  end
+  
+  def has_all_provider?
+    self.providers_users.length === Provider.all.length
+  end
+  
   def follow user
     self.follows << user unless self.follows.include? user
   end
