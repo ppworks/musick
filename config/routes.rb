@@ -15,7 +15,23 @@ Musick::Application.routes.draw do
     get '/' => 'home#index', :as => :home
   end
   
-  get 'external/share/:kind' => 'external#share', :as => :external_share
+  scope :social do
+    namespace :facebook do
+      resource :posts, :only => [:new, :create]
+    end
+    
+    namespace :twitter do
+      resource :tweets, :only => [:new, :create]
+    end
+    
+    namespace :mixi do
+      resource :voices, :only => [:new, :create]
+    end
+  end
+  
+  namespace :social do
+    resource :share, :only => [:new]
+  end
   
   root :to => 'home#index'
 end
