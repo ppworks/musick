@@ -8,7 +8,7 @@ gem 'lastfm', :git => 'git://github.com/ppworks/ruby-lastfm.git', :branch => 'ma
 gem 'oa-core'
 gem 'oa-oauth'
 gem 'fb_graph'
-gem 'twitter', '1.7.1'
+gem 'twitter'
 gem 'devise'
 
 group :development, :test do
