@@ -25,6 +25,10 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'growl'
   gem 'taps'
+  # Capistrano
+  gem 'capistrano', :require => nil
+  gem 'capistrano-ext', :require => nil
+  gem 'capistrano_colors', :require => nil
 end
 
 group :production do
