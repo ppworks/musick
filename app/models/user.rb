@@ -194,7 +194,8 @@ class User < ActiveRecord::Base
   end
   
   def make_twitter_friend_auto
-    friend_user_keys = SocialSync.friends self, {:provider_id => Provider.twitter.id}
+    response = SocialSync.friends self, {:provider_id => Provider.twitter.id}
+    friend_user_keys = response.map {|f| f["id_str"]}
     make_friend_auto Provider.twitter.id, friend_user_keys
   end
   

@@ -4,8 +4,12 @@ module SocialSync
     # fetch friends uid array
     def self.friends token, params = {}
       self.configure_twitter token, params[:providers_user].secret
-      user_keys = ::Twitter.friend_ids(params[:providers_user].name).ids
-      user_keys.map{|user_key|user_key.to_s}
+      friends = ::Twitter.friends(params[:providers_user].name)
+      if friends[:users].present?
+        friends[:users] 
+      else
+        []
+      end
     end
     
     # fetch post
