@@ -1,5 +1,5 @@
 <section class="profile search_hidable">
-  <h1 class="searchable"><%= truncate profile[:name], :length => 20 %></h1>
+  <h1 class="searchable"><%=CGI::unescapeHTML truncate profile[:name], :length => 20 %></h1>
   <%= image_tag profile[:pic_square], :name => profile[:name], :title => profile[:name], :class => :square %>
   <aside class="invite">
     <button class="invite", data-id="<%=profile[:id]%>"><%=t('musick.social.friends.invite_select')%></button>
