@@ -1,4 +1,5 @@
 class Social::FriendsController < ApplicationController
+  before_filter :authenticate_user!
   def index
     opts = {}
     friends = SocialSync.friends(current_user, opts.merge({:provider_id => Provider.send(params[:provider])}))
@@ -10,6 +11,7 @@ class Social::FriendsController < ApplicationController
     else
       @profiles = friends
     end
+    render :layout => !request.xhr?
   end
   
   
