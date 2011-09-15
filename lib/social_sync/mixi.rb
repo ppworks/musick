@@ -50,7 +50,8 @@ module SocialSync
         :id => user['id'].to_s,
         :name => user['displayName'],
         :pic_square => user['thumbnailUrl'],
-        :url => user['profileUrl']
+        :url => user['profileUrl'],
+        :provider => :mixi
       }
     end
   end

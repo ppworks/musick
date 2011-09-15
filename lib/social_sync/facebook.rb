@@ -20,6 +20,10 @@ module SocialSync
           pic_big, type, username
         FROM profile WHERE #{uid_condition}
       FQL
+      
+      res.map do |user|
+        self.format_profile user
+      end
     end
     
     # fetch friends uid array
@@ -288,6 +292,21 @@ module SocialSync
       rescue HTTPClient::KeepAliveDisconnected => e
         raise SocialSync::FacebookException, 'facebook connect fail.'
       end
+    end
+    
+    def self.format_profile user
+      {
+        :id => user['id'].to_s,
+        :name => user['name'],
+        :pic => user['pic'],
+        :pic_square => user['pic_square'],
+        :pic_small => user['pic_small'],
+        :pic_big => user['pic_big'],
+        :type => user['type'],
+        :username => user['username'],
+        :url => user['url'],
+        :provider => :facebook
+      }
     end
   end
 end

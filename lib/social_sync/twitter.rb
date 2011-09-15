@@ -37,7 +37,8 @@ module SocialSync
         :name => user['name'],
         :screen_name => user['screen_name'],
         :pic_square => user['profile_image_url'],
-        :url => "http://twitter.com/#!/#{user['screen_name']}"
+        :url => "http://twitter.com/#!/#{user['screen_name']}",
+        :provider => :twitter
       }
     end
   end

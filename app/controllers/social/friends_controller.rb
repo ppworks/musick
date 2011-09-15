@@ -11,4 +11,6 @@ class Social::FriendsController < ApplicationController
       @profiles = friends
     end
   end
+  
+  
 end

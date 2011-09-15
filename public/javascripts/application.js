@@ -26,7 +26,7 @@ $(function(e) {
   }
   
   function listen_remote_true() {
-    $('form').live('submit', function(e) {
+    $('form[data-remote="true"]').live('submit', function(e) {
       $.fancybox.showActivity();
       var find_key = "input[type='text'].auto_clear, textarea.auto_clear";
       $(this).find(find_key).attr('readonly', 'readonly');
@@ -85,6 +85,32 @@ $(function(e) {
     });
   }
   
+  function listen_search_element() {
+    
+    $('form#search_element').bind('submit', function(e) {
+      e.preventDefault();
+      $.fancybox.hideActivity();
+    });
+    $('form#search_element input[type="search"]').bind('keyup', function(e) {
+      var keyword = $(this).val();
+      $('.searchable').removeClass('highlight');
+      $('.search_hidable').show();
+      if (keyword == '') return;
+      $.each($('.searchable'), function(i, elm) {
+        if ($(elm).text().match(keyword)) {
+          $(elm).addClass('highlight');
+        } else {
+          if ($(elm).hasClass('search_hidable')) {
+            $(elm).hide();
+          } else if ($(elm).parent().hasClass('search_hidable')) {
+            $(elm).parent().hide();
+          }
+        }
+      });
+      
+    })
+  }
+  
   function popup(title, content) {
     $('#fancybox_inline h1').text(title);
     $('#fancybox_inline article').html(content);
@@ -131,6 +157,7 @@ $(function(e) {
     //listen_auto_paging();
     listen_remote_true();
     listen_links();
+    listen_search_element();
     fix_url();
     round_image();
     $.musick = {};

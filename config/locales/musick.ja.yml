@@ -36,3 +36,8 @@ ja:
           label: "Musick.infoを始めたことを伝える"
           h1: "Musick.infoを始めたことを友人に教えよう！"
           content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusick.infoを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"
+      friends:
+        invite_select: "選択する"
+        invite: "招待する"
+        invite_count: "招待した回数: %count"
+        search_placeholder: "名前で絞り込む"

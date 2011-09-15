@@ -114,6 +114,20 @@ body>header {
     display: none;
 }
 
+.highlight {
+    color: #666666;
+    background: #fff200;
+}
+
+/**
+ * @see http://kojika17.com/2011/04/floatclearfix.php
+ */
+.clearfix {zoom:1;}
+.clearfix:after{
+    content: ""; 
+    display: block; 
+    clear: both;}
+
 /**
  * page header
  */
@@ -170,6 +184,7 @@ nav.like_page {
     position: relative;
     margin: 20px 0;
     width: 788px;
+    height: 60px;
 }
 
 nav.like_page li {
@@ -405,7 +420,12 @@ form.search_form {
 
 form.search_form input[type="search"] {
     width: 320px;
-    font-size: 1.1em;
+    font-size: 1.0em;
+}
+
+form#search_element input[type="search"] {
+    width: 320px;
+    font-size: 1.0em;
 }
 
 /**
@@ -514,3 +534,53 @@ section.new_post form input[type=submit] {
     margin: 10px auto 0 auto;
     width: 150px;
 }
+
+/**
+ * ソーシャル friends
+ */
+ul.friends {
+    margin: 10px 0;
+}
+
+ul.friends>li {
+    float: left;
+}
+
+ul.friends section.profile {
+    position: relative;
+    margin: 2px;
+    padding: 10px;
+    width: 234px;/*192*/
+    height: 48px;
+    background-clip: padding-box;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+ul.friends section.profile h1 {
+    position: absolute;
+    top: 10px;
+    left: 68px;
+}
+
+ul.friends section.profile button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 2px 6px;
+    height: 24px;
+    font-size: 11px;
+}
+
+ul.friends section.profile img {
+    position:absolute;
+    width: 48px;
+    height: 48px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
