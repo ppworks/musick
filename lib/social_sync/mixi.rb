@@ -37,7 +37,7 @@ module SocialSync
         providers_user.save!
         
         retry_count += 1
-        retry if retry_count == 0
+        retry if retry_count == 1
         raise e
       end
     end
