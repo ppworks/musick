@@ -6,6 +6,9 @@ module SocialSync
       response = self.fetch_mixi params[:providers_user] do |token_obj|
         response = JSON.parse token_obj.get('/2/people/@me/@friends?count=1000')
         response = response["entry"]
+        response.map do|user|
+          self.format_profile user
+        end
       end
     end
     
@@ -40,6 +43,15 @@ module SocialSync
         retry if retry_count == 1
         raise e
       end
+    end
+    
+    def self.format_profile user
+      {
+        :id => user['id'].to_s,
+        :name => user['displayName'],
+        :pic_square => user['thumbnailUrl'],
+        :url => user['profileUrl']
+      }
     end
   end
 end

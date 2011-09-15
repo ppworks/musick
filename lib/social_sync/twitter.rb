@@ -6,7 +6,9 @@ module SocialSync
       self.configure_twitter token, params[:providers_user].secret
       friends = ::Twitter.friends(params[:providers_user].name)
       if friends[:users].present?
-        friends[:users] 
+        friends[:users].map do |user|
+          self.format_profile user
+        end
       else
         []
       end
@@ -27,6 +29,16 @@ module SocialSync
         config.oauth_token = token
         config.oauth_token_secret = secret
       end
+    end
+    
+    def self.format_profile user
+      {
+        :id => user['id'].to_s,
+        :name => user['name'],
+        :screen_name => user['screen_name'],
+        :pic_square => user['profile_image_url'],
+        :url => "http://twitter.com/#!/#{user['screen_name']}"
+      }
     end
   end
 end
