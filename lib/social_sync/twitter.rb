@@ -4,14 +4,22 @@ module SocialSync
     # fetch friends uid array
     def self.friends token, params = {}
       self.configure_twitter token, params[:providers_user].secret
-      friends = ::Twitter.friends(params[:providers_user].name)
-      if friends[:users].present?
-        friends[:users].map do |user|
-          self.format_profile user
+      friend_ids = ::Twitter.follower_ids(params[:providers_user].name)['ids']
+      # FIXME: move to profiles mathod
+      results = []
+      friend_divided_ids = friend_ids.divide 100
+      friend_divided_ids.each do |friend_ids|
+        friends = ::Twitter.users(*friend_ids)
+        if friends.present?
+          friends.select! do |user|
+            user['following']
+          end
+          friends.each do |user|
+            results << self.format_profile(user)
+          end
         end
-      else
-        []
       end
+      results
     end
     
     # fetch post
@@ -41,5 +49,16 @@ module SocialSync
         :provider => :twitter
       }
     end
+  end
+end
+class Array
+  def divide num
+    start = 0
+    result = []
+    while self.size > start
+      result << self.slice(start, num)
+      start+=num
+    end
+    result
   end
 end

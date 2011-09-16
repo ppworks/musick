@@ -100,14 +100,9 @@ $(function(e) {
         if ($(elm).text().match(keyword)) {
           $(elm).addClass('highlight');
         } else {
-          if ($(elm).hasClass('search_hidable')) {
-            $(elm).hide();
-          } else if ($(elm).parent().hasClass('search_hidable')) {
-            $(elm).parent().hide();
-          }
+          $(elm).closest('.search_hidable').hide();
         }
       });
-      
     })
   }
   

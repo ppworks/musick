@@ -559,10 +559,27 @@ ul.friends section.profile {
     border-radius: 5px;
 }
 
+/*
+ul.friends section.profile hgroup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 48px;
+    width: 234px;
+}
+*/
+
 ul.friends section.profile h1 {
     position: absolute;
     top: 10px;
     left: 68px;
+}
+
+ul.friends section.profile h2 {
+    position: absolute;
+    top: 30px;
+    left: 68px;
+    color: #666666;
 }
 
 ul.friends section.profile button {
