@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110912100006) do
+ActiveRecord::Schema.define(:version => 20110916064804) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(:version => 20110912100006) do
 
   add_index "follows", ["other_user_id", "user_id"], :name => "idx_other_user_id_user_id_on_follows", :unique => true
   add_index "follows", ["user_id", "other_user_id"], :name => "idx_user_id_other_user_id_on_follows", :unique => true
+
+  create_table "invites", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.string   "message"
+    t.integer  "to_provider_id", :null => false
+    t.string   "to_user_key",    :null => false
+    t.integer  "to_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invites", ["to_provider_id", "to_user_key"], :name => "idx_to_provider_id_to_user_key_on_invites"
 
   create_table "providers", :force => true do |t|
     t.string   "name"
