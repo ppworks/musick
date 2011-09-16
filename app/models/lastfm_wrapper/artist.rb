@@ -8,13 +8,16 @@ class LastfmWrapper::Artist < LastfmWrapper::Base
       return nil
     end
     main_image = nil
+    thumbnail_image = nil
     result['image'].each do |image|
       main_image = image['content'] if image['size'] == 'mega'
+      thumbnail_image = image['content'] if image['size'] == 'large'
     end
     artist = {
       :name => result['name'],
       :mbid => result['mbid'],
       :main_image => main_image,
+      :thumbnail_image => thumbnail_image.sub(/126/, '126s'),
       :url => result['url'],
       :summary => result['bio']['summary'].instance_of?(String) ? result['bio']['summary'] : '',
       :content => result['bio']['content'].instance_of?(String) ? result['bio']['content'] : ''
