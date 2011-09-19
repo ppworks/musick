@@ -1,5 +1,5 @@
 require "capistrano_colors"
 require "capistrano/ext/multistage"
 require "bundler/capistrano"
-
+require "delayed/recipes"
 set :application, "musick"
