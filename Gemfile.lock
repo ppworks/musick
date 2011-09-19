@@ -53,6 +53,10 @@ GEM
       capistrano (>= 1.0.0)
     capistrano_colors (0.5.4)
     crack (0.1.8)
+    daemons (1.1.4)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     devise (1.4.5)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -228,6 +232,7 @@ DEPENDENCIES
   capistrano
   capistrano-ext
   capistrano_colors
+  delayed_job
   devise
   factory_girl_rails
   faker

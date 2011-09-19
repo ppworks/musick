@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916064804) do
+ActiveRecord::Schema.define(:version => 20110919035224) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -63,6 +63,21 @@ ActiveRecord::Schema.define(:version => 20110916064804) do
   end
 
   add_index "artists", ["id", "show_flg"], :name => "idx_id_show_flg_on_artists"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "follows", :id => false, :force => true do |t|
     t.integer "user_id",       :null => false

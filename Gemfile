@@ -10,6 +10,7 @@ gem 'oa-oauth'
 gem 'fb_graph'
 gem 'twitter'
 gem 'devise'
+gem 'delayed_job'
 
 group :development, :test do
   gem 'heroku'
