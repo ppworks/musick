@@ -12,21 +12,22 @@
 <meta http-equiv="content-language" content="<%=I18n.locale%>">
 <%= yield :og_meta %>
 <link rel="shortcut icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
 <link rel="stylesheet" type="text/css" href="/_/css/style.css">
 <link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <%= stylesheet_link_tag :all %>
 <script src="/_/js/modernizr-1.7.min.js"></script>
 <%= javascript_include_tag :defaults %>
+<%= yield :javascript %>
 <%= csrf_meta_tag %>
 </head>
 <body id="<%= yield :body_id %>" class="<%= yield :body_class %>">
 <header>
-<h1><%= link_to root_path do %>Music<small>k</small>.info<% end %></h1>
+<h1><%= link_to root_path do %><%=image_tag '/images/musick_logo.png'%><% end %></h1>
 <%= yield :search_form %>
 </header>
 <div id="container">
-<%= render 'share/like_page' %>
+<%= yield :like_page%>
 <%= yield %>
 </div>
 <section id="fancybox_inline">

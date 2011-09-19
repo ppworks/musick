@@ -9,25 +9,43 @@ module SocialSync
       results = []
       friend_divided_ids = friend_ids.divide 100
       friend_divided_ids.each do |friend_ids|
-        friends = ::Twitter.users(*friend_ids)
-        if friends.present?
-          friends.select! do |user|
-            user['following']
-          end
-          friends.each do |user|
-            results << self.format_profile(user)
-          end
+        params[:uid] = friend_ids
+        res = self.profiles token, params
+        if res.present?
+          results = results + res
         end
       end
       results
     end
     
-    # fetch post
+    def self.profiles token, params = {}
+      friend_ids = params[:uid]
+      self.configure_twitter token, params[:providers_user].secret
+      results = []
+      friends = ::Twitter.users(*friend_ids)
+      if friends.present?
+        friends.select! do |user|
+          user['following']
+        end
+        friends.each do |user|
+          results << self.format_profile(user)
+        end
+      end
+      results
+    end
+    
+    # post
     def self.post! token, params
       self.configure_twitter token, params[:providers_user].secret
       res = ::Twitter.update(params[:message])
       
     end
+    
+    def self.message! token, params
+      self.configure_twitter token, params[:providers_user].secret
+      res = ::Twitter.direct_message_create(params[:target_id], params[:message])
+    end
+    
     
     protected
     def self.configure_twitter token, secret

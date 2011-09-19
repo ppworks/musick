@@ -12,10 +12,32 @@ module SocialSync
       end
     end
     
-    # fetch post
+    # post
     def self.post! token, params
       response = self.fetch_mixi params[:providers_user] do |token_obj|
         response = token_obj.post('/2/voice/statuses', {:status => params[:message]})
+      end
+    end
+    
+    def self.message! token, params
+      response = self.fetch_mixi params[:providers_user] do |token_obj|
+        result = nil
+        params[:providers_user].reload
+        token = params[:providers_user].access_token
+        http = Net::HTTP.new('api.mixi-platform.com',80)
+        http.start{
+          headers = {'Authorization' => "OAuth #{token}",
+                      'HOST' => 'api.mixi-platform.com', 
+                      'Content-Type' => "application/json"}
+          query_json = {
+            'title' => params[:title],
+            'body' => params[:message],
+            'recipients' => params[:target_id]
+          }.to_json
+          body = http.post("/2/messages/@me/@self/@outbox", query_json, headers).body
+          result = JSON.parse(body)
+        }
+        result
       end
     end
     
@@ -38,7 +60,6 @@ module SocialSync
         providers_user.access_token = token.token
         providers_user.refresh_token = token.refresh_token
         providers_user.save!
-        
         retry_count += 1
         retry if retry_count == 1
         raise e

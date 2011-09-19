@@ -37,7 +37,8 @@ Musick::Application.routes.draw do
   
   namespace :social do
     resource :posts, :only => [:new, :create]
-    get 'friends/:provider' => 'friends#index', :constraint => {:provider => /facebook|twitter|mixi/}
+    get 'friends/(:provider)' => 'friends#index', :constraint => {:provider => /facebook|twitter|mixi/}, :as => :friends
+    post 'friends/invite/(:provider)' => 'friends#invite', :constraint => {:provider => /facebook|twitter|mixi/}, :as => :invite_friends
   end
   
   root :to => 'home#index'

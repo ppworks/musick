@@ -1,0 +1,7 @@
+<%=form_tag social_invite_friends_path(params[:provider]), :id => :social_invite_friends, :remote => true do %>
+  <ul id="to_friends"></ul>
+  <%=hidden_field_tag :to_provider_user_keys%>
+  <%=select_tag :to_invite_kind, options_for_select(Invite::INVITE_KIND_OPTIONS[params[:provider].to_sym])%>
+  <%=text_area_tag :message, '', :placeholder => t('musick.social.friends.invite_message.placeholder')%>
+  <%=submit_tag '招待を送る'%>
+<% end %>

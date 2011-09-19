@@ -1,0 +1,4 @@
+$.fancybox.hideActivity();
+$('ul.friends>li.selected button').click();
+$('form#social_invite_friends').replaceWith('<%=escape_javascript(render('invite_form'))%>');
+$.musick.popup('<%=t('musick.social.friends.invite_success.h1')%>', '<%= t('musick.social.friends.invite_success.content')%>');

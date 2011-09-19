@@ -1,5 +1,11 @@
 <% content_for :body_id, 'home'%>
 <% content_for :search_form, render('artists/search_form', :remote => false) %>
+<% content_for :like_page, render('share/like_page') %>
+<% content_for :og_meta do%>
+  <%=render('share/og_common', 
+    :image => request.protocol + APP_CONFIG[:domain] + '/images/musick.png'
+  ) %>
+<% end %>
 <div class="main">
 <section class="welcome">
   <h1><%=t('musick.home.welcome.h1')%></h1>

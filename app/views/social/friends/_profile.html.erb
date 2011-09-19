@@ -1,4 +1,4 @@
-<section class="profile search_hidable">
+<section class="profile search_hidable" data-id="<%=profile[:id]%>">
   <hgroup class="searchable">
   <h1>
     <%=CGI::unescapeHTML truncate profile[:name], :length => 20 %>
@@ -9,6 +9,8 @@
   </hgroup>
   <%= image_tag profile[:pic_square], :name => profile[:name], :title => profile[:name], :class => :square %>
   <aside class="invite">
-    <button class="invite", data-id="<%=profile[:id]%>"><%=t('musick.social.friends.invite_select')%></button>
+    <button class="invite", data-id="<%=profile[:id]%>" data-alternative-label="<%=t('musick.social.friends.invite_unselect')%>">
+      <%=t('musick.social.friends.invite_select')%>
+    </button>
   </aside>
 </section>

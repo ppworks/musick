@@ -1,11 +1,2 @@
-$('div#fancybox_inline h1').text('error');
-$('div#fancybox_inline article').html('<%= escape_javascript(@errors.join(','))%>');
-$('div#fancybox_inline').show();
-$.fancybox({
-  'href' : '#fancybox_inline',
-  'hideOnContentClick' : true,
-  'type' : 'inline',
-  'transitionIn' : 'none',
-  'transitionOut' : 'none',
-  'onClosed' : function() {$('div#fancybox_inline').hide();}
-});
+$.fancybox.hideActivity();
+$.musick.popup('<%=t('musick.validation_error')%>', '<%= escape_javascript(simple_format @errors.join("\n"))%>');
