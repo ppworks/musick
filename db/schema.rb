@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110919035224) do
+ActiveRecord::Schema.define(:version => 20110920042304) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -125,6 +125,17 @@ ActiveRecord::Schema.define(:version => 20110919035224) do
 
   add_index "providers_users", ["provider_id", "user_key"], :name => "idx_provider_id_user_key_on_providers_users", :unique => true
   add_index "providers_users", ["user_id"], :name => "idx_user_id_on_providers_users"
+
+  create_table "user_follow_artists", :force => true do |t|
+    t.integer  "user_id",                   :null => false
+    t.integer  "artist_id",                 :null => false
+    t.integer  "priority",   :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_follow_artists", ["artist_id"], :name => "idx_artist_id_on_user_follow_artists"
+  add_index "user_follow_artists", ["user_id", "priority"], :name => "idx_user_id_priority_on_user_follow_artists"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
