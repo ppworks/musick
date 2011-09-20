@@ -13,6 +13,8 @@ Musick::Application.routes.draw do
   
   namespace :artist do
     get '/:artist_id/images' => 'images#index', :as => :images
+    get '/:artist_id/items/page/:page' => 'items#index', :as => :items
+    get '/:artist_id/items' => 'items#index', :as => :items
   end
   
   namespace :social do

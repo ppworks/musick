@@ -1,0 +1,10 @@
+<ul class="items">
+<%@items.each do |item|%>
+  <li>
+    <%= render 'item', :item => item %>
+  </li>
+<%end%>
+</ul>
+<div id="paginator">
+  <%= paginate @items, :remote => true %>
+</div>

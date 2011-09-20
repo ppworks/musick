@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920042304) do
+ActiveRecord::Schema.define(:version => 20110920113035) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -38,6 +38,37 @@ ActiveRecord::Schema.define(:version => 20110920042304) do
 
   add_index "artist_images", ["artist_id", "original"], :name => "idx_artist_id_original_on_artist_images", :unique => true
   add_index "artist_images", ["artist_id", "show_flg"], :name => "idx_artist_id_show_flg_on_artist_images"
+
+  create_table "artist_item_tracks", :force => true do |t|
+    t.integer  "artist_item_id",                :null => false
+    t.integer  "artist_id",                     :null => false
+    t.integer  "disc",           :default => 1, :null => false
+    t.integer  "track",                         :null => false
+    t.string   "title",                         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artist_item_tracks", ["artist_item_id"], :name => "idx_artist_item_id_on_artist_item_tracks"
+
+  create_table "artist_items", :force => true do |t|
+    t.integer  "artist_id",        :null => false
+    t.string   "asin",             :null => false
+    t.string   "ean"
+    t.string   "title",            :null => false
+    t.string   "detail_page_url",  :null => false
+    t.string   "small_image_url"
+    t.string   "medium_image_url"
+    t.string   "large_image_url"
+    t.string   "label"
+    t.string   "product_group"
+    t.string   "format"
+    t.date     "release_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artist_items", ["artist_id", "asin"], :name => "idx_artist_id_asin_on_artist_items"
 
   create_table "artist_lastfms", :force => true do |t|
     t.integer  "artist_id",       :null => false
