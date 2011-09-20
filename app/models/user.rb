@@ -24,9 +24,8 @@ class User < ActiveRecord::Base
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.facebook.id, auth['uid']
     begin
       profiles = SocialSync::Facebook.profiles auth['credentials']['token'], {:uid => [auth['uid']]}
-      logger.info profiles
-      name = profiles[0]["name"]
-      image = profiles[0]['pic_square']
+      name = profiles[0][:name]
+      image = profiles[0][:pic_square]
     rescue => e
       logger.error e
       name = auth['user_info']['name']
