@@ -1,0 +1,2 @@
+$('a[href="<%=user_unfollow_artist_path(params[:id])%>"]')
+  .replaceWith('<%=escape_javascript(link_to_artist_follow_or_unfollow(params[:id]))%>');

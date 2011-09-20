@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20110920042304) do
   end
 
   add_index "user_follow_artists", ["artist_id"], :name => "idx_artist_id_on_user_follow_artists"
+  add_index "user_follow_artists", ["user_id", "artist_id"], :name => "idx_user_id_artist_id_on_user_follow_artists", :unique => true
   add_index "user_follow_artists", ["user_id", "priority"], :name => "idx_user_id_priority_on_user_follow_artists"
 
   create_table "users", :force => true do |t|

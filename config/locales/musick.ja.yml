@@ -16,7 +16,8 @@ ja:
       placeholder: "アーティスト名で検索"
     nav:
       artist:
-        add: "お気に入りアーティストへ追加"
+        follow: "お気に入りアーティストへ追加"
+        unfollow: "お気に入りアーティストから外す"
         update: "アーティスト情報を更新"
         share: "このアーティストを友人にオススメする"
         update_images: "Last.fmから最新アーティスト画像を取得する"
