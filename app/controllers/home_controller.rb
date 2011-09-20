@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
-      redirect_to user_home_path
+      render 'index_signed_in'
     else
       render 'index'
     end

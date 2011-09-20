@@ -1,0 +1,15 @@
+<% content_for :body_id, :home %>
+<% content_for :search_form, render('artists/search_form', :remote => false) %>
+<div class="main">
+  <%= render 'share/login_button'%>
+<nav>
+  <ul>
+    <li><%= link_to t('musick.social.posts.web.label'), new_social_posts_path, :class => [:button, :popup] %></li>
+    <li><%= link_to t('musick.social.friends.label'), social_friends_path, :class => [:button] %></li>
+    <li><%= link_to t('musick.logout.label'), destroy_user_session_path, :method => :delete, :class => :button %></li>
+  </ul>
+</nav>
+</div>
+<aside class="activity">
+  <%= render 'share/fb_activity_feed' %>
+</aside>

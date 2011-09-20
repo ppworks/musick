@@ -17,10 +17,6 @@ Musick::Application.routes.draw do
     get '/:artist_id/images' => 'images#index', :as => :images
   end
   
-  namespace :user do
-    get '/' => 'home#index', :as => :home
-  end
-  
   scope :social do
     namespace :facebook do
       resource :posts, :only => [:new, :create]
