@@ -55,9 +55,10 @@ $(function(e) {
       'transitionOut' : 'ease.out',
       'overlayColor': '#000',
       'overlayOpacity': 0.3,
-      'centerOnScroll': true,
+      'centerOnScroll': 'yes',
       'showCloseButton': false,
-      'showNavArrows' : true,
+      'showNavArrows' : 'no',
+      'scrolling': 'auto',
       'padding': 0
     });
     
@@ -82,6 +83,10 @@ $(function(e) {
       setTimeout(function() {
           window.location.href = href;
       }, 200);
+    });
+    $('a.external').click(function(e) {
+      e.preventDefault();
+      window.open($(this).attr('href'));
     });
   }
   

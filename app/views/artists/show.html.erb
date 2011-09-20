@@ -9,21 +9,23 @@
 <% end %>
 <section class="artist">
   <header>
-  <h1 class="name"><%= @artist.name %></h1>
-  <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
+    <hgroup>
+      <h1 class="name"><%= @artist.name %></h1>
+      <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
+    </hgroup>
   <%= image_tag @artist.artist_lastfm.main_image %>
   </header>
   <nav>
     <ul>
-      <li><%=link_to t('musick.nav.album.search'), '#', :class => 'button' %></li>
+      <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
       <li><%=link_to_artist_follow_or_unfollow @artist.id %></li>
-      <li><%=link_to t('musick.nav.artist.share'), '#', :class => 'button' %></li>
+      <li><%=link_to t('musick.artist.share'), '#', :class => 'button' %></li>
     </ul>
   </nav>
   <nav>
     <ul>
-      <li><%=link_to t('musick.nav.artist.update'), '#', :class => 'button' %></li>
-      <li><%=link_to t('musick.nav.artist.update_images'), artist_images_path(@artist.id), :remote => true, :class => 'button' %></li>
+      <li><%=link_to t('musick.artist.update'), '#', :class => 'button' %></li>
+      <li><%=link_to t('musick.artist.update_images'), artist_images_path(@artist.id), :remote => true, :class => 'button' %></li>
     </ul>
   </nav>
   <div class="description">

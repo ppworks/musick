@@ -6,7 +6,7 @@
   <%= render 'share/login_button'%>
 <nav>
   <ul>
-    <li><%= link_to t('musick.nav.artist.follows'), user_follow_artists_path(current_user.id), :class => :button %></li>
+    <li><%= link_to t('musick.artist.follows'), user_follow_artists_path(current_user.id), :class => :button %></li>
   </ul>
   <ul>
     <li><%= link_to t('musick.social.posts.web.label'), new_social_posts_path, :class => [:button, :popup] %></li>

@@ -14,17 +14,27 @@ class ArtistItem < ActiveRecord::Base
       :sort => 'salesrank',
       :Artist => artist_name,
     }
-    result_set = Amazon::Ecs.item_search(keyword, amazon_params)
-    items = []
-    result_set.items.each do |item|
-      items << self.format_amazon_item(artist_id, item)
+    items_cache_key = 'artist_item_find_items_' + Digest::SHA1.hexdigest(keyword + amazon_params.to_yaml)
+    total_cache_key = 'artist_item_find_items_total_' + Digest::SHA1.hexdigest(keyword + amazon_params.to_yaml)
+    if Rails.cache.exist?(items_cache_key) && Rails.cache.exist?(total_cache_key)
+      items = Rails.cache.read(items_cache_key).dup
+      total = Rails.cache.read(total_cache_key)
+    else
+      result_set = Amazon::Ecs.item_search(keyword, amazon_params)
+      items = []
+      result_set.items.each do |item|
+        items << self.format_amazon_item(artist_id, item)
+      end
+      total = result_set.total_results
+      Rails.cache.write items_cache_key, items
+      Rails.cache.write total_cache_key, total
     end
     items.instance_eval <<-EVAL
       def current_page
         #{page || 1}
       end
       def num_pages
-        #{result_set.total_results}
+        #{total}
       end
       def limit_value
         10

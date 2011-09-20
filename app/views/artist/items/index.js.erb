@@ -1,7 +1,6 @@
 $('<li><%= escape_javascript render(:partial => 'item', :collection => @items, :spacer_template => 'share/li_separator') %></li>')
-.appendTo('ul.items')
-.fadeIn(100, function(e) {
-});
+.appendTo('ul.items');
 $('div#paginator').html('<%=escape_javascript(paginate @items, :remote => true) %>');
 $.musick.init();
+$('div#fancybox-overlay').css({'height' : $(document).height()});
 $.fancybox.hideActivity();

@@ -455,6 +455,24 @@ section.artist time {
 }
 
 /**
+ * item search
+ */
+.item {
+    margin-bottom: 15px;
+}
+
+.item>a {
+    float: left;
+    width: 75px;
+}
+
+.item>aside.tracks {
+    float: left;
+    margin-left: 10px;
+    width: 450px;
+}
+
+/**
  * search
  */
 form.search_form {
@@ -475,7 +493,8 @@ form#search_element input[type="search"] {
  * hide paginator
  */
 #paginator {
-    
+    margin: 20px auto;
+    width: 107px;
 }
 
 /**
