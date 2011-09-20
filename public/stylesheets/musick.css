@@ -239,7 +239,7 @@ nav.like_page li.hatena_bookmark {
 /**
  * home
  */
-#home .main {
+#home.guest .main {
     float: left;
     margin-bottom: 20px;
     width: 478px;
