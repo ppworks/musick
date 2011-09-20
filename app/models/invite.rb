@@ -137,6 +137,14 @@ class Invite < ActiveRecord::Base
     end
   end
   
+  def self.update_invited_user providers_user
+    invite = self.where("to_provider_id =? AND to_user_key = ?", providers_user.provider_id, providers_user.user_key).order("id DESC").first
+    if invite.present?
+      invite.to_user_id = providers_user.user_id
+      invite.save!
+    end
+  end
+  
   protected
   def send_to_provider
     return if self.delivered_at.present?
