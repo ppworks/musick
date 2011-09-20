@@ -2,5 +2,10 @@
   <h1 class="name"><%= link_to artist.name, artist_path(artist.id) %></h1>
   <% if artist.artist_lastfm.present? && artist.artist_lastfm.thumbnail_image.present? %>
     <%= link_to image_tag(artist.artist_lastfm.thumbnail_image, :class => 'rounded-img1'), artist_path(artist.id) %>
+    <% if params[:controller] == 'artists'%>
+    <% artist.artist_images.sort_by{rand}[0...5].each do |artist_image|%>
+      <%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img1'), artist_path(artist.id) %>
+    <% end %>
+    <% end %>
   <% end %>
 </section>

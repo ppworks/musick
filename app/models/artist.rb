@@ -82,6 +82,8 @@ class Artist < ActiveRecord::Base
       :thumbnail_image => artist_result[:large].sub(/\/126\//, '/126s/')
     })
     artist.save!
+    self.delay.find_and_update_lastfm(artist.id)
+    self.delay.find_images(artist.id)
     artist
   end
 end

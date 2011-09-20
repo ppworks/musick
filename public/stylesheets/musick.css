@@ -359,6 +359,10 @@ ul.artist>li {
     margin: 0 0 40px;
 }
 
+ul.follows.artist>li {
+    display: inline-block;
+}
+
 section.artist {
     margin: 20px auto;
 }
@@ -471,7 +475,7 @@ form#search_element input[type="search"] {
  * hide paginator
  */
 #paginator {
-    display: none;
+    
 }
 
 /**

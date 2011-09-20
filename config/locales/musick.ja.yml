@@ -16,6 +16,7 @@ ja:
       placeholder: "アーティスト名で検索"
     nav:
       artist:
+        follows: "お気に入りアーティスト"
         follow: "お気に入りアーティストへ追加"
         unfollow: "お気に入りアーティストから外す"
         update: "アーティスト情報を更新"

@@ -24,6 +24,8 @@ Musick::Application.routes.draw do
   namespace :user do
     post 'artists/:id/follow' => 'artists#follow', :constraint => {:id => /[0-9]+/}, :as => :follow_artist
     delete 'artists/:id/unfollow' => 'artists#unfollow', :constraint => {:id => /[0-9]+/}, :as => :unfollow_artist
+    get ':user_id/artists/follows/page/:page' => 'artists#follows', :constraint => {:user_id => /[0-9]+/}, :as => :follow_artists
+    get ':user_id/artists/follows' => 'artists#follows', :constraint => {:user_id => /[0-9]+/}, :as => :follow_artists
   end
   
   get 'login' => 'home#login', :as => :login
