@@ -59,24 +59,28 @@ $(function(e) {
       'showCloseButton': false,
       'showNavArrows' : 'no',
       'scrolling': 'auto',
-      'padding': 0
+      'padding': 0,
+      'onComplete': function() {
+        $('div#fancybox-overlay').css({'height' : $(document).height()});
+        $('div#fancybox-wrap').unbind('mousewheel.fb');
+      }
     });
     
-    $('a.read_more').click(function(e){
+    $('a.read_more').live('click', function(e){
       e.preventDefault();
       $(this).hide();
       $(this).parent().find('.summary').hide();
       $(this).parent().find('.content').fadeIn(1000);
       $(this).parent().find('.read_less').fadeIn(1000);
     });
-    $('a.read_less').click(function(e){
+    $('a.read_less').live('click', function(e){
       e.preventDefault();
       $(this).hide();
       $(this).parent().find('.content').hide();
       $(this).parent().find('.summary').fadeIn(1000);
       $(this).parent().find('.read_more').fadeIn(1000);
     });
-    $('a[href="/users/auth/facebook"], a[href="/users/auth/twitter"], a[href="/users/auth/mixi"]').click(function(e) {
+    $('a[href="/users/auth/facebook"], a[href="/users/auth/twitter"], a[href="/users/auth/mixi"]').live('click', function(e) {
       e.preventDefault();
       $.fancybox.showActivity();
       var href = $(this).attr('href');
@@ -84,7 +88,7 @@ $(function(e) {
           window.location.href = href;
       }, 200);
     });
-    $('a.external').click(function(e) {
+    $('a.external').live('click', function(e) {
       e.preventDefault();
       window.open($(this).attr('href'));
     });

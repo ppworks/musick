@@ -457,19 +457,23 @@ section.artist time {
 /**
  * item search
  */
-.item {
+ul.items {
+    margin: 20px;
+}
+
+ul.items>li>.item {
     margin-bottom: 15px;
 }
 
-.item>a {
+ul.items>li>.item>a {
     float: left;
-    width: 75px;
+    width: 160px;
 }
 
-.item>aside.tracks {
+ul.items>li>.item>aside.tracks {
     float: left;
     margin-left: 10px;
-    width: 450px;
+    width: 480px;
 }
 
 /**

@@ -2,5 +2,7 @@ $('<li><%= escape_javascript render(:partial => 'item', :collection => @items, :
 .appendTo('ul.items');
 $('div#paginator').html('<%=escape_javascript(paginate @items, :remote => true) %>');
 $.musick.init();
-$('div#fancybox-overlay').css({'height' : $(document).height()});
 $.fancybox.hideActivity();
+setTimeout(function() {
+  $('div#fancybox-overlay').css({'height' : $(document).height()});
+}, 100);

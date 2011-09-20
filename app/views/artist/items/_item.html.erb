@@ -1,6 +1,6 @@
 <section class="item clearfix">
 <h1><%=link_to item[:title], item[:detail_page_url], :title => item[:title], :class => :external%></h1>
-<%= link_to image_tag(item[:small_image_url], :alt => item[:title], :class => 'rounded-img1'), item[:detail_page_url], :title => item[:title], :class => :external%>
+<%= link_to image_tag(item[:medium_image_url], :alt => item[:title], :class => 'rounded-img1'), item[:detail_page_url], :title => item[:title], :class => :external%>
 <aside class="tracks">
 <%= truncate(item[:tracks].map{|t|"#{t[:track]} #{t[:title]}"}.join("\n"), :length => 250, :omission => '...')%>
 </aside>
