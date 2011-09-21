@@ -465,7 +465,8 @@ ul.items>li>.item {
     margin-bottom: 15px;
 }
 
-ul.items>li>.item>a {
+ul.items>li>.item>a,
+ul.items>li>.item>img {
     float: left;
     width: 160px;
 }
