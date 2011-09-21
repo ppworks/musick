@@ -1,28 +1,35 @@
+require 'nkf'
 class ArtistItem < ActiveRecord::Base
   def self.find_items artist_id, page, keyword = ''
     artist = Artist.find artist_id
+    search_artist = artist.name
     artist_alias_names = artist.artist_aliases.map{|artist_aliase|artist_aliase.name}
     artist_name = artist.name
     if artist_alias_names.present?
       artist_name += "|" + artist_alias_names.join('|')
     end
+    artist_name = "(#{artist_name})"
     
     amazon_params = {
       :search_index => "Music", :response_group => 'ItemAttributes,Images',
       :browse_node => 562032, :item_page => page,
       :response_group => 'Large',
       :sort => 'salesrank',
-      :Artist => artist_name,
+      :Artist => search_artist
     }
     items_cache_key = 'artist_item_find_items_' + Digest::SHA1.hexdigest(keyword + amazon_params.to_yaml)
     total_cache_key = 'artist_item_find_items_total_' + Digest::SHA1.hexdigest(keyword + amazon_params.to_yaml)
-    if Rails.cache.exist?(items_cache_key) && Rails.cache.exist?(total_cache_key)
+    if false #Rails.cache.exist?(items_cache_key) && Rails.cache.exist?(total_cache_key)
       items = Rails.cache.read(items_cache_key).dup
       total = Rails.cache.read(total_cache_key)
     else
       result_set = Amazon::Ecs.item_search(keyword, amazon_params)
       items = []
       result_set.items.each do |item|
+        item_artist = item.get('ItemAttributes/Artist')
+        item_artist = item_artist.present? ? item_artist.encode("UTF-8") : ''
+        item_artist = NKF::nkf('-Z1 -Ww', CGI::unescapeHTML(item_artist))
+        next unless item_artist.downcase =~ Regexp.new(artist_name.downcase)
         items << self.format_amazon_item(artist_id, item)
       end
       total = result_set.total_results
