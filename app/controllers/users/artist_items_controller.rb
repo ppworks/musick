@@ -11,6 +11,7 @@ class Users::ArtistItemsController < ApplicationController
   
   def index
     user = User.find params[:user_id]
+    user.artist_items.paginates_per(10)
     @artist_items = user.artist_items.order("users_artist_items.priority, users_artist_items.id DESC").page(params[:page])
     render :layout => !request.xhr?
   end
