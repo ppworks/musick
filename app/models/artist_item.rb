@@ -19,7 +19,7 @@ class ArtistItem < ActiveRecord::Base
     }
     items_cache_key = 'artist_item_find_items_' + Digest::SHA1.hexdigest(keyword + amazon_params.to_yaml)
     total_cache_key = 'artist_item_find_items_total_' + Digest::SHA1.hexdigest(keyword + amazon_params.to_yaml)
-    if false #Rails.cache.exist?(items_cache_key) && Rails.cache.exist?(total_cache_key)
+    if Rails.cache.exist?(items_cache_key) && Rails.cache.exist?(total_cache_key)
       items = Rails.cache.read(items_cache_key).dup
       total = Rails.cache.read(total_cache_key)
     else
