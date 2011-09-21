@@ -1,6 +1,8 @@
 class Artist < ActiveRecord::Base
   has_many :artist_aliases
   has_many :artist_images
+  has_many :artist_items
+  has_many :artist_tracks
   has_one :artist_lastfm
   default_scope includes(:artist_aliases)
   default_scope includes(:artist_images)
