@@ -1,5 +1,5 @@
 $('<li><%= escape_javascript render(:partial => 'artists/artist', :collection => @artists, :spacer_template => 'share/li_separator') %></li>')
-.appendTo('ul.artist')
+.appendTo('ul.artists')
 .fadeIn(100, function(e) {
 });
 $('div#paginator').html('');

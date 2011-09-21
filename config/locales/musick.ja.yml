@@ -31,7 +31,7 @@ ja:
       share: "このアーティストを友人にオススメする"
       update_images: "Last.fmから最新アーティスト画像を取得する"
       items:
-        search: "作品検索"
+        search: "作品一覧"
         amazon: "Amazonで見る"
     home:
       welcome:
@@ -49,7 +49,7 @@ ja:
         create: "投稿する"
         placeholder: "このサイトをオススメする一言をどうぞ！"
         web:
-          label: "Musick.infoを始めたことを伝える"
+          label: "Musick.infoをオススメする"
           h1: "Musick.infoを始めたことを友人に教えよう！"
           content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusick.infoを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"
       friends:

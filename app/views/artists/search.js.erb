@@ -1,4 +1,4 @@
-$('ul.artist')
+$('ul.artists')
 .html('<li><%= escape_javascript render(:partial => 'artists/artist', :collection => @artists, :spacer_template => 'share/li_separator') %></li>')
 .fadeIn(100, function(e) {
 });

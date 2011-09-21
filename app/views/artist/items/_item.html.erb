@@ -1,9 +1,9 @@
 <section class="item clearfix">
-<h1><%=link_to item[:title], item[:detail_page_url], :title => item[:title], :class => :external%></h1>
+<h1><%=link_to item[:title], artist_item_path(params[:artist_id], item[:asin]), :title => item[:title], :class => :popup%></h1>
 <%= link_to image_tag(item[:medium_image_url], :alt => item[:title], :class => 'rounded-img1'), item[:detail_page_url], :title => item[:title], :class => :external%>
 <aside>
   <section  class="tracks">
-  <%= truncate(item[:tracks].map{|t|"#{t[:track]} #{t[:title]}"}.join("\n"), :length => 250, :omission => '...')%>
+  <%= truncate(item[:tracks].map{|t|"#{t[:track]}. #{t[:title]}"}.join("\n"), :length => 250, :omission => '...')%>
   </section>
   <nav>
     <ul>

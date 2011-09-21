@@ -47,7 +47,7 @@ $(function(e) {
       });
   }
   
-  function listen_links() {
+  function listen_fancybox() {
     $('a.popup').fancybox({
       'href' : $(this).attr('href'),
       'hideOnContentClick' : false,
@@ -65,7 +65,9 @@ $(function(e) {
         $('div#fancybox-wrap').unbind('mousewheel.fb');
       }
     });
-    
+  }
+  
+  function listen_links() {
     $('a.read_more').live('click', function(e){
       e.preventDefault();
       $(this).hide();
@@ -160,6 +162,7 @@ $(function(e) {
   function init() {
     //listen_auto_paging();
     listen_remote_true();
+    listen_fancybox();
     listen_links();
     listen_search_element();
     fix_url();
