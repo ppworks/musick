@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
     :foreign_key => 'other_user_id', :association_foreign_key => 'user_id', :class_name => 'User',
     :join_table => :follows
   }
-  has_many :user_follow_artists
-  has_many :follow_artists, :through => :user_follow_artists
+  has_many :users_artists
+  has_many :artists, :through => :users_artists
   
   def self.find_for_facebook_oauth(auth, current_user = nil)
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.facebook.id, auth['uid']

@@ -18,7 +18,7 @@
   <nav>
     <ul>
       <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
-      <li><%=link_to_artist_follow_or_unfollow @artist.id %></li>
+      <li><%=link_to_users_artists_create_or_destroy @artist.id %></li>
       <li><%=link_to t('musick.artist.share'), '#', :class => 'button' %></li>
     </ul>
   </nav>

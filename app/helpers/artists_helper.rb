@@ -1,13 +1,13 @@
 module ArtistsHelper
-  def link_to_artist_follow_or_unfollow artist_id
+  def link_to_users_artists_create_or_destroy artist_id
     if user_signed_in?
-      if current_user.follow_artists.exists? artist_id
-        link_to t('musick.artist.unfollow'), user_unfollow_artist_path(artist_id), :class => 'button', :method => :delete, :remote => true
+      if current_user.artists.exists? artist_id
+        link_to t('musick.users_artist.destroy'), users_destroy_artist_path(artist_id), :class => 'button', :method => :delete, :remote => true
       else
-        link_to t('musick.artist.follow'), user_follow_artist_path(artist_id), :class => 'button', :method => :post, :remote => true
+        link_to t('musick.users_artist.create'), users_create_artist_path(artist_id), :class => 'button', :method => :post, :remote => true
       end
     else
-      link_to t('musick.artist.follow'), login_path, :class => 'button popup'
+      link_to t('musick.users_artist.create'), login_path, :class => 'button popup'
     end
   end
 end

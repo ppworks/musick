@@ -23,11 +23,11 @@ Musick::Application.routes.draw do
     post 'friends/invite/(:provider)' => 'friends#invite', :constraint => {:provider => /facebook|twitter|mixi/}, :as => :invite_friends
   end
   
-  namespace :user do
-    post 'artists/:id/follow' => 'artists#follow', :constraint => {:id => /[0-9]+/}, :as => :follow_artist
-    delete 'artists/:id/unfollow' => 'artists#unfollow', :constraint => {:id => /[0-9]+/}, :as => :unfollow_artist
-    get ':user_id/artists/follows/page/:page' => 'artists#follows', :constraint => {:user_id => /[0-9]+/}, :as => :follow_artists
-    get ':user_id/artists/follows' => 'artists#follows', :constraint => {:user_id => /[0-9]+/}, :as => :follow_artists
+  namespace :users do
+    post 'artists/:id/add' => 'artists#create', :constraint => {:id => /[0-9]+/}, :as => :create_artist
+    delete 'artists/:id/remove' => 'artists#destroy', :constraint => {:id => /[0-9]+/}, :as => :destroy_artist
+    get ':user_id/artists/page/:page' => 'artists#index', :constraint => {:user_id => /[0-9]+/}, :as => :artists
+    get ':user_id/artists' => 'artists#index', :constraint => {:user_id => /[0-9]+/}, :as => :artists
   end
   
   get 'login' => 'home#login', :as => :login

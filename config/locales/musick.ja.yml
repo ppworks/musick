@@ -14,10 +14,11 @@ ja:
     less: "たたむ"
     search:
       placeholder: "アーティスト名で検索"
+    users_artist:
+      index: "お気に入りアーティスト"
+      create: "お気に入りアーティストへ追加"
+      destroy: "お気に入りアーティストから外す"
     artist:
-      follows: "お気に入りアーティスト"
-      follow: "お気に入りアーティストへ追加"
-      unfollow: "お気に入りアーティストから外す"
       update: "アーティスト情報を更新"
       share: "このアーティストを友人にオススメする"
       update_images: "Last.fmから最新アーティスト画像を取得する"

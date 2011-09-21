@@ -1,0 +1,2 @@
+$('a[href="<%=users_create_artist_path(params[:id])%>"]')
+  .replaceWith('<%=escape_javascript(link_to_users_artists_create_or_destroy(params[:id]))%>');
