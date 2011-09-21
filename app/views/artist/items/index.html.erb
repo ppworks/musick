@@ -1,10 +1,10 @@
 <ul class="items">
-<%@items.each do |item|%>
+<%@artist_items.each do |artist_item|%>
   <li>
-    <%= render 'item', :item => item, :artist_id => params[:artist_id] %>
+    <%= render 'artists/artist_item', :artist_item => artist_item, :artist_id => params[:artist_id] %>
   </li>
 <%end%>
 </ul>
 <div id="paginator">
-  <%= paginate @items, :remote => true %>
+  <%= paginate @artist_items, :remote => true %>
 </div>

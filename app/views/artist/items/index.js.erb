@@ -1,7 +1,7 @@
-<%@items.each do |item|%>
-$('<li><%= escape_javascript render 'item', :item => item, :artist_id => params[:artist_id] %></li>').appendTo('ul.items');
+<%@artist_items.each do |artist_item|%>
+$('<li><%= escape_javascript render 'artists/artist_item', :artist_item => artist_item, :artist_id => params[:artist_id] %></li>').appendTo('ul.items');
 <%end%>
-$('div#paginator').html('<%=escape_javascript(paginate @items, :remote => true) %>');
+$('div#paginator').html('<%=escape_javascript(paginate @artist_items, :remote => true) %>');
 $.musick.init();
 $.fancybox.hideActivity();
 setTimeout(function() {

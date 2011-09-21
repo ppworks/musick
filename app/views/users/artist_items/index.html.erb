@@ -1,6 +1,6 @@
 <ul class="items pagination_content">
 <% @artist_items.each do |artist_item| %>
-  <li><%= render 'artist_item', :artist_item => artist_item %></li>
+  <li><%= render 'artists/artist_item', :artist_item => artist_item %></li>
 <% end %>
 </ul>
 <div id="paginator">

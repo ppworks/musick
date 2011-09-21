@@ -32,11 +32,11 @@ class ArtistItem < ActiveRecord::Base
         item_artist = item_artist.present? ? item_artist.encode("UTF-8") : ''
         item_artist = NKF::nkf('-Z1 -Ww', CGI::unescapeHTML(item_artist))
         next unless item_artist.downcase =~ Regexp.new(artist_name.downcase)
-        items << self.format_amazon_item(item)
+        items << self.format_amazon_item(artist_id, item)
       end
       total = result_set.total_results
-      Rails.cache.write items_cache_key, items
-      Rails.cache.write total_cache_key, total
+      res = Rails.cache.write items_cache_key, items
+      res = Rails.cache.write total_cache_key, total
     end
     items.instance_eval <<-EVAL
       def current_page
@@ -49,56 +49,39 @@ class ArtistItem < ActiveRecord::Base
         10
       end
     EVAL
+    
+    items.map! do |item|
+      self.convert_hash_to_arctive_record item
+    end
     items
   end
   
   def self.find_or_create artist_id, asin
     artist_item = self.find_by_artist_id_and_asin artist_id, asin
     if artist_item.nil?
-      item = self.find_item_by_asin asin
-      artist_item = self.create(
-        :artist_id => artist_id,
-        :asin => item[:asin],
-        :ean => item[:ean],
-        :title => item[:title],
-        :detail_page_url => item[:detail_page_url],
-        :small_image_url => item[:small_image_url],
-        :medium_image_url => item[:medium_image_url],
-        :large_image_url => item[:large_image_url],
-        :label => item[:label],
-        :product_group => item[:product_group],
-        :format => item[:format],
-        :release_date => item[:release_date],
-      )
-      artist_tracks = []
-      item[:tracks].each do |track|
-        artist_tracks << ArtistTrack.new(
-          :artist_id => artist_id,
-          :disc => track[:disc],
-          :track => track[:track],
-          :title => track[:title]
-        )
-      end
-      artist_item.artist_tracks = artist_tracks
+      artist_item = self.find_item_from_amazon artist_id, asin
+      artist_item.save
     end
     artist_item
   end
   
-  def self.find_item_by_asin asin
+  protected
+  def self.find_item_from_amazon artist_id, asin
     Rails.cache.fetch("artist_item_#{asin}", :expires_in => 24.minutes) do
       item = Amazon::Ecs.item_lookup(asin, {:response_group => 'ItemAttributes,Images',:response_group => 'Large',}).items[0]
-      item = self.format_amazon_item item
+      item = self.format_amazon_item artist_id, item
+      artist_item = self.convert_hash_to_arctive_record item
     end
   end
   
-  protected
-  def self.format_amazon_item item
+  def self.format_amazon_item artist_id, item
     tracks = []
     if item.get_elements('Tracks/Disc').instance_of? Array
       item.get_elements('Tracks/Disc').each do |discs|
         discs.get_elements('Track').each do |track|
           title = track.get().present? ? track.get() : ''
           tracks << {
+            :artist_id => artist_id,
             :disc => discs.attributes['Number'].to_s.to_i,
             :track => track.attributes['Number'].to_s.to_i,
             :title => CGI::unescapeHTML(title.encode("UTF-8")),
@@ -115,6 +98,7 @@ class ArtistItem < ActiveRecord::Base
     large_image_url = large_image.present? ? large_image['URL'] : '/images/musick.png'
     label = item.get('ItemAttributes/Label').present? ? item.get('ItemAttributes/Label') : ''
     {
+      :artist_id => artist_id,
       :asin => item.get('ASIN'),
       :ean => item.get('ItemAttributes/EAN'),
       :title => CGI::unescapeHTML(title.encode("UTF-8")),
@@ -126,7 +110,30 @@ class ArtistItem < ActiveRecord::Base
       :product_group => item.get('ItemAttributes/ProductGroup'),
       :format => item.get('ItemAttributes/Format'),
       :release_date => item.get('ItemAttributes/ReleaseDate'),
-      :tracks => tracks
+      :tracks => tracks,
     }
+  end
+  
+  def self.convert_hash_to_arctive_record item
+    artist_item = self.new(
+      :artist_id => item[:artist_id],
+      :asin => item[:asin],
+      :ean => item[:ean],
+      :title => item[:title],
+      :detail_page_url => item[:detail_page_url],
+      :small_image_url => item[:small_image_url],
+      :medium_image_url => item[:medium_image_url],
+      :large_image_url => item[:large_image_url],
+      :label => item[:label],
+      :product_group => item[:product_group],
+      :format => item[:format],
+      :release_date => item[:release_date],
+    )
+    artist_tracks = []
+    item[:tracks].each do |track|
+      artist_tracks << ArtistTrack.new(track)
+    end
+    artist_item.artist_tracks = artist_tracks
+    artist_item
   end
 end
