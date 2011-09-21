@@ -168,7 +168,6 @@ $(function(e) {
     $.musick.popup = popup;
     $.musick.init = function() {
       round_image();
-      listen_links();
     };
   }
   
