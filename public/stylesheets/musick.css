@@ -470,11 +470,24 @@ ul.items>li>.item>a {
     width: 160px;
 }
 
-ul.items>li>.item>aside.tracks {
+ul.items>li>.item>aside {
+    position: relative;
     float: left;
     margin-left: 10px;
     width: 480px;
+    height: 160px;
 }
+
+ul.items>li>.item>aside nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+ul.items>li>.item>aside nav>ul>li {
+    display: inline-block;
+}
+
 
 /**
  * search
