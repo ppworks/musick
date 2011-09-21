@@ -1,0 +1,8 @@
+<section class="profile search_hidable" data-id="<%=user.id%>">
+  <hgroup class="searchable">
+  <h1>
+    <%=user.name%>
+  </h1>
+  </hgroup>
+  <%= image_tag user.image, :name => user.name, :title => user.name, :class => :square %>
+</section>

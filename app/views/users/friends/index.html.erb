@@ -1,0 +1,6 @@
+<%=render 'share/search_element_form', :placeholder => t('musick.social.friends.search_placeholder') %>
+<ul class="friends clearfix">
+<% @friends.each do|user|%>
+  <li><%= render 'users/user', :user => user %></li>
+<% end %>
+</ul>
