@@ -1,5 +1,5 @@
-<ul class="follows artist pagination_content">
+<ul class="follows artists pagination_content">
 <% @artists.each do |artist| %>
-  <li><%= render 'artists/artist', :artist => artist %></li>
+  <li><%= render 'artist', :artist => artist %></li>
 <% end %>
 </ul>

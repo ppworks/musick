@@ -1,7 +1,7 @@
 <ul class="items">
 <%@items.each do |item|%>
   <li>
-    <%= render 'item', :item => item %>
+    <%= render 'item', :item => item, :artist_id => params[:artist_id] %>
   </li>
 <%end%>
 </ul>

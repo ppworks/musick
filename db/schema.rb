@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920113035) do
+ActiveRecord::Schema.define(:version => 20110921062302) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -178,6 +178,18 @@ ActiveRecord::Schema.define(:version => 20110920113035) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_artist_items", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.integer  "artist_item_id",                :null => false
+    t.integer  "priority",       :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_artist_items", ["artist_item_id"], :name => "idx_artist_item_id_on_users_artist_items"
+  add_index "users_artist_items", ["user_id", "artist_item_id"], :name => "idx_user_id_artist_item_id_on_users_artist_items", :unique => true
+  add_index "users_artist_items", ["user_id", "priority"], :name => "idx_user_id_priority_on_users_artist_items"
 
   create_table "users_artists", :force => true do |t|
     t.integer  "user_id",                   :null => false

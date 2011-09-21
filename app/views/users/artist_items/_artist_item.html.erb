@@ -1,0 +1,15 @@
+<section class="item clearfix">
+  <h1 class="name"><%= artist_item.title %></h1>
+  <%= link_to image_tag(artist_item.medium_image_url, :class => 'rounded-img1'), artist_item.detail_page_url %>
+<aside>
+  <section  class="tracks">
+  <%= truncate(artist_item.artist_tracks.map{|t|"#{t.track} #{t.title}"}.join("\n"), :length => 250, :omission => '...')%>
+  </section>
+  <nav>
+    <ul>
+      <li><%= link_to_users_artist_items_create_or_destroy artist_item.artist_id, artist_item.asin %></li>
+      <li><%= link_to t('musick.artist.items.amazon'), artist_item.detail_page_url, :class => [:button, :external]%></li>
+    </ul>
+  </nav>
+</aside>
+</section>

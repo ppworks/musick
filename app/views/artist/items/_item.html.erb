@@ -7,7 +7,7 @@
   </section>
   <nav>
     <ul>
-      <li><%= link_to t('musick.users_artist_item.create'), item[:detail_page_url], :class => [:button, :external]%></li>
+      <li><%= link_to_users_artist_items_create_or_destroy artist_id, item[:asin] %></li>
       <li><%= link_to t('musick.artist.items.amazon'), item[:detail_page_url], :class => [:button, :external]%></li>
     </ul>
   </nav>

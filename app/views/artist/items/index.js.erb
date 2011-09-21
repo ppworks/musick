@@ -1,5 +1,6 @@
-$('<li><%= escape_javascript render(:partial => 'item', :collection => @items, :spacer_template => 'share/li_separator') %></li>')
-.appendTo('ul.items');
+<%@items.each do |item|%>
+$('<li><%= escape_javascript render 'item', :item => item, :artist_id => params[:artist_id] %></li>').appendTo('ul.items');
+<%end%>
 $('div#paginator').html('<%=escape_javascript(paginate @items, :remote => true) %>');
 $.musick.init();
 $.fancybox.hideActivity();

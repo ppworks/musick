@@ -355,11 +355,11 @@ aside.comments {
 /**
  * artist
  */
-ul.artist>li {
+ul.artists>li {
     margin: 0 0 40px;
 }
 
-ul.follows.artist>li {
+ul.follows.artists>li {
     display: inline-block;
 }
 

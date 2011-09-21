@@ -24,11 +24,16 @@ Musick::Application.routes.draw do
   end
   
   namespace :users do
-    post 'artists/:id/add' => 'artists#create', :constraint => {:id => /[0-9]+/}, :as => :create_artist
-    delete 'artists/:id/remove' => 'artists#destroy', :constraint => {:id => /[0-9]+/}, :as => :destroy_artist
+    post 'artists/:id' => 'artists#create', :constraint => {:id => /[0-9]+/}, :as => :create_artist
+    delete 'artists/:id' => 'artists#destroy', :constraint => {:id => /[0-9]+/}, :as => :destroy_artist
     get ':user_id/artists/page/:page' => 'artists#index', :constraint => {:user_id => /[0-9]+/}, :as => :artists
     get ':user_id/artists' => 'artists#index', :constraint => {:user_id => /[0-9]+/}, :as => :artists
     get ':user_id/friends' => 'friends#index', :constraint => {:user_id => /[0-9]+/}, :as => :friends
+    post 'artists/:artist_id/items/:item_asin' => 'artist_items#create', :constraint => {:artist_id => /[0-9]+/}, :as => :create_artist_item
+    delete 'artists/:artist_id/items/:item_asin' => 'artist_items#destroy', :constraint => {:artist_id => /[0-9]+/}, :as => :destroy_artist_item
+    get ':user_id/artist_items/page/:page' => 'artist_items#index', :constraint => {:user_id => /[0-9]+/}, :as => :artist_items
+    get ':user_id/artist_items' => 'artist_items#index', :constraint => {:user_id => /[0-9]+/}, :as => :artist_items
+
   end
   
   get 'login' => 'home#login', :as => :login
