@@ -43,6 +43,16 @@ input[type=reset] {
     -moz-box-shadow: inset 0 1px 3px #F1F1F1, inset 0 -15px #DFDFDF, 1px 1px 2px #E7E7E7;
 }
 
+a.button.mini,
+button.mini,
+input[type=submit].mini,
+input[type=button].mini,
+input[type=reset].mini {
+    padding: 2px 6px;
+    height: 24px;
+    font-size: 11px;
+}
+
 a.button:hover,
 button:hover,
 input[type=submit]:hover,
@@ -598,20 +608,19 @@ form#search_element input[type="search"] {
  * ソーシャル 投稿
  */
 section.new_post {
-    margin: 20px;
-    width: 330px;
+    margin: 10px;
+    width: 360px;
     text-align: center;
 }
 
 section.new_post form textarea {
     padding: 10px;
-    width: 300px;
-    height: 150px;
+    width: 338px;
+    height: 60px;
 }
 
 section.new_post form ul.providers {
-    display: inline-block;
-    padding: 7px 10px;
+    float: left;
     background: #ffffff;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -620,23 +629,16 @@ section.new_post form ul.providers {
 
 section.new_post form ul.providers li {
     display: inline-block;
+    vertical-align: middle;
+}
+
+section.new_post form ul.providers li:not(:last-child) {
     margin-right: 10px;
 }
 
-section.new_post form ul.providers li:last-child {
-    margin-right: 0;
-}
-
-section.new_post form progress {
-    display: inline-block;
-    width: 60px;
-}
-
 section.new_post form input[type=submit] {
-    clear: both;
+    float: right;
     display: block;
-    margin: 10px auto 0 auto;
-    width: 150px;
 }
 
 /**
@@ -714,9 +716,6 @@ ul.friends section.profile button {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    padding: 2px 6px;
-    height: 24px;
-    font-size: 11px;
 }
 
 ul.friends section.profile img {

@@ -1,12 +1,5 @@
-<%= form_tag social_posts_path, :remote => true do %>
-  <%= text_area_tag :content, '', :placeholder => t('musick.social.posts.placeholder'), :class => [:auto_clear]%>
-  <ul class="providers">
-    <li><%= check_box_tag :facebook, 1, 1 %>
-    <label for="facebook">facebook</label></li>
-    <li><%= check_box_tag :twitter, 1, 1 %>
-    <label for="twitter">twitter</label></li>
-    <li><%= check_box_tag :mixi, 1, 1 %>
-    <label for="mixi">mixi</label></li>
-  </ul>
-  <%= submit_tag t('musick.social.posts.create') %>
+<%= form_tag social_posts_path, :remote => true, :class => :clearfix do %>
+  <%= text_area_tag :content, '', :placeholder => placeholder, :class => [:auto_clear]%>
+  <%= providers_checkbox %>
+  <%= submit_tag t('musick.social.posts.create'), :class => :mini %>
 <% end %>

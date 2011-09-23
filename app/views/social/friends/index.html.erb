@@ -1,17 +1,13 @@
 <% content_for :body_id, 'social_friends' %>
 <% content_for :javascript, javascript_include_tag('social') %>
-<nav>
-  <ul class="tab">
-    <li class="<%=(params[:provider] == 'facebook'?'selected':'')%>"><%= link_to_unless_current('facebook', social_friends_path(:facebook))%></li>
-    <li class="<%=(params[:provider] == 'twitter'?'selected':'')%>"><%= link_to_unless_current('twitter', social_friends_path(:twitter))%></li>
-    <li class="<%=(params[:provider] == 'mixi'?'selected':'')%>"><%= link_to_unless_current('mixi', social_friends_path(:mixi))%></li>
+<section class="invite">
+  <%=providers_tab%>
+  <%=t('musick.social.friends.invite_description', :count => Invite::INVITE_USER_MAX)%>
+  <%=render 'invite_form'%>
+  <%=render 'share/search_element_form', :placeholder => t('musick.social.friends.search_placeholder') %>
+  <ul class="friends clearfix">
+    <% @profiles.each do |profile| %>
+      <li><%= render 'profile', :profile => profile %></li>
+    <% end %>
   </ul>
-</nav>
-<%=t('musick.social.friends.invite_description', :count => Invite::INVITE_USER_MAX)%>
-<%=render 'invite_form'%>
-<%=render 'share/search_element_form', :placeholder => t('musick.social.friends.search_placeholder') %>
-<ul class="friends clearfix">
-  <% @profiles.each do |profile| %>
-    <li><%= render 'profile', :profile => profile %></li>
-  <% end %>
-</ul>
+</section>
