@@ -1,9 +1,11 @@
 <section class="item clearfix">
   <h1 class="name"><%= link_to_if !request.xhr?, artist_item.title, artist_item_path(artist_item.artist_id, artist_item.asin) %></h1>
+  <div class="image">
   <%= link_to_if !request.xhr?, image_tag(artist_item.medium_image_url, :class => 'rounded-img1'), artist_item_path(artist_item.artist_id, artist_item.asin) %>
+  </div>
 <aside>
   <section  class="tracks">
-  <%= truncate artist_item.artist_tracks.map{|t|"#{t.track} #{t.title}"}.join("\n"), :length => 350 %>
+  <% list_tracks artist_item.artist_tracks %>
   </section>
   <nav>
     <ul>

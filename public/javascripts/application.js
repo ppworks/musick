@@ -31,6 +31,7 @@ $(function(e) {
       var find_key = "input[type='text'].auto_clear, textarea.auto_clear";
       $(this).find(find_key).attr('readonly', 'readonly');
       $(this)
+      .unbind('ajax:success')
       .bind('ajax:success', function (ee) {
          $(this).find(find_key)
          .val('')
@@ -143,7 +144,6 @@ $(function(e) {
   
   function round_image() {
     $("img.rounded-img1, img.rounded-img2").load(function() {
-      
       $(this).wrap(function(){
         return '<span class="' + $(this).attr('class') + '" style="background:url(' + $(this).attr('src') + ') no-repeat center center; width: ' + $(this).width() + 'px; height: ' + $(this).height() + 'px;" />';
       });
