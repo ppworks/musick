@@ -82,6 +82,7 @@ class ArtistItem < ActiveRecord::Base
           title = track.get().present? ? track.get() : ''
           tracks << {
             :artist_id => artist_id,
+            :asin => item.get('ASIN'),
             :disc => discs.attributes['Number'].to_s.to_i,
             :track => track.attributes['Number'].to_s.to_i,
             :title => CGI::unescapeHTML(title.encode("UTF-8")),

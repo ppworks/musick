@@ -72,22 +72,40 @@ $(function(e) {
       'onComplete': function() {
         $('div#fancybox-overlay').css({'height' : $(document).height()});
         $('div#fancybox-wrap').unbind('mousewheel.fb');
-        $.musick.init();
+        //$.musick.init();
       }
     });
     
     $('a.popup_action')
-    .css('cursor', 'pointer')
     .live('selectstart', function(e) {e.preventDefault();})
     .live('click', function(e) {e.preventDefault();})
     .live('click', function(e) {
+      $.fancybox.showActivity();
+      $.ajax({
+        url : '/social/posts/new_with_action',
+        data : {
+          'data-action' : $(this).data('action'),
+          'data-target-attributes' : $(this).data('target-attributes'),
+          'data-target-object' : $(this).data('target-object'),
+          'data-target-name' : $(this).data('target-name')
+        },
+        success: function(data) {
+          success_new_with_action(data, e);
+        }
+      });
+    });
+    
+    var success_new_with_action = function(data, e) {
+      console.info(data);
+      $.fancybox.hideActivity();
+      $('div#actions')
+      .html(data);
+      
       $('div#actions')
       .css('top', e.pageY + 2 + 'px')
       .show()
       .find('textarea')
       .blur();
-      
-      $('div#actions section.new_post h1').html($(this).data('target-name'));
       
       if (($(window).width()/2) < e.pageX) {
         $('div#actions').css('right', $(window).width() - e.pageX - 30 + 'px');
@@ -100,8 +118,8 @@ $(function(e) {
         $('div#actions div.wrapper').removeClass('right');
         $('div#actions div.wrapper').addClass('left');
       }
-      
-    });
+    };
+    
     $('div#actions')
     .hover(function(e){}, function(e) {
         $(this).hide();

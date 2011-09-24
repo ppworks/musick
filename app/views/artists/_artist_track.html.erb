@@ -1,0 +1,11 @@
+<section class="item clearfix">
+  <h1 class="name"><%= link_to_artist_item artist_track.artist_item.title, artist_track.artist_item %></h1>
+  <div class="image">
+  <%= link_to_artist_item image_tag(url_artist_item_image(artist_track.artist_item, 30), :class => 'rounded-img1 tiny'), artist_track.artist_item %>
+  </div>
+<aside>
+  <section  class="tracks">
+  <%= link_to_artist_track artist_track %>
+  </section>
+</aside>
+</section>

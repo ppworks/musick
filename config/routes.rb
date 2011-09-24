@@ -20,6 +20,8 @@ Musick::Application.routes.draw do
   
   namespace :social do
     resource :posts, :only => [:new, :create]
+    get 'posts/new_with_action' => 'posts#new_with_action', :as => :new_posts_with_action
+    post 'posts/create_with_action' => 'posts#create_with_action', :as => :create_posts_with_action
     get 'friends/(:provider)' => 'friends#index', :constraint => {"provider" => /facebook|twitter|mixi/}, :as => :friends
     post 'friends/invite/(:provider)' => 'friends#invite', :constraint => {"provider" => /facebook|twitter|mixi/}, :as => :invite_friends
   end
@@ -34,7 +36,10 @@ Musick::Application.routes.draw do
     delete 'artists/:artist_id/items/:item_asin' => 'artist_items#destroy', :constraint => {"artist_id" => /[0-9]+/}, :as => :destroy_artist_item
     get ':user_id/artist_items/page/:page' => 'artist_items#index', :constraint => {"user_id" => /[0-9]+/, "page" => /[0-9]+/}, :as => :artist_items
     get ':user_id/artist_items' => 'artist_items#index', :constraint => {"user_id" => /[0-9]+/}, :as => :artist_items
-
+    post 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track' => 'artist_tracks#create', :constraint => {"artist_id" => /[0-9]+/, "disc" => /[0-9]+/, "track" => /[0-9]+/}, :as => :create_artist_track
+    delete 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track' => 'artist_tracks#destroy', :constraint => {"artist_id" => /[0-9]+/, "disc" => /[0-9]+/, "track" => /[0-9]+/}, :as => :destroy_artist_track
+    get ':user_id/artist_tracks/page/:page' => 'artist_tracks#index', :constraint => {"user_id" => /[0-9]+/, "page" => /[0-9]+/}, :as => :artist_tracks
+    get ':user_id/artist_tracks' => 'artist_tracks#index', :constraint => {"user_id" => /[0-9]+/}, :as => :artist_tracks
   end
   
   get 'login' => 'home#login', :as => :login

@@ -8,6 +8,7 @@
   <ul>
     <li><%= link_to t('musick.users_artist.index'), users_artists_path(current_user.id), :class => :button %></li>
     <li><%= link_to t('musick.users_artist_item.index'), users_artist_items_path(current_user.id), :class => :button %></li>
+    <li><%= link_to t('musick.users_artist_track.index'), users_artist_tracks_path(current_user.id), :class => :button %></li>
   </ul>
   <ul>
     <li><%= link_to t('musick.social.posts.web.label'), new_social_posts_path, :class => [:button, :popup] %></li>

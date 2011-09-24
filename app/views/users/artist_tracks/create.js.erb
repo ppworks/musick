@@ -1,0 +1,2 @@
+$('a[href="<%=users_create_artist_track_path(params[:artist_id], params[:item_asin], params[:disc], params[:track])%>"]')
+  .replaceWith('<%=escape_javascript(link_to_users_artist_tracks_create_or_destroy(params[:artist_id], params[:item_asin], params[:disc], params[:track]))%>');

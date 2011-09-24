@@ -1,0 +1,11 @@
+  <div class="wrapper">
+  <section class="new_post">
+    <h1><%=params['data-target-name']%></h1>
+  <%=render 'share/post_form', :placeholder => ''%>
+  <nav>
+    <ul>
+      <li><%=send(@link_to_helper, *@helper_params) if respond_to? @link_to_helper%></li>
+    </ul>
+  </nav>
+  </section>
+  </div>

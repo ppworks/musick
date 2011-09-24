@@ -1,0 +1,9 @@
+<%@artist_tracks.each do |artist_track|%>
+$('<li><%= escape_javascript render 'artists/artist_track', :artist_track => artist_track %></li>').appendTo('ul.tracks');
+<%end%>
+$('div#paginator').html('<%=escape_javascript(paginate @artist_tracks, :remote => true) %>');
+$.musick.init();
+$.fancybox.hideActivity();
+setTimeout(function() {
+  $('div#fancybox-overlay').css({'height' : $(document).height()});
+}, 300);

@@ -3,6 +3,7 @@ class CreateArtistTracks < ActiveRecord::Migration
     create_table :artist_tracks do |t|
       t.integer :artist_id, :null => false
       t.integer :artist_item_id, :null => false
+      t.string :asin
       t.integer :disc, :null => false, :default => 1
       t.integer :track, :null => false
       t.string :title, :null => false
@@ -11,6 +12,7 @@ class CreateArtistTracks < ActiveRecord::Migration
     end
     add_index :artist_tracks, :artist_id, :name => 'idx_artist_id_on_artist_tracks'
     add_index :artist_tracks, :artist_item_id, :name => 'idx_artist_item_id_on_artist_tracks'
+    add_index :artist_tracks, [:artist_id, :asin, :disc, :track], :name => 'idx_artist_id_asin_disc_track_on_artist_tracks', :unique => true
   end
 
   def self.down

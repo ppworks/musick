@@ -13,7 +13,7 @@ module ArtistsHelper
   
   def link_to_users_artist_items_create_or_destroy artist_id, asin
     if user_signed_in?
-      if current_user.artist_items.find_by_asin asin
+      if current_user.artist_items.find_by_artist_id_and_asin artist_id, asin
         link_to t('musick.users_artist_item.destroy'), users_destroy_artist_item_path(artist_id, asin), :class => 'button', :method => :delete, :remote => true
       else
         link_to t('musick.users_artist_item.create'), users_create_artist_item_path(artist_id, asin), :class => 'button', :method => :post, :remote => true
@@ -23,11 +23,23 @@ module ArtistsHelper
     end
   end
   
+  def link_to_users_artist_tracks_create_or_destroy artist_id, asin, disc, track
+    if user_signed_in?
+      if current_user.artist_tracks.find_by_artist_id_and_asin_and_disc_and_track artist_id, asin, disc, track
+        link_to t('musick.users_artist_track.destroy'), users_destroy_artist_track_path(artist_id, asin, disc, track), :class => 'button', :method => :delete, :remote => true
+      else
+        link_to t('musick.users_artist_track.create'), users_create_artist_track_path(artist_id, asin, disc, track), :class => 'button', :method => :post, :remote => true
+      end
+    else
+      link_to t('musick.users_artist_track.create'), login_path, :class => 'button popup'
+    end
+  end
+  
   def link_to_artist_item label, artist_item
     attributes = {
       :class => :popup_action,
       'data-action' => 'create_or_destroy',
-      'data-target-id' => artist_item.id,
+      'data-target-attributes' => [artist_item.artist_id, artist_item.asin].to_yaml,
       'data-target-object' => 'artist_item',
       'data-target-name' => artist_item.title
     }
@@ -40,27 +52,36 @@ module ArtistsHelper
       discs["disc#{artist_track.disc.to_s}"] ||= []
       discs["disc#{artist_track.disc.to_s}"] << artist_track
     end
-    discs.each do |disc, tracks|
+    discs.each do |disc, artist_tracks|
       if discs.size > 1
         concat content_tag :h2, disc
       end
       concat content_tag(:ul, nil, :class => disc) {
-        tracks.each do |track|
+        artist_tracks.each do |artist_track|
           concat content_tag(:li) {
-            attributes = {
-              :class => :popup_action,
-              'data-action' => 'create_or_destroy',
-              'data-target-id' => track.id,
-              'data-target-object' => 'artist_track',
-              'data-target-name' => track.title
-            }
-            concat content_tag(:a, nil, attributes) {
-              concat content_tag :small, "#{track.track}. "
-              concat track.title
-            }
+            concat link_to_artist_track artist_track
           }
         end
       }
     end
+  end
+  
+  def link_to_artist_track artist_track
+    attributes = {
+      :class => :popup_action,
+      'data-action' => 'create_or_destroy',
+      'data-target-attributes' => [artist_track.artist_id, artist_track.asin, artist_track.disc, artist_track.track].to_yaml,
+      'data-target-object' => 'artist_track',
+      'data-target-name' => artist_track.title
+    }
+    content_tag(:a, nil, attributes) {
+      concat content_tag :small, "#{artist_track.track}. "
+      concat artist_track.title
+    }
+  end
+  
+  # unofficial solution to fetch image from amazon.
+  def url_artist_item_image artist_item, size
+    artist_item.large_image_url.sub(/\.([^.]+?)$/, "._SL#{size}." + '\1')
   end
 end
