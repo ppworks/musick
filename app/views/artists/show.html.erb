@@ -13,19 +13,12 @@
       <h1 class="name"><%= @artist.name %></h1>
       <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
     </hgroup>
-  <%= image_tag @artist.artist_lastfm.main_image %>
+  <%= link_to_artist image_tag(@artist.artist_lastfm.main_image), @artist %>
   </header>
   <nav>
     <ul>
       <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
       <li><%=link_to_users_artists_create_or_destroy @artist.id %></li>
-      <li><%=link_to t('musick.artist.share'), '#', :class => 'button' %></li>
-    </ul>
-  </nav>
-  <nav>
-    <ul>
-      <li><%=link_to t('musick.artist.update'), '#', :class => 'button' %></li>
-      <li><%=link_to t('musick.artist.update_images'), artist_images_path(@artist.id), :remote => true, :class => 'button' %></li>
     </ul>
   </nav>
   <div class="description">

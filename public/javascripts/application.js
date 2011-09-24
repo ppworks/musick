@@ -127,6 +127,9 @@ $(function(e) {
     $('div#fancybox-overlay').live('click', function(e) {
       $('div#actions').hide();
     });
+    $('div#container').live('click', function(e) {
+      $('div#actions').hide();
+    });
   }
   
   function listen_links() {

@@ -392,6 +392,10 @@ section.artist .images li {
     font-size: 1.2em;
 }
 
+.show section.artist>header {
+    text-align: center;
+}
+
 .show section.artist h1 {
     font-family: Arial, Helvetica, sans-serif;
     color:#EFEFEF;
@@ -407,13 +411,11 @@ section.artist .images li {
     font-size: 1.5em;
     font-weight:bold;
     letter-spacing: 0.2em;
+    text-align: left;
 }
 
 .artist header img {
-    display: block;
     margin: -5px auto 10px auto;
-    min-width: 300px;
-    min-height: 200px;
     max-width: 600px;
     max-height: 400px;
     padding: 10px 10px 25px 10px;

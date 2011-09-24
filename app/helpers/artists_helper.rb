@@ -35,6 +35,17 @@ module ArtistsHelper
     end
   end
   
+  def link_to_artist label, artist
+    attributes = {
+      :class => [:popup_action],
+      'data-action' => 'create_or_destroy',
+      'data-target-attributes' => [artist.id].to_yaml,
+      'data-target-object' => 'artist',
+      'data-target-name' => artist.name
+    }
+    link_to label, artist_path(artist.id), attributes
+  end
+  
   def link_to_artist_item label, artist_item
     attributes = {
       :class => :popup_action,
