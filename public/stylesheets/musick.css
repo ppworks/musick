@@ -8,6 +8,7 @@ html {
 }
 
 body {
+    position: relative;
     background: #f7f7f7;
 }
 
@@ -512,6 +513,10 @@ ul.items>li>.item>aside section.tracks ul>li:not(:last-child) {
     margin-right: 1.0em;
 }
 
+ul.items>li>.item>aside section.tracks ul>li>a {
+    color: #FFFFFF;
+}
+
 
 ul.items>li>.item>aside nav {
     position: absolute;
@@ -610,13 +615,14 @@ form#search_element input[type="search"] {
 section.new_post {
     margin: 10px;
     width: 360px;
-    text-align: center;
+    
 }
 
 section.new_post form textarea {
-    padding: 10px;
+    padding: 5px;
     width: 338px;
-    height: 60px;
+    height: 20px;
+    overflow: hidden;
 }
 
 section.new_post form ul.providers {
@@ -727,4 +733,40 @@ ul.friends section.profile img {
     border-radius: 5px;
 }
 
+/**
+ * アクション
+ */
+div#actions {
+    display: none;
+    position: absolute;
+    border-top: 20px solid transparent;
+    z-index: 2000;
+}
 
+div#actions>div.wrapper {
+    position: relative;
+    background: #ffffff;
+    background-clip: padding-box;
+    border: 15px solid rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+div#actions>div.wrapper:after {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.5);
+    top: -29px;
+}
+
+div#actions>div.wrapper.left:after {
+    left: 10px;
+}
+
+div#actions>div.wrapper.right:after {
+    right: 10px;
+}

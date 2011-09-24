@@ -25,6 +25,14 @@ $(function(e) {
     }
   }
   
+  function listen_auto_grow() {
+    $('textarea.auto_grow, textarea.auto_grow_reverse')
+    .autogrow()
+    .live('click', function(e) {
+        $(this).autogrow();
+    });
+  }
+  
   function listen_remote_true() {
     $('form[data-remote="true"]').live('submit', function(e) {
       $.fancybox.showActivity();
@@ -48,7 +56,7 @@ $(function(e) {
       });
   }
   
-  function listen_fancybox() {
+  function listen_popup() {
     $('a.popup').fancybox({
       'href' : $(this).attr('href'),
       'hideOnContentClick' : false,
@@ -64,7 +72,42 @@ $(function(e) {
       'onComplete': function() {
         $('div#fancybox-overlay').css({'height' : $(document).height()});
         $('div#fancybox-wrap').unbind('mousewheel.fb');
+        $.musick.init();
       }
+    });
+    
+    $('a.popup_action')
+    .css('cursor', 'pointer')
+    .live('selectstart', function(e) {e.preventDefault();})
+    .live('click', function(e) {e.preventDefault();})
+    .live('click', function(e) {
+      $('div#actions')
+      .css('top', e.pageY + 2 + 'px')
+      .show()
+      .find('textarea')
+      .blur();
+      
+      $('div#actions section.new_post h1').html($(this).data('target-name'));
+      
+      if (($(window).width()/2) < e.pageX) {
+        $('div#actions').css('right', $(window).width() - e.pageX - 30 + 'px');
+        $('div#actions').css('left', 'auto');
+        $('div#actions div.wrapper').removeClass('left');
+        $('div#actions div.wrapper').addClass('right');
+      } else {
+        $('div#actions').css('left', e.pageX - 30 + 'px');
+        $('div#actions').css('right', 'auto');
+        $('div#actions div.wrapper').removeClass('right');
+        $('div#actions div.wrapper').addClass('left');
+      }
+      
+    });
+    $('div#actions')
+    .hover(function(e){}, function(e) {
+        $(this).hide();
+    });
+    $('div#fancybox-overlay').live('click', function(e) {
+      $('div#actions').hide();
     });
   }
   
@@ -161,8 +204,9 @@ $(function(e) {
   
   function init() {
     //listen_auto_paging();
+    listen_auto_grow();
     listen_remote_true();
-    listen_fancybox();
+    listen_popup();
     listen_links();
     listen_search_element();
     fix_url();
@@ -171,6 +215,7 @@ $(function(e) {
     $.musick.popup = popup;
     $.musick.init = function() {
       round_image();
+      listen_popup();
     };
   }
   

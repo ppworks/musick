@@ -36,6 +36,7 @@ module Musick
       jquery_ujs.js
       /fancybox/jquery.mousewheel-3.0.4.pack.js
       /fancybox/jquery.fancybox-1.3.4.pack.js
+      jquery_auto_grow.js
     )
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
