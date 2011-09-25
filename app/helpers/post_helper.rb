@@ -20,7 +20,7 @@ module PostHelper
     posts_comment.posts_comments_likes.where(:user_id => current_user.id).each do |posts_comments_like|
       posts_comments_likes[posts_comments_like.provider_id] = 1
     end
-    content_tag(:ul, :class => 'comment_like') do
+    content_tag(:ul, :class => 'like') do
       Provider.all.each do |provider|
         if provider.id == Provider.mixi.id
           next

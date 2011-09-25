@@ -1,10 +1,11 @@
 <div class="comment" data-id="<%=comment.id%>">
   <div class="image"><%= comment_user_image comment %></div>
   <div class="name"><%=comment_user_name comment %></div>
+  <time><%= time_ago_in_words(comment.created_at, true) + t('before') %></time>
+  <div class="content_container clearfix">
   <div class="content"><%=comment.content%></div>
+  </div>
   <div class="actions">
-    <time><%= time_ago_in_words(comment.created_at, true) %></time>
-    <span class="dot">・</span>
     <%=comment_like_link comment %>
   </div>
 </div>
