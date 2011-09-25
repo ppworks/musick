@@ -23,10 +23,32 @@ ul.like li {
     display: inline-block;
 }
 
-ul.post li:not(:first-child) {
+ul.post>li:not(:first-child) {
     margin-top: 10px;
     padding-top: 10px;
     border-top: solid 1px #E9E9E9;
+}
+
+.post .content_container {
+    clear: both;
+    position: relative;
+    background: #ffffff;
+    background-clip: padding-box;
+    border: 15px solid #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.post .content_container:after {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-color: #ffffff;
+    top: -29px;
+    left: 26px;
 }
 
 ul.comment {
@@ -64,10 +86,15 @@ div.comment {
     border-bottom: 1px solid #E5EAF1;
 }
 
-div.image img {
+div.image {
     display: block;
     float: left;
     padding: 5px;
+}
+
+div.image img {
+    width: 48px;
+    height: 48px;
 }
 
 div.post div.name {
@@ -80,7 +107,6 @@ div.comment div.name {
 }
 
 div.post div.content {
-    float: left;
     padding: 0;
 }
 

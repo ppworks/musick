@@ -289,11 +289,19 @@ $(function(e) {
   }
   
   function sync_post() {
+    var size = $('div.post').size();
+    var success_count = 0;
     $.each($('div.post'), function (i, element) {
       var post_id = $(element).data('id');
       $.ajax({
         url : '/posts/' + post_id + '/sync',
-        type : 'post'
+        type : 'post',
+        success : function() {
+          success_count++;
+          if (success_count == size) {
+            $.musick.fetch_providers_profiles();
+          }
+        }
       });
     });
   }

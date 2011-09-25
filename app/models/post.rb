@@ -42,22 +42,24 @@ class Post < ActiveRecord::Base
     # TODO:cache parameter move to config
 
     if 30.seconds.ago < self.synced_at
-      return
+      return false
     end
     # TODO:cache
     # OPTIMIZE: too long method and too much each loop.
-    posts_likes_user_keys = []
-    self.posts_likes.each do |posts_like|
-      posts_likes_user_keys << posts_like.user_key
-    end
     
-    posts_comments_keys = []
-    self.posts_comments.each do |posts_comment|
-      posts_comments_keys << posts_comment.post_key
-    end
     
     self.posts_providers.each do |posts_provider|
+      posts_likes_user_keys = []
+      self.posts_likes.where(:provider_id => posts_provider.provider_id).each do |posts_like|
+        posts_likes_user_keys << posts_like.user_key
+      end
+      
+      posts_comments_keys = []
+      self.posts_comments.where(:provider_id => posts_provider.provider_id).each do |posts_comment|
+        posts_comments_keys << posts_comment.post_key
+      end
       res = SocialSync.stream self.user, {:post_key => posts_provider.post_key, :provider_id => posts_provider.provider_id}
+
       next if res.blank?
       user_keys = res.to_yaml.scan(/:user_key: "([\S]+)"/).uniq
       user_ids_by_user_keys = {}
@@ -98,7 +100,7 @@ class Post < ActiveRecord::Base
         end
         
         # delete PostsLikes if not exists in provider
-        self.posts_likes.each do |posts_like|
+        self.posts_likes.where(:provider_id => posts_provider.provider_id).each do |posts_like|
           unless provider_posts_likes_user_keys.include? posts_like.user_key
             posts_like.destroy
           end
@@ -122,7 +124,7 @@ class Post < ActiveRecord::Base
         end
         
         # delete posts_comments if not exists in provider
-        self.posts_comments.each do |posts_comment|
+        self.posts_comments.where(:provider_id => posts_provider.provider_id).each do |posts_comment|
           unless provider_posts_keys.include? posts_comment.post_key
             posts_comment.destroy
           end
@@ -132,7 +134,7 @@ class Post < ActiveRecord::Base
       # sync posts_comments_likes
       provider_posts_comments_likes_user_keys = []
       # create PostsCommentsLikes via provider
-      self.posts_comments.each do |posts_comment|
+      self.posts_comments.where(:provider_id => posts_provider.provider_id).each do |posts_comment|
         # check like user_key on local db
         posts_comments_likes_user_keys = []
         posts_comment.posts_comments_likes.each do |posts_comments_like|
@@ -157,7 +159,7 @@ class Post < ActiveRecord::Base
           end
         end # self.posts_comments.each
         # delete PostsCommentsLikes if not exists on provider
-        posts_comment.posts_comments_likes.each do |posts_comments_like|
+        posts_comment.posts_comments_likes.where(:provider_id => posts_provider.provider_id).each do |posts_comments_like|
           unless provider_posts_comments_likes_user_keys.include? posts_comments_like.user_key
             posts_comments_like.destroy
           end
@@ -167,6 +169,7 @@ class Post < ActiveRecord::Base
     self.synced_at = Time.now
     self.save
     self.reload
+    return true
   end
   
   #concerned_with :share

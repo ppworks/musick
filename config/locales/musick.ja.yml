@@ -1,4 +1,6 @@
 ja:
+  after: 後
+  before: 前
   attributes:
     name: "内容"
     message: "メッセージ内容"
@@ -92,8 +94,14 @@ ja:
           h1: "招待しました。"
           content: "実際にメッセージが反映されるまでしばらく時間がかかることがあります。"
     post:
-      like: "いいね！"
-      unlike: "いいね！を取り消す"
+      like:
+        1: "いいね！"
+        2: "お気に入り"
+        3: "イイネ！"
+      unlike:
+        1: "いいね！を取り消す"
+        2: "お気に入りから外す"
+        3: "イイネ！を削除する"
       like_count_label:
         person: "%{count}人がいいね！と言っています"
         people: "%{count}人がいいね！と言っています"
@@ -101,7 +109,7 @@ ja:
         person: " %{count}人"
         people: " %{count}人"
       delete: "投稿を削除する"
-      providers: "シェア先"
+      comment_list: "コメント"
       comment: "コメントする"
       show_all_comment: "コメント%{count}件をすべてみる"
       delete_confirm: "この投稿を削除してもよろしいですか？"

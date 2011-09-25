@@ -22,6 +22,9 @@ module PostHelper
     end
     content_tag(:ul, :class => 'comment_like') do
       Provider.all.each do |provider|
+        if provider.id == Provider.mixi.id
+          next
+        end
         if posts_comments_likes[provider.id].present?
           concat render 'posts/comments_likes/unlike_link', :posts_comment => posts_comment, :provider => provider
         else
