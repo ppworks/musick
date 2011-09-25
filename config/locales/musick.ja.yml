@@ -101,6 +101,7 @@ ja:
         person: " %{count}人"
         people: " %{count}人"
       delete: "投稿を削除する"
+      providers: "シェア先"
       comment: "コメントする"
       show_all_comment: "コメント%{count}件をすべてみる"
       delete_confirm: "この投稿を削除してもよろしいですか？"
