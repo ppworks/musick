@@ -57,6 +57,15 @@ input[type=reset].mini {
     font-size: 11px;
 }
 
+a.button.mini:active,
+button.mini:active,
+input[type=submit].mini:active,
+input[type=button].mini:active,
+input[type=reset].mini:active {
+    background: #ccc;
+    padding: 3px 6px 1px;
+}
+
 a.button:hover,
 button:hover,
 input[type=submit]:hover,
@@ -801,4 +810,9 @@ div#actions nav {
 div#actions nav a.button {
     padding: 2px 6px;
     font-size: 11px;
+}
+
+div#actions nav a.button:active {
+    background: #ccc;
+    padding: 3px 6px 1px;
 }
