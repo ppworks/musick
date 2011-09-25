@@ -77,6 +77,7 @@ module SocialSync
     end
     
     # like to post
+    # Twitter::Forbidden (POST https://api.twitter.com/1/favorites/create/117962119365922817.json: 403: You have already favorited this status.):
     def self.like! token, params
       post_key = params[:post_key]||raise(ArgumentError, 'luck of params[:post_key]')
       self.configure_twitter token, params[:providers_user].secret
