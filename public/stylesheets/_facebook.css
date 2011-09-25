@@ -15,17 +15,36 @@ form.new_post textarea {
     resize: none;
 }
 
-ul.like {
+ul.like,
+ul.comment_like {
     display: inline;
 }
 
-ul.like li {
+ul.like li,
+ul.comment_like li {
     display: inline-block;
-    padding-left: 12px;
+    padding: 3px 0 3px 14px;
+    margin-right:1.0em;
 }
 
-ul.like li:not(:last-child) {
-    margin-right:1.0em;
+ul.like li.facebook,
+ul.comment_like li.facebook  {
+    background: url('/images/facebook_like.png') no-repeat 0 0;
+}
+
+ul.like li.twitter,
+ul.comment_like li.twitter  {
+    background: url('/images/twitter_like.png') no-repeat 0 0;
+}
+
+ul.like li.mixi,
+ul.comment_like li.mixi  {
+    background: url('/images/mixi_like.png') no-repeat 0 0;
+}
+
+ul.like li:not(:last-child),
+ul.comment_like li:not(:last-child) {
+    
 }
 
 ul.post>li:not(:first-child) {
@@ -110,6 +129,17 @@ div.comment div.content_container:after {
 
 div.actions {
     clear: both;
+}
+
+span.comment_action {
+    padding: 3px 0 3px 14px;
+    margin-right:1.0em;
+    background: url('/images/comment_action.png') no-repeat 0 0;
+}
+
+span.delete_action {
+    padding: 3px 0 3px 14px;
+    background: url('/images/delete_action.png') no-repeat 0 2px;
 }
 
 div.post time,

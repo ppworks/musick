@@ -9,7 +9,9 @@
     <%=like_link post %>
     <span class="comment_action"><%= link_to t('musick.post.comment'), '#'%></span>
     <% if post.user_id == current_user.id %>
+    <span class="delete_action">
     <%=link_to t('musick.post.delete'), post_path(post.id), :method => :delete, :remote => true, :confirm => t('musick.post.delete_confirm') %>
+    </span>
     <% end %>
   </div>
   <nav class="providers ">

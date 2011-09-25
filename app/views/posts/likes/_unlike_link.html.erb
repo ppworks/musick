@@ -1,1 +1,1 @@
-<li class="like" data-id="<%= provider.id %>"><%=link_to t('musick.post.unlike')[provider.id], posts_like_path(post.id, {:provider_id => provider.id}), :method => :delete, :remote => true %></li>
+<li class="like <%= provider.name %>" data-id="<%= provider.id %>"><%=link_to t('musick.post.unlike')[provider.id], posts_like_path(post.id, {:provider_id => provider.id}), :method => :delete, :remote => true %></li>

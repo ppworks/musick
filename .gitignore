@@ -1,6 +1,7 @@
 .bundle
 .project
 .DS_Store
+*.psd
 db/*.sqlite3
 log/*.log
 tmp/
