@@ -19,8 +19,36 @@ class Social::PostsController < ApplicationController
     opts = {
       :message => params[:content]
     }
-    SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook})) if params[:facebook].present?
-    SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter})) if params[:twitter].present?
-    SocialSync.post!(current_user, opts.merge({:provider_id => Provider.mixi})) if params[:mixi].present?
+    SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?
+    SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter.id})) if params[:twitter].present?
+    SocialSync.post!(current_user, opts.merge({:provider_id => Provider.mixi.id})) if params[:mixi].present?
+  end
+  
+  def create_with_action
+    provider_ids = []
+    provider_ids << Provider.facebook.id if params[:facebook].present?
+    provider_ids << Provider.twitter.id if params[:twitter].present?
+    provider_ids << Provider.mixi.id if params[:mixi].present?
+    @post = Post.new(:content => params[:content])
+    @post.user = current_user
+    respond_to do |format|
+      begin
+        if provider_ids.present?
+          res = @post.remote! provider_ids
+        else
+          res = @post.create!
+        end
+        if res
+          format.js {render :action => 'create'}
+        else
+          @errors = @post.errors.full_messages
+          format.js {render :template => 'share/exception'}
+        end
+      rescue => e
+        logger.error e.message
+        @errors = [e.message]
+        format.js {render :template => 'share/exception'}
+      end
+    end
   end
 end

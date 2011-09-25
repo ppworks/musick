@@ -1,0 +1,4 @@
+$('<li><%= escape_javascript render(:partial => 'posts/post', :collection => @posts, :spacer_template => 'share/li_separator') %></li>')
+.appendTo('ul.post')
+.fadeIn(100);
+$('div#paginator').html('<%=escape_javascript(paginate @posts, :remote => true) %>');

@@ -1,0 +1,113 @@
+@charset 'UTF-8';
+
+textarea {
+    border: 1px solid #BDC7D8;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+form.new_post textarea {
+    margin: 3px;
+    width: 380px;
+    height: 1.0em;
+    resize: none;
+}
+
+ul.like {
+    display: inline;
+}
+
+ul.like li {
+    display: inline-block;
+}
+
+ul.post li:not(:first-child) {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: solid 1px #E9E9E9;
+}
+
+ul.comment {
+    margin-top: 10px;
+}
+
+ul.comment>li {
+    width: 388px;
+    margin-left: 60px;
+}
+
+ul.comment div.image img {
+    width: 32px;
+    height: 32px;
+}
+
+ul.comment_like {
+    display: inline;
+}
+
+ul.comment_like li {
+    display: inline-block;
+}
+
+a {
+    color: #3B5998;
+}
+
+ul.comment>li>div.like_people, 
+ul.comment>li>div.show_all_comment,
+div.comment {
+    clear: both;
+    margin-top: 2px;
+    background: #EDEFF4;
+    border-bottom: 1px solid #E5EAF1;
+}
+
+div.image img {
+    display: block;
+    float: left;
+    padding: 5px;
+}
+
+div.post div.name {
+    padding: 5px;
+}
+
+div.comment div.name {
+    float: left;
+    padding: 5px;
+}
+
+div.post div.content {
+    float: left;
+    padding: 0;
+}
+
+div.comment div.content {
+    float: left;
+    padding: 5px;
+}
+
+div.actions {
+    clear: both;
+}
+
+div.post time,
+div.post time a {
+    color: #999;
+}
+
+div.new_comment {
+    clear: both;
+    margin: 2px auto auto 60px;
+    width: 388px;
+    background: #EDEFF4;
+}
+
+div.new_comment textarea {
+    margin: 3px;
+    width: 380px;
+    height: 1.0em;
+    resize: none;
+}

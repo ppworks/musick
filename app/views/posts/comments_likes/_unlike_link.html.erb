@@ -1,0 +1,4 @@
+<li class="comment_like" data-id="<%= provider.id %>">
+  <%=link_to t('musick.post.unlike'), posts_comments_like_path(posts_comment.post.id, posts_comment.id, {:provider_id => provider.id}), :method => :delete, :remote => true %>
+  <%= comments_like_people posts_comment %>
+</li>

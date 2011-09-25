@@ -8,6 +8,6 @@ module FacebookConfig
   end
   
   def self.scope
-    ENV["FB_SCOPE"]||'publish_stream,offline_access,email'
+    ENV["FB_SCOPE"]||'read_stream,publish_stream,offline_access,email'
   end
 end

@@ -1,0 +1,17 @@
+$('div#fancybox_inline h1').text('success');
+$('div#fancybox_inline article').html('<%=escape_javascript(t('musick.post.complete'))%>');
+$('div#fancybox_inline').show();
+$.fancybox({
+  'href' : '#fancybox_inline',
+  'hideOnContentClick' : true,
+  'type' : 'inline',
+  'transitionIn' : 'none',
+  'transitionOut' : 'none',
+  'onClosed' : function() {$('div#fancybox_inline').hide();}
+});
+
+$('div.user[data-id="<%= @post.user.id %>"]').closest('.post').closest('li').fadeOut(200, function(e) {
+  $(this).remove();
+});
+$('ul.post').prepend('<li><%=escape_javascript (render :partial => 'posts/post', :locals => {:post => @post}) %></li>');
+$('div.post[data-id="<%= @post.id %>"] textarea').autogrow();

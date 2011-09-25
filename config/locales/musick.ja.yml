@@ -5,6 +5,8 @@ ja:
     to_invite_kind: "招待方法"
     to_user_key: "招待ユーザー"
   musick:
+    user:
+      you: "あなた"
     validation_error: "おや？何か変ですよ。入力内容をご確認下さい"
     people: "人"
     person: "人"
@@ -52,6 +54,18 @@ ja:
           label: "Musick.infoをオススメする"
           h1: "Musick.infoを始めたことを友人に教えよう！"
           content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusick.infoを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"
+        facebook:
+          message: "%{message}\n\n"
+          name: "Musickからの投稿"
+          link: "http://%{domain}/users/auth/facebook"
+          description: ""
+          actions:
+            name: "使ってみる"
+            link: "http://%{domain}/users/auth/facebook"
+          properties:
+            name1: "みてみよう！"
+            text1: "%{user_name}さんの投稿をもっと見る"
+            href1: "http://%{domain}/users/%{user_id}/posts"
       friends:
         label: "友達を招待する"
         invite_select: "選択する"
@@ -77,3 +91,19 @@ ja:
         invite_success:
           h1: "招待しました。"
           content: "実際にメッセージが反映されるまでしばらく時間がかかることがあります。"
+    post:
+      like: "いいね！"
+      unlike: "いいね！を取り消す"
+      like_count_label:
+        person: "%{count}人がいいね！と言っています"
+        people: "%{count}人がいいね！と言っています"
+      comment_like_count_label:
+        person: " %{count}人"
+        people: " %{count}人"
+      delete: "投稿を削除する"
+      comment: "コメントする"
+      show_all_comment: "コメント%{count}件をすべてみる"
+      delete_confirm: "この投稿を削除してもよろしいですか？"
+      more: "更に見る"
+      complete: "投稿しました。"
+      error: "投稿先のメッセージはすでに削除されたか、何かエラーが発生したようです。"

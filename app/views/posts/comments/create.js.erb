@@ -1,0 +1,5 @@
+$('div.post[data-id="<%= @posts_comment.post.id %>"] ul.comment')
+  .append('<li><%= escape_javascript render('posts/comments/comment', :comment => @posts_comment) %></li>');
+$('div.comment[data-id="<%= @posts_comment.id %>"]')
+  .hide()
+  .fadeIn(300);

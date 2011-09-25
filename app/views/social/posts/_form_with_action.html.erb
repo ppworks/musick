@@ -1,4 +1,4 @@
-<%= form_tag social_posts_path, :remote => true, :class => :clearfix do %>
+<%= form_tag social_posts_with_action_path, :remote => true, :class => :clearfix do %>
   <%= text_area_tag :content, '', :placeholder => placeholder, :class => [:auto_clear, :auto_grow]%>
   <%= providers_checkbox %>
   <%= submit_tag t('musick.social.posts.create'), :class => :mini %>

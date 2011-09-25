@@ -1,0 +1,6 @@
+$('div.comment[data-id="<%= @posts_comment.id %>"] ul.comment_like').fadeOut(100, function() {
+  $(this).html('<%= escape_javascript render('posts/comments_likes/like_link', :posts_comment => @posts_comment, :provider => @provider) %>').fadeIn(300);
+  $('div.comment[data-id="<%= @posts_comment.id %>"] ul.comment_like span.comments_like_people').remove();
+  $('div.comment[data-id="<%= @posts_comment.id %>"] ul.comment_like li[data-id="<%=@provider.id%>"]')
+    .append('<%= comments_like_people @posts_comment %>');
+});

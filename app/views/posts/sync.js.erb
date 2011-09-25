@@ -1,0 +1,9 @@
+var opened_comment = $('div.post[data-id="<%= @post.id %>"]').find('.show_all_comment').size();
+var comment_text = $('div.post[data-id="<%= @post.id %>"] textarea').val();
+$('div.post[data-id="<%= @post.id %>"]')
+.html('<%=escape_javascript (render :partial => 'posts/post', :locals => {:post => @post}) %>')
+if (opened_comment == 0) {
+  $('div.post[data-id="<%= @post.id %>"]').find('.show_all_comment a').click();
+}
+$('div.post[data-id="<%= @post.id %>"] textarea').autogrow().val(comment_text);
+$.musick.fetch_providers_profiles();

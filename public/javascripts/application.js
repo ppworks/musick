@@ -159,6 +159,22 @@ $(function(e) {
       e.preventDefault();
       window.open($(this).attr('href'));
     });
+    
+    $('.comment_action a').live('click', function(e) {
+      e.preventDefault();
+      var post_id = $(this).closest('div.post').data('id');
+      $('div.post[data-id="' + post_id + '"]').find('textarea').focus();
+    });
+    
+    $('.new_comment textarea').live('focus', function(e) {
+      $(this).addClass('focus');
+      $(this).closest('form').find('.image').show();
+    }).live('blur', function(e) {
+      $(this).removeClass('focus');
+      $(this).closest('form').find('.image').hide();
+    })
+    .blur()
+    ;
   }
   
   function listen_search_element() {
@@ -223,6 +239,65 @@ $(function(e) {
     });
   }
   
+  function listen_comment_all() {
+    $('.show_all_comment a').live('click', function(e) {
+      e.preventDefault();
+      $(this).closest('ul').find('li').show();
+      $(this)
+      .closest('li')
+      .remove();
+    });
+    }
+    
+  function listen_like_all() {
+    $('a.like_users').live('click', function(e) {
+      e.preventDefault();
+      $(this).next('ul')
+      .css('display', 'inline')
+      .fadeIn(200);
+    })
+    .live('mouseover', function(e) {
+      e.preventDefault();
+      $(this).next('ul')
+      .css('display', 'inline')
+      .fadeIn(200);
+    })
+    .live('mouseout', function(e) {
+      e.preventDefault();
+      $(this)
+      .next('ul')
+      .fadeOut(200);
+    })
+  }
+  
+  function fetch_providers_profiles() {
+    var unknown_count = $('.unknown').size();
+    if (!unknown_count) {
+      return;
+    }
+    providers = {}
+    $('.unknown').each(function(i, elm) {
+      provider_id = $(elm).data('provider-id');
+      if (!providers[provider_id]) {
+        providers[provider_id] = [];
+      }
+      providers[provider_id].push($(elm).data('user-key'));
+    });
+    for (provider_id in providers) {
+      $.ajax('/providers/' + provider_id + '/profiles?user_keys=' + providers[provider_id].join(','))
+    }
+  }
+  
+  function sync_post() {
+    $.each($('div.post'), function (i, element) {
+      var post_id = $(element).data('id');
+      $.ajax({
+        url : '/posts/' + post_id + '/sync',
+        type : 'post'
+      });
+    });
+  }
+  
   function init() {
     //listen_auto_paging();
     listen_auto_grow();
@@ -232,12 +307,18 @@ $(function(e) {
     listen_search_element();
     fix_url();
     round_image();
+    fetch_providers_profiles();
+    listen_comment_all();
+    listen_like_all();
+    sync_post();
     $.musick = {};
     $.musick.popup = popup;
     $.musick.init = function() {
       round_image();
       listen_popup();
+      fetch_providers_profiles
     };
+    $.musick.fetch_providers_profiles = fetch_providers_profiles;
   }
   
   init();

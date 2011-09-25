@@ -2,18 +2,19 @@ development:
   domain: musick.localhost:3000
   ga_id: 'UA-XXXXXX-XX'
   hash_tag: '#xtxexsxt'
-
+  comment_count: 3
 test:
   domain: test.host
   ga_id: 'UA-XXXXXX-XX'
   hash_tag: '#musick'
-  
+  comment_count: 3
 staging:
   domain: musick-dev.herokuapp.com
   a_id: 'UA-XXXXXX-XX'
   hash_tag: '#musick'
-  
+  comment_count: 3
 production:
   domain: musick.info
   ga_id: 'UA-25643488-1'
   hash_tag: '#musick'
+  comment_count: 3

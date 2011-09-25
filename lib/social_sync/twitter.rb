@@ -34,11 +34,27 @@ module SocialSync
       results
     end
     
+    def self.post token, params
+      post_key = params[:post_key]||raise(ArgumentError, 'luck of params[:post_key]')
+      self.configure_twitter token, params[:providers_user].secret
+      res = ::Twitter.status(post_key)
+    end
+    
+    # not support
+    def self.stream token, params = {}
+      return {}
+    end
+    
     # post
     def self.post! token, params
       self.configure_twitter token, params[:providers_user].secret
       res = ::Twitter.update(params[:message])
-      
+      res.instance_eval <<-EVAL
+        def identifier
+          "#{res['id']}"
+        end
+      EVAL
+      res
     end
     
     def self.message! token, params
@@ -46,6 +62,35 @@ module SocialSync
       res = ::Twitter.direct_message_create(params[:target_id], params[:message])
     end
     
+    # comment to post
+    def self.comment! token, params
+      post_key = params[:post_key]||raise(ArgumentError, 'luck of params[:post_key]')
+      post = self.post token, params
+      screen_name = post['user']['screen_name']
+      res = ::Twitter.update("@#{screen_name} #{params[:message]}", {:in_reply_to_status_id => params[:post_key]})
+      res.instance_eval <<-EVAL
+        def identifier
+          "#{res['id']}"
+        end
+      EVAL
+      res
+    end
+    
+    # like to post
+    def self.like! token, params
+      post_key = params[:post_key]||raise(ArgumentError, 'luck of params[:post_key]')
+      self.configure_twitter token, params[:providers_user].secret
+      res = ::Twitter.favorite_create params[:post_key]
+      res.present?
+    end
+    
+    # cancel like to post
+    def self.unlike! token, params
+      post_key = params[:post_key]||raise(ArgumentError, 'luck of params[:post_key]')
+      self.configure_twitter token, params[:providers_user].secret
+      res = ::Twitter.favorite_destroy params[:post_key]
+      res.present?
+    end
     
     protected
     def self.configure_twitter token, secret

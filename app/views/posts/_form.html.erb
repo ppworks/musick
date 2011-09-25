@@ -1,0 +1,20 @@
+<%= form_for(@post, :remote => true) do |f| %>
+  <h1 id="flow1"><%=t("kaopression.post.flow1")%></h1>
+  <ul class="face">
+  <% @faces.each do |face| %>
+    <li><%= image_tag face.path, :title => face.name, 'data-id' => face.id, :class => (face.id == @latest_face_id)?'clicked':'' %></li>
+  <% end %>
+  </ul>
+  <h1 id="flow2"><%=t("kaopression.post.flow2")%></h1>
+  <div class="message">
+  <% if user_signed_in? %>
+    <%= f.text_area :content, :class => 'auto_clear auto_grow' %><div class="suffix"><%=t("kaopression.post.suffix")%></div>
+    <%= image_submit_tag t('kaopression.button_image.post.blur'), 'data-disable-with' => true, :class => :share_to_facebook, 'data-hover' => t('kaopression.button_image.post.hover') %>
+  <% else%>
+    <p><%= t('kaopression.not_signed_in.message')%></p>
+    <%= link_to t('kaopression.user.sign_in'), user_omniauth_authorize_path(:facebook), :id => :sign_in_button, :class => [:show_bg, :clear] %>
+  <% end %>
+  </div>
+  <div class="clear"></div>
+  <input type="hidden" name="commit" />
+<% end %>

@@ -1,0 +1,4 @@
+<% @profiles.each do |profile| %>
+  $('.unknown[data-field="name"][data-user-key="<%=profile['user_key']%>"][data-provider-id="<%=@provider_id%>"]').html('<%=profile['name']%>');
+  $('.unknown[data-field="image"][data-user-key="<%=profile['user_key']%>"][data-provider-id="<%=@provider_id%>"]').html('<img src="<%=profile['pic_square']%>" />');
+<% end %>

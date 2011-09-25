@@ -1,0 +1,35 @@
+<div class="post" data-id="<%=post.id%>">
+  <div class="image user" data-id="<%=post.user.id%>"><%=image_tag post.user.image %></div>
+  <div class="name"><%=link_to post.user.name, users_posts_path(post.user.id) %></div>
+  <div class="content_container">
+    <div class="content"><%=post.content%><span class="suffix"></span></div>
+    <div class="bubble show_bg"></div>
+  </div>
+  <div class="actions">
+    <time><%= link_to (time_ago_in_words post.created_at, true), post_path(post.id) %></time>
+   <span class="dot">・</span>
+    <%=like_link post %>
+    <span class="dot">・</span>
+    <span class="comment_action"><%= link_to t('musick.post.comment'), '#'%></span>
+    <% if post.user_id == current_user.id %>
+    <span class="dot">・</span>
+    <%=link_to t('musick.post.delete'), post_path(post.id), :method => :delete, :remote => true, :confirm => t('musick.post.delete_confirm') %>
+    <% end %>
+  </div>
+  <ul class="comment">
+    <%= like_people post %>
+    <% if post.posts_comments.length > 0 %>
+      <% if post.posts_comments.length > APP_CONFIG[:comment_count] %>
+        <li><div class="show_all_comment"><%= link_to t('musick.post.show_all_comment', :count => post.posts_comments.length), '#'%></div></li>
+      <% end %>
+      <% post.posts_comments.each_with_index do |posts_comment, i| %>
+        <li style="<%= ((post.posts_comments.length - APP_CONFIG[:comment_count] - i - 1) < 0) ? 'display:list-item':'display:none;'%>">
+          <%= render :partial => 'posts/comments/comment', :locals => {:comment => posts_comment} %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div class="new_comment">
+    <%= render :partial => 'posts/comments/form', :locals => {:post => post} %>
+  </div>
+</div>

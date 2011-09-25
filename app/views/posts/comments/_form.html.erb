@@ -1,0 +1,11 @@
+<%= form_for(post.posts_comments.new, :url => posts_comment_path(post.id), :remote => true) do |f| %>
+  <div class="image">
+    <%=image_tag current_user.image, :size => '30x30'%>
+  </div>
+  <div class="field">
+    <%= f.text_area :content, :class => 'auto_clear auto_grow_reverse', :placeholder => 'comment'%>
+  </div>
+  <input type="hidden" name="commit" />
+  <%= submit_tag t('musick.post.comment'), :class => [:posts_comment_submit, :mini] %>
+<% end %>
+<div class="clear"></div>

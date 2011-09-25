@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924103046) do
+ActiveRecord::Schema.define(:version => 20110925111309) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -135,6 +135,93 @@ ActiveRecord::Schema.define(:version => 20110924103046) do
 
   add_index "invites", ["user_id", "to_provider_id", "to_user_key"], :name => "idx_user_id_to_provider_id_to_user_key_on_invites"
 
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id",                             :null => false
+    t.text     "content",                             :null => false
+    t.integer  "posts_likes_count", :default => 0,    :null => false
+    t.boolean  "show_flg",          :default => true, :null => false
+    t.datetime "synced_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id", "show_flg"], :name => "idx_user_id_show_flg_on_posts"
+
+  create_table "posts_comments", :force => true do |t|
+    t.integer  "post_id",                                   :null => false
+    t.integer  "user_id"
+    t.integer  "provider_id"
+    t.string   "user_key"
+    t.string   "post_key"
+    t.text     "content",                                   :null => false
+    t.integer  "posts_comments_likes_count", :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_comments", ["post_id"], :name => "idx_post_id_on_posts_comments"
+  add_index "posts_comments", ["user_id"], :name => "idx_user_id_on_posts_comments"
+
+  create_table "posts_comments_likes", :force => true do |t|
+    t.integer  "posts_comment_id", :null => false
+    t.integer  "user_id"
+    t.integer  "provider_id"
+    t.string   "user_key"
+    t.string   "post_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_comments_likes", ["posts_comment_id"], :name => "idx_posts_comment_id_on_posts_comments_likes"
+  add_index "posts_comments_likes", ["provider_id", "posts_comment_id"], :name => "idx_provider_id_posts_comment_id_posts_comments_likes"
+
+  create_table "posts_likes", :force => true do |t|
+    t.integer  "post_id",     :null => false
+    t.integer  "user_id"
+    t.integer  "provider_id"
+    t.string   "user_key"
+    t.string   "post_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_likes", ["post_id"], :name => "idx_post_id_on_posts_likes"
+  add_index "posts_likes", ["provider_id", "post_id"], :name => "idx_provider_id_post_id_on_posts_likes"
+
+  create_table "posts_providers", :force => true do |t|
+    t.integer  "provider_id", :null => false
+    t.integer  "post_id",     :null => false
+    t.string   "post_key",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_providers", ["post_id"], :name => "idx_post_id_on_posts_providers"
+  add_index "posts_providers", ["provider_id", "post_id"], :name => "idx_provider_id_post_id_on_posts_providers"
+
+  create_table "posts_user_actions", :force => true do |t|
+    t.integer  "post_id",           :null => false
+    t.integer  "user_action_id",    :null => false
+    t.string   "target_attributes", :null => false
+    t.string   "target_name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_user_actions", ["post_id"], :name => "idx_post_id_on_posts_user_actions", :unique => true
+
+  create_table "provider_profiles", :force => true do |t|
+    t.integer  "provider_id", :null => false
+    t.string   "user_key",    :null => false
+    t.string   "name",        :null => false
+    t.string   "pic_square",  :null => false
+    t.string   "url",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "provider_profiles", ["provider_id", "user_key"], :name => "idx_provider_id_user_key_on_provider_profiles", :unique => true
+
   create_table "providers", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -159,6 +246,15 @@ ActiveRecord::Schema.define(:version => 20110924103046) do
 
   add_index "providers_users", ["provider_id", "user_key"], :name => "idx_provider_id_user_key_on_providers_users", :unique => true
   add_index "providers_users", ["user_id"], :name => "idx_user_id_on_providers_users"
+
+  create_table "user_actions", :force => true do |t|
+    t.string   "target",     :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_actions", ["target", "name"], :name => "idx_target_name_on_user_actions", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

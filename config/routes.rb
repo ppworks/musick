@@ -21,7 +21,7 @@ Musick::Application.routes.draw do
   namespace :social do
     resource :posts, :only => [:new, :create]
     get 'posts/new_with_action' => 'posts#new_with_action', :as => :new_posts_with_action
-    post 'posts/create_with_action' => 'posts#create_with_action', :as => :create_posts_with_action
+    post 'posts/create_with_action' => 'posts#create_with_action', :as => :posts_with_action
     get 'friends/(:provider)' => 'friends#index', :constraint => {"provider" => /facebook|twitter|mixi/}, :as => :friends
     post 'friends/invite/(:provider)' => 'friends#invite', :constraint => {"provider" => /facebook|twitter|mixi/}, :as => :invite_friends
   end
@@ -40,8 +40,31 @@ Musick::Application.routes.draw do
     delete 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track' => 'artist_tracks#destroy', :constraint => {"artist_id" => /[0-9]+/, "disc" => /[0-9]+/, "track" => /[0-9]+/}, :as => :destroy_artist_track
     get ':user_id/artist_tracks/page/:page' => 'artist_tracks#index', :constraint => {"user_id" => /[0-9]+/, "page" => /[0-9]+/}, :as => :artist_tracks
     get ':user_id/artist_tracks' => 'artist_tracks#index', :constraint => {"user_id" => /[0-9]+/}, :as => :artist_tracks
+    get ':user_id/posts/page/:page' => 'posts#index', :as => :posts
+    get ':user_id/posts' => 'posts#index', :as => :posts
   end
   
+  resources :posts, :only => [:destroy, :show, :index] do
+    get 'page/:page', :action => :index, :on => :collection
+    post 'sync', :action => :sync, :on => :member, :as => :sync
+  end
+
+  namespace :posts do
+    get ':id/comments' => 'comments#index', :constraint => {"id" => /[0-9]+/}, :as => :comments
+    post ':id/comment' => 'comments#create', :constraint => {"id" => /[0-9]+/}, :as => :comment
+    delete ':id/comments/:comment_id' => 'comments#destroy', :constraint => {"id" => /[0-9]+/, "comment_id" => /[0-9]+/}, :as => :comments
+    get ':id/likes' => 'likes#index', :constraint => {"id" => /[0-9]+/}, :as => :likes
+    post ':id/like' => 'likes#create', :constraint => {"id" => /[0-9]+/}, :as => :like
+    delete ':id/like' => 'likes#destroy', :constraint => {"id" => /[0-9]+/}, :as => :like
+    get ':id/comments/:comment_id/likes' => 'comments_likes#index', :constraint => {"id" => /[0-9]+/, "comment_id" => /[0-9]+/}, :as => :comments_likes
+    post ':id/comments/:comment_id/like' => 'comments_likes#create', :constraint => {"id" => /[0-9]+/, "comment_id" => /[0-9]+/}, :as => :comments_like
+    delete ':id/comments/:comment_id/like' => 'comments_likes#destroy', :constraint => {"id" => /[0-9]+/, "comment_id" => /[0-9]+/}, :as => :comments_likes
+  end
+
+  namespace :providers do
+    get ':id/profiles' => 'profiles#index', :as => :profiles
+  end
+
   get 'login' => 'home#login', :as => :login
   root :to => 'home#index'
 end

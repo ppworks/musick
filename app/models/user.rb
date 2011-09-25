@@ -215,7 +215,7 @@ class User < ActiveRecord::Base
   private
   def make_friend_auto provider_id, friend_user_keys
     user_ids = ProvidersUser
-        .where(:provider_id => Provider.facebook.id)
+        .where(:provider_id => provider_id)
         .where(:user_key => friend_user_keys)
         .all
         .map!{|user|user.user_id}

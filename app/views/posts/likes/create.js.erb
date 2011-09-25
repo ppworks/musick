@@ -1,0 +1,5 @@
+$('div.post[data-id="<%= @post.id %>"] ul.like').fadeOut(100, function() {
+  $(this).html('<%= escape_javascript render('posts/likes/unlike_link', :post => @post, :provider => @provider) %>').fadeIn(300);
+  $('div.post[data-id="<%= @post.id %>"] ul.comment div.like_people').parent().remove();
+  $('div.post[data-id="<%= @post.id %>"] ul.comment').prepend('<%= like_people @post %>');
+});
