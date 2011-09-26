@@ -38,10 +38,10 @@ module ArtistsHelper
   def link_to_artist label, artist
     attributes = {
       :class => [:popup_action],
-      'data-action' => 'create_or_destroy',
       'data-target-attributes' => [artist.id].to_yaml,
       'data-target-object' => 'artist',
-      'data-target-name' => artist.name
+      'data-target-name' => artist.name,
+      'data-target-image' => artist.artist_lastfm.thumbnail_image,
     }
     link_to label, artist_path(artist.id), attributes
   end
@@ -49,10 +49,10 @@ module ArtistsHelper
   def link_to_artist_item label, artist_item
     attributes = {
       :class => :popup_action,
-      'data-action' => 'create_or_destroy',
       'data-target-attributes' => [artist_item.artist_id, artist_item.asin].to_yaml,
       'data-target-object' => 'artist_item',
-      'data-target-name' => artist_item.title
+      'data-target-name' => artist_item.title,
+      'data-target-image' => artist_item.medium_image_url,
     }
     link_to label, artist_item_path(artist_item.artist_id, artist_item.asin), attributes
   end
@@ -80,10 +80,9 @@ module ArtistsHelper
   def link_to_artist_track artist_track
     attributes = {
       :class => :popup_action,
-      'data-action' => 'create_or_destroy',
       'data-target-attributes' => [artist_track.artist_id, artist_track.asin, artist_track.disc, artist_track.track].to_yaml,
       'data-target-object' => 'artist_track',
-      'data-target-name' => artist_track.title
+      'data-target-name' => artist_track.title,
     }
     content_tag(:a, nil, attributes) {
       concat content_tag :small, "#{artist_track.track}. "

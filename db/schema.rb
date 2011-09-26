@@ -248,13 +248,13 @@ ActiveRecord::Schema.define(:version => 20110925111309) do
   add_index "providers_users", ["user_id"], :name => "idx_user_id_on_providers_users"
 
   create_table "user_actions", :force => true do |t|
-    t.string   "target",     :null => false
     t.string   "name",       :null => false
+    t.string   "target",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "user_actions", ["target", "name"], :name => "idx_target_name_on_user_actions", :unique => true
+  add_index "user_actions", ["name", "target"], :name => "idx_name_target_on_user_actions", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

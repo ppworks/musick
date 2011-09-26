@@ -1,4 +1,6 @@
 <%= form_tag social_posts_with_action_path, :remote => true, :class => :clearfix do %>
+  <%= hidden_field_tag 'data-target-object', params['data-target-object'] if params['data-target-object'].present? %>
+  <%= hidden_field_tag 'data-target-attributes', params['data-target-attributes'] if params['data-target-attributes'].present? %>
   <%= text_area_tag :content, '', :placeholder => placeholder, :class => [:auto_clear, :auto_grow]%>
   <%= providers_checkbox %>
   <%= submit_tag t('musick.social.posts.create'), :class => :mini %>

@@ -5,13 +5,13 @@ class Social::PostsController < ApplicationController
   end
   
   def new_with_action
-    target_action = params["data-action"]||''
+    
     target_object = params["data-target-object"]||''
     target_object = target_object.pluralize
     target_attributes = params["data-target-attributes"]||[].to_yaml
     target_attributes = YAML.load target_attributes
-    @link_to_helper = "link_to_users_#{target_object}_#{target_action}"
-    @helper_params = target_attributes
+    @link_to_clip_helper = "link_to_users_#{target_object}_create_or_destroy"
+    @clip_helper_params = target_attributes
     render :layout => !request.xhr?
   end
 
@@ -25,6 +25,11 @@ class Social::PostsController < ApplicationController
   end
   
   def create_with_action
+    action = 'post'
+    target_object = params["data-target-object"]||''
+    target_attributes = params["data-target-attributes"]||[].to_yaml
+    # todo attach action to post
+    
     provider_ids = []
     provider_ids << Provider.facebook.id if params[:facebook].present?
     provider_ids << Provider.twitter.id if params[:twitter].present?

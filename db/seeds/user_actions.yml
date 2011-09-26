@@ -1,0 +1,13 @@
+user_actions:
+  -
+    id: 1
+    name: 'post'
+    target: 'artist'
+  -
+    id: 2
+    name: 'post'
+    target: 'artist_item'
+  -
+    id: 3
+    name: 'post'
+    target: 'artist_track'

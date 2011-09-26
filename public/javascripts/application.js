@@ -84,10 +84,10 @@ $(function(e) {
       $.ajax({
         url : '/social/posts/new_with_action',
         data : {
-          'data-action' : $(this).data('action'),
           'data-target-attributes' : $(this).data('target-attributes'),
           'data-target-object' : $(this).data('target-object'),
-          'data-target-name' : $(this).data('target-name')
+          'data-target-name' : $(this).data('target-name'),
+          'data-target-image' : $(this).data('target-image'),
         },
         success: function(data) {
           success_new_with_action(data, e);
