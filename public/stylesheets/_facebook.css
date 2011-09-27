@@ -103,13 +103,13 @@ div.comment {
     border-bottom: 1px solid #E5EAF1;
 }
 
-div.image {
+div.post div.image {
     display: block;
     float: left;
     padding: 5px;
 }
 
-div.image img {
+div.post div.image img {
     width: 48px;
     height: 48px;
 }
