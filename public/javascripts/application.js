@@ -175,6 +175,29 @@ $(function(e) {
     })
     .blur()
     ;
+    
+    $('nav#user').click(function(e) {
+      if ($(this).hasClass('clicked')) {
+        $(this).find('ul').fadeIn(100);
+        $(this).addClass('hover');
+      } else {
+        $(this).find('ul').fadeOut(100);
+        $(this).removeClass('hover');
+      }
+      $(this).toggleClass('clicked');
+    })
+    .hover(function(e) {
+      $(this).addClass('hover');
+      $(this).find('ul').fadeIn(100);
+    }, function(e) {
+      $(this).removeClass('hover');
+      $(this).find('ul').fadeOut(100);
+    });
+    $('nav#user li').hover(function(e) {
+      $(this).addClass('hover');
+    }, function(e) {
+      $(this).removeClass('hover');
+    });
   }
   
   function listen_search_element() {

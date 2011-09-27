@@ -154,7 +154,7 @@ ul.tab>li a,
 ul.tab>li a:hover {
     color: #333333;
     text-decoration: none;
-    text-shadow
+    text-shadow:none;
 }
 
 /**
@@ -184,9 +184,9 @@ ul.tab>li a:hover {
 
 body>header {
     position: relative;
-    overflow: hidden;
     margin: 0 0 30px 0;
     padding: 15px 20px;
+    height: 45px;
     background: #000000;
     -webkit-box-shadow: 0px 1px 10px #333;
     -moz-box-shadow: 0px 1px 10px #333;
@@ -194,19 +194,114 @@ body>header {
 }
 
 body>header>h1 {
-    float: left;
+    position: absolute;
+    top: 15px;
+    left: 20px;
     width: 155px;
     height: 40px;
 }
 
 body>header>form {
-    position: absolute;
-    right: 20px;
-    bottom: 15px;
+    margin: 20px auto 0 auto;
+    width: 320px;
 }
 
 body>header>form>input[type=search] {
     
+}
+
+/**
+ * ヘッダーのユーザーnav
+ */
+nav#user a {
+    color: #dddddd;
+    text-decoration: none;
+}
+
+nav#user a:hover {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+nav#user h1 {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    display: block;
+    width: 130px;
+    height: 42px;
+    font-weight: bold;
+    font-size: 0.85em;
+    vertical-align: center;
+    cursor: pointer;
+    padding-top: 5px;
+    border: solid 3px transparent;
+    z-index: 20;
+}
+
+nav#user.hover h1 {
+    padding-top: 5px;
+    padding-bottom: 0;
+    background: #333333;
+    -moz-border-top-right-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -o-border-top-right-radius: 5px;
+    -o-border-top-left-radius: 5px;
+    -ms-border-top-right-radius: 5px;
+    -ms-border-top-left-radius: 5px;
+} 
+
+nav#user h1 img {
+    margin: 5px;
+}
+
+nav#user a.name {
+    position: absolute;
+    top: 18px;
+    left: 40px; /* img size + nav#user h1 img margin x 2 */
+    display: block;
+}
+
+nav#user ul {
+    position: absolute;
+    top: 63px;
+    right: 0;
+    display: none;
+    z-index: 20;
+}
+
+nav#user ul li {
+    display: block;
+    margin-top: 2px;
+    width: 130px;
+    height: 20px;
+    background: #333333;
+    border: solid 3px transparent;
+}
+
+nav#user ul li a {
+    margin: 3px 0 0 3px;
+}
+
+nav#user ul li.hover {
+    background: #444444;
+}
+
+nav#user ul li.hover a {
+    text-decoration: underline;
+}
+
+nav#user ul li:last-child {
+    -moz-border-bottom-right-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -o-border-bottom-right-radius: 5px;
+    -o-border-bottom-left-radius: 5px;
+    -ms-border-bottom-right-radius: 5px;
+    -ms-border-bottom-left-radius: 5px;
 }
 
 /**
@@ -562,9 +657,6 @@ ul.tracks>li>.item>aside {
 /**
  * search
  */
-form.search_form {
-    float: right;
-}
 
 form.search_form input[type="search"] {
     width: 320px;

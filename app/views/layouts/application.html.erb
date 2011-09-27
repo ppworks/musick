@@ -24,6 +24,15 @@
 <body id="<%= yield :body_id %>" class="<%= yield :body_class %>">
 <header>
 <h1><%= link_to root_path do %><%=image_tag '/images/musick_logo.png'%><% end %></h1>
+<nav id="user">
+<% if user_signed_in?%>
+  <h1><%=image_tag current_user.image, :size => '30x30' %><%= link_to current_user.name, '#', :class => :name %></h1>
+  <ul>
+    <li><%= link_to t('musick.logout.label'), destroy_user_session_path, :method => :delete %></li>
+    <li></li>
+  </ul>
+<% end %>
+</nav>
 <%= yield :search_form %>
 </header>
 <div id="container">
