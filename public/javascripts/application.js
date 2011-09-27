@@ -198,6 +198,27 @@ $(function(e) {
     }, function(e) {
       $(this).removeClass('hover');
     });
+    
+    $('a.with_tooltip').live('hover', function(e) {
+      var tooltip = $(this).data('tooltip');
+      tooltip = tooltip.replace(/\n/g, '<br />');
+      var a = $(this);
+      $('.ui-tooltip-top').remove();
+
+      if (e.type == 'mouseenter') {
+        
+        var span = $('<span class="ui-tooltip-top" style="display:none;">' + tooltip + '</span>')
+        .css('position', 'absolute')
+        .css('z-index', 3000)
+        .appendTo($('body'));
+        
+        span
+        .css('top', a.offset().top + a.height() + 8)
+        .css('left', a.offset().left + a.width()/2 - span.width()/2)
+        .show()
+        ;
+      }
+    });
   }
   
   function listen_search_element() {
