@@ -25,13 +25,22 @@ class Post < ActiveRecord::Base
   end
   
   # post to remote 
-  def remote! provider_ids = []
+  def remote! provider_ids = [], params = {}
     if provider_ids.blank?
       provider_ids << self.user.default_provider.id
     end
     return false unless (self.valid?)
     provider_ids.each do |provider_id|
-      res = SocialSync.post! self.user, self.attributes.merge(:provider_id => provider_id, :message => self.content)
+      if provider_id == Provider.facebook.id
+        opts = params.merge(:provider_id => provider_id, :message => self.content + "\n\n")
+      else
+        if params[:link]
+          opts = {:provider_id => provider_id, :message => self.content + " #{params[:link]} #{APP_CONFIG[:hash_tag]}"}
+        else
+          opts = {:provider_id => provider_id, :message => self.content}
+        end
+      end
+      res = SocialSync.post! self.user, opts
       self.posts_providers << PostsProvider.new({:provider_id => provider_id, :post_key => res.identifier})
     end
     self.save!
@@ -172,5 +181,7 @@ class Post < ActiveRecord::Base
     return true
   end
   
-  #concerned_with :share
+  concerned_with :artist
+  concerned_with :artist_item
+  concerned_with :artist_track
 end

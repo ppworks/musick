@@ -1,5 +1,6 @@
 require 'nkf'
 class ArtistItem < ActiveRecord::Base
+  belongs_to :artist
   has_many :artist_tracks
   
   def self.find_items artist_id, page, keyword = ''

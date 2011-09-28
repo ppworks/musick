@@ -28,7 +28,7 @@ class Social::PostsController < ApplicationController
     action = 'post'
     target_object = params["data-target-object"]||''
     target_attributes = params["data-target-attributes"]||[].to_yaml
-    # todo attach action to post
+    post_method = "#{action}_#{target_object}"
     
     provider_ids = []
     provider_ids << Provider.facebook.id if params[:facebook].present?
@@ -36,10 +36,16 @@ class Social::PostsController < ApplicationController
     provider_ids << Provider.mixi.id if params[:mixi].present?
     @post = Post.new(:content => params[:content])
     @post.user = current_user
+    
+    if @post.respond_to? post_method
+      social_post_params = @post.send post_method, target_attributes, params[:content]
+    else 
+      social_post_params = {}
+    end
     respond_to do |format|
       begin
         if provider_ids.present?
-          res = @post.remote! provider_ids
+          res = @post.remote! provider_ids, social_post_params
         else
           res = @post.create!
         end

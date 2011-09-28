@@ -36,6 +36,7 @@ $(function(e) {
   function listen_remote_true() {
     $('form[data-remote="true"]').live('submit', function(e) {
       $.fancybox.showActivity();
+      $('div#actions').hide();
       var find_key = "input[type='text'].auto_clear, textarea.auto_clear";
       $(this).find(find_key).attr('readonly', 'readonly');
       $(this)
