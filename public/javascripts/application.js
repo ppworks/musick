@@ -97,7 +97,6 @@ $(function(e) {
     });
     
     var success_new_with_action = function(data, e) {
-      console.info(data);
       $.fancybox.hideActivity();
       $('div#actions')
       .html(data);
@@ -119,6 +118,7 @@ $(function(e) {
         $('div#actions div.wrapper').removeClass('right');
         $('div#actions div.wrapper').addClass('left');
       }
+      $.musick.init();
     };
     
     $('div#actions')
@@ -351,6 +351,24 @@ $(function(e) {
     });
   }
   
+  function listen_form_element() {
+    $('.checkbox').change(function(){
+      if ($(this).is(':checked')) {
+        $(this).next('label').addClass('selected');
+      } else {
+        $(this).next('label').removeClass('selected');
+      }
+    });
+    $('.radio').change(function(){
+      if($(this).is(':checked')){
+        $('.selected:not(:checked)').removeClass('selected');
+        $(this).next('label').addClass('selected');
+      }
+    });
+    $('.checkbox').change();
+    $('.radio').change();
+  }
+  
   function init() {
     //listen_auto_paging();
     listen_auto_grow();
@@ -364,12 +382,14 @@ $(function(e) {
     listen_comment_all();
     listen_like_all();
     sync_post();
+    listen_form_element();
     $.musick = {};
     $.musick.popup = popup;
     $.musick.init = function() {
       round_image();
       listen_popup();
-      fetch_providers_profiles
+      fetch_providers_profiles();
+      listen_form_element();
     };
     $.musick.fetch_providers_profiles = fetch_providers_profiles;
   }
