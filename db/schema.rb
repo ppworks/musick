@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110925111309) do
+ActiveRecord::Schema.define(:version => 20110929110103) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -135,6 +135,17 @@ ActiveRecord::Schema.define(:version => 20110925111309) do
 
   add_index "invites", ["user_id", "to_provider_id", "to_user_key"], :name => "idx_user_id_to_provider_id_to_user_key_on_invites"
 
+  create_table "post_errors", :force => true do |t|
+    t.integer  "post_id",       :null => false
+    t.integer  "provider_id",   :null => false
+    t.integer  "user_id",       :null => false
+    t.text     "error_message", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_errors", ["user_id"], :name => "idx_user_id_on_post_errors"
+
   create_table "posts", :force => true do |t|
     t.integer  "user_id",                             :null => false
     t.text     "content",                             :null => false
@@ -146,6 +157,36 @@ ActiveRecord::Schema.define(:version => 20110925111309) do
   end
 
   add_index "posts", ["user_id", "show_flg"], :name => "idx_user_id_show_flg_on_posts"
+
+  create_table "posts_artist_items", :force => true do |t|
+    t.integer  "post_id",        :null => false
+    t.integer  "artist_item_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_artist_items", ["artist_item_id"], :name => "idx_artist_item_id_on_posts_artist_items"
+  add_index "posts_artist_items", ["post_id"], :name => "idx_post_id_on_posts_artist_items"
+
+  create_table "posts_artist_tracks", :force => true do |t|
+    t.integer  "post_id",         :null => false
+    t.integer  "artist_track_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_artist_tracks", ["artist_track_id"], :name => "idx_artist_track_id_on_posts_artist_tracks"
+  add_index "posts_artist_tracks", ["post_id"], :name => "idx_post_id_on_posts_artist_tracks"
+
+  create_table "posts_artists", :force => true do |t|
+    t.integer  "post_id",    :null => false
+    t.integer  "artist_id",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_artists", ["artist_id"], :name => "idx_artist_id_on_posts_artists"
+  add_index "posts_artists", ["post_id"], :name => "idx_post_id_on_posts_artists"
 
   create_table "posts_comments", :force => true do |t|
     t.integer  "post_id",                                   :null => false

@@ -44,12 +44,11 @@ class Social::PostsController < ApplicationController
     end
     respond_to do |format|
       begin
-        if provider_ids.present?
-          res = @post.remote! provider_ids, social_post_params
-        else
-          res = @post.create!
-        end
+        res = @post.save
         if res
+          if provider_ids.present?
+            @post.delay.remote! provider_ids, social_post_params
+          end
           format.js {render :action => 'create'}
         else
           @errors = @post.errors.full_messages

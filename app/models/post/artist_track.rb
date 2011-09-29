@@ -11,6 +11,9 @@ class Post
       :target_attributes => params_yml,
       :target_name => artist_item.title
     )
+    self.posts_artist_track = PostsArtistTrack.new(
+      :artist_track_id => artist_track.id
+    )
     url = Rails.application.routes.url_helpers.artist_item_url artist_item.artist_id, artist_item.asin, :host => APP_CONFIG[:domain]
     image = artist_item.medium_image_url
     description = artist_item.artist_tracks.map{|t|"#{t.track}. #{t.title}"}.join(" ")

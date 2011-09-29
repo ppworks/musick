@@ -4,6 +4,10 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_one :posts_user_action
+  has_one :posts_artist
+  has_one :posts_artist_item
+  has_one :posts_artist_track
+  has_one :post_error
   has_one :user_action, :through => :posts_user_action
   has_many :posts_providers
   has_many :posts_comments, :order => :created_at
@@ -40,8 +44,17 @@ class Post < ActiveRecord::Base
           opts = {:provider_id => provider_id, :message => self.content}
         end
       end
-      res = SocialSync.post! self.user, opts
-      self.posts_providers << PostsProvider.new({:provider_id => provider_id, :post_key => res.identifier})
+      begin
+        res = SocialSync.post! self.user, opts
+        self.posts_providers << PostsProvider.new({:provider_id => provider_id, :post_key => res.identifier})
+      rescue => e
+        PostError.create(
+          :post_id => self.id,
+          :provider_id => provider_id,
+          :user_id => self.user.id,
+          :error_message => e.message
+        )
+      end
     end
     self.save!
   end

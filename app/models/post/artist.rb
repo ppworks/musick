@@ -10,6 +10,9 @@ class Post
       :target_attributes => params_yml,
       :target_name => artist.name
     )
+    self.posts_artist = PostsArtist.new(
+      :artist_id => artist.id
+    )
     url = Rails.application.routes.url_helpers.artist_url artist.id, :host => APP_CONFIG[:domain]
     image = artist.artist_lastfm.thumbnail_image
     description = artist.artist_lastfm.summary
