@@ -47,7 +47,7 @@ class Post < ActiveRecord::Base
       begin
         res = SocialSync.post! self.user, opts
         self.posts_providers << PostsProvider.new({:provider_id => provider_id, :post_key => res.identifier})
-      rescue => e
+      rescue Exception => e
         PostError.create(
           :post_id => self.id,
           :provider_id => provider_id,
