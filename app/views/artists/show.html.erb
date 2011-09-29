@@ -7,10 +7,11 @@
     :image => @artist.artist_lastfm.main_image
   ) %>
 <% end %>
+<% content_for :javascript, javascript_include_tag('youtube') %>
 <section class="artist">
   <header>
     <hgroup>
-      <h1 class="name"><%= @artist.name %></h1>
+      <h1 class="name youtube" data-search-keyword="<%= @artist.name %>"><%= @artist.name %></h1>
       <h2 class="aliases"><%= @artist.artist_aliases.map{|a| a.name}.join(', ') %></h2>
     </hgroup>
   <%= link_to_artist image_tag(@artist.artist_lastfm.main_image), @artist %>

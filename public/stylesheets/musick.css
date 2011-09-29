@@ -939,3 +939,12 @@ div#actions nav a.button:active {
     background: #ccc;
     padding: 5px 6px 3px;
 }
+
+/**
+ * youtube list
+ */
+ul.youtube_list {
+    position: absolute;
+    left: 0;
+    top: 100px;
+}
