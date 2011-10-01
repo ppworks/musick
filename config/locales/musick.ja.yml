@@ -12,7 +12,7 @@ ja:
     validation_error: "おや？何か変ですよ。入力内容をご確認下さい"
     people: "人"
     person: "人"
-    description: "Musick.infoは音楽を通じたコミュニケーションを目的としたサイトです。"
+    description: "Musick.infoはアーティスト・作品・楽曲を中心に音楽で繋がるためのサイトです。"
     more: "もっとみる"
     more_lastfm: "もっと検索する"
     less: "たたむ"
@@ -36,12 +36,12 @@ ja:
       share: "このアーティストを友人にオススメする"
       update_images: "Last.fmから最新アーティスト画像を取得する"
       items:
-        search: "作品一覧"
+        search: "作品検索"
         amazon: "Amazonで見る"
     home:
       welcome:
         h1: "Musick.infoって？"
-        content: "Musick.infoでは、アーティスト、楽曲を軸にしたコメントやいいね！のやりとりでコミュニケーションをすることができます。\n\n利用出来るアカウントはFacebook、Mixi、Twitterとなっております。"
+        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\n\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。"
       login:
         h1: "ログインしてみよう！"
         facebook: "Facebookのアカウントでログインします。"
@@ -56,7 +56,7 @@ ja:
         web:
           label: "Musick.infoをオススメする"
           h1: "Musick.infoを始めたことを友人に教えよう！"
-          content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusick.infoを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"
+          content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusickを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"
         facebook:
           message: "%{message}\n\n"
           name: "Musickからの投稿"
@@ -116,5 +116,5 @@ ja:
       delete_confirm: "この投稿を削除してもよろしいですか？"
       more: "更に見る"
       complete: "投稿しました。"
-      error: "投稿先のメッセージはすでに削除されたか、何かエラーが発生したようです。"
-      tooltip: "クリックすると、\n「%{target}」\nについて投稿出来ます。"
+      error: "投稿先はすでに削除されたか、何かエラーが発生したようです。"
+      tooltip: "クリックすると、\n「%{target}」\nについてヒトコト投稿出来ます。"
