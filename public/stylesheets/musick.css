@@ -113,9 +113,7 @@ textarea, input[type=text] {
         (startColorstr=#ffeeeeee,endColorstr=#ffffffff);
     zoom: 1;
     
-    -webkit-box-shadow: 1px 1px 1px #fff;
-    -moz-box-shadow: 1px 1px 1px #fff;
-    box-shadow: 1px 1px 1px #fff;
+
 }
 
 /**
@@ -232,12 +230,17 @@ body>header>h1 {
 }
 
 body>header>form {
-    margin: 20px auto 0 auto;
+    margin: 8px auto 0 auto;
     width: 320px;
 }
 
-body>header>form>input[type=search] {
-    
+body>header>form>input[type=text] {
+    width: 320px;
+    height: 16px;
+    font-size: 12px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
 
 /**
@@ -382,6 +385,7 @@ nav.like_page li {
 
 nav.like_page li.hatena_bookmark {
     position: absolute;
+    top: 0;
     right: 0;
 }
 
