@@ -349,7 +349,24 @@ body>footer {
     text-align: center;
 }
 
+body>footer ul {
+    padding-top: 10px;
+    float: left;
+    margin-left: 20px;
+}
+
+body>footer li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+body>footer li:not(:last-child):after {
+    margin-left: 5px;
+    content: '|';
+}
+
 body>footer small {
+    float: right;
     display: block;
     padding-top: 10px;
 }
@@ -392,11 +409,6 @@ nav.like_page li.hatena_bookmark {
 /**
  * home
  */
-#home.guest .main {
-    float: left;
-    margin-bottom: 20px;
-    width: 478px;
-}
 
 .welcome, 
 .login {

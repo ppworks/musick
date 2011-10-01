@@ -41,7 +41,7 @@ ja:
     home:
       welcome:
         h1: "Musick.infoって？"
-        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\n\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。"
+        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。\n\n現在招待制のため、Musick利用者から招待して頂きご利用ください。"
       login:
         h1: "ログインしてみよう！"
         facebook: "Facebookのアカウントでログインします。"
@@ -118,3 +118,16 @@ ja:
       complete: "投稿しました。"
       error: "投稿先はすでに削除されたか、何かエラーが発生したようです。"
       tooltip: "クリックすると、\n「%{target}」\nについてヒトコト投稿出来ます。"
+    footer:
+      about:
+        label: "Musickについて"
+        link: ''
+      privacy:
+        label: "プライバシーポリシー"
+        link: ''
+      rule:
+        label: '利用規約'
+        link: ''
+      gov:
+        label: '運営組織'
+        link: ''

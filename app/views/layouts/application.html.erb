@@ -69,8 +69,14 @@ $(function(){
 })
 </script>
 <div id="fb-root"></div>
-<footer>
-  <small>&copy; Copyright 2011 <a href="http://twitter.com/ppworks">PPworks</a> All rights reserved.</small>
+<footer class="clearfix">
+  <ul>
+    <li><%=link_to t('musick.footer.about.label'), '' %></li>
+    <li><%=link_to t('musick.footer.privacy.label'), '' %></li>
+    <li><%=link_to t('musick.footer.rule.label'), '' %></li>
+    <li><%=link_to t('musick.footer.gov.label'), '' %></li>
+  </ul>
+  <small>&copy; Copyright 2011 <a href="http://twitter.com/musickinfo">Musick</a> All rights reserved.</small>
 </footer>
 </body>
 </html>
