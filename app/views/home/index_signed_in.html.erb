@@ -2,6 +2,7 @@
 <% content_for :search_form, render('artists/search_form', :remote => false) %>
 <% content_for :like_page, render('share/like_page') %>
 <% content_for :og_meta, render('share/og_common', :image => nil) %>
+<% content_for :fb_activity, render('share/fb_activity_feed') %>
 <div class="main">
   <%= render 'share/login_button'%>
 <nav>
