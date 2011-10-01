@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <%= user.id %>:<%= user.name %><br />
+    <%= image_tag user.image, :alt => user.name %>
+  </td>
+  <td>
+    <%= user.sign_in_count %>
+  </td>
+  <td>
+    <%= user.posts.length %>
+  </td>
+  <td>
+    <%= user.last_sign_in_at %>
+  </td>
+  <td>
+    <%= user.created_at %>
+  </td>
+  <td><%= link_to 'login as this user', admin_login_as_user_path(user.id), :method => :post %></td>
+</tr>

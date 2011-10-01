@@ -143,7 +143,7 @@ GEM
       multi_json (>= 0.0.5)
     orm_adapter (0.0.5)
     polyglot (0.3.2)
-    rack (1.2.3)
+    rack (1.2.4)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-oauth2 (0.10.0)
@@ -216,7 +216,7 @@ GEM
       multi_json (~> 1.0.0)
       multi_xml (~> 0.2.0)
       simple_oauth (~> 0.1.5)
-    tzinfo (0.3.29)
+    tzinfo (0.3.30)
     unicorn (4.1.1)
       kgio (~> 2.4)
       rack

@@ -1,0 +1,24 @@
+<%= render 'admin/header'%>
+<h2>ユーザー管理</h2>
+<p>
+  「このユーザーとしてログインする」機能に関しては十分注意して利用下さい。そのユーザーとして投稿が出来てしまいます。<br />
+  ログイン日時とかも書き換えてしまうので、<em>よっぽどのことがない限り使わないほうが良いです。</em>
+</p>
+<table>
+  <thead>
+  <tr>
+    <th>ユーザー</th>
+    <th>ログイン回数</th>
+    <th>投稿回数</th>
+    <th>最終ログイン日時</th>
+    <th>登録日時</th>
+    <th>このユーザーとしてログインする</th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render(:partial => 'user', :collection => @users) %>
+  </tbody>
+</table>
+<div id="paginator">
+  <%= paginate @users, :remote => true %>
+</div>

@@ -1,0 +1,4 @@
+$('<%= escape_javascript render(:partial => 'user', :collection => @users) %>')
+.appendTo('table tbody')
+.fadeIn(100);
+$('div#paginator').html('<%=escape_javascript(paginate @users, :remote => true) %>');
