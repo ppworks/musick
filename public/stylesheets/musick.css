@@ -1005,7 +1005,7 @@ div.youtube_list {
     overflow: hidden;
     text-align: center;
     background: url('/images/youtube_back.png') center center;
-    z-index: 3100;
+    z-index: 1000;
 }
 
 div.youtube_list.hide {

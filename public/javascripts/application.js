@@ -75,21 +75,24 @@ $(function(e) {
   
   function listen_popup() {
     $('a.popup').fancybox({
+      'transitionIn'  : 'elastic',
+      'transitionOut' : 'elastic',
+      'speedIn'   : 200, 
+      'speedOut'    : 100,
+      'centerOnScroll' : true,
       'href' : $(this).attr('href'),
       'hideOnContentClick' : false,
-      'transitionIn' : 'ease.in',
-      'transitionOut' : 'ease.out',
       'overlayColor': '#000',
       'overlayOpacity': 0.3,
       'showCloseButton': false,
       'showNavArrows' : 'no',
       'scrolling': 'auto',
-      'autoScale': true,
       'padding': 0,
       'onComplete': function() {
         $('div#fancybox-overlay').css({'height' : $(document).height()});
         $('div#fancybox-wrap').unbind('mousewheel.fb');
         //$.musick.init();
+        $.fancybox.resize();
       }
     });
     
@@ -226,7 +229,7 @@ $(function(e) {
         
         var span = $('<span class="ui-tooltip-top" style="display:none;">' + tooltip + '</span>')
         .css('position', 'absolute')
-        .css('z-index', 3000)
+        .css('z-index', 3010)
         .appendTo($('body'));
         
         span

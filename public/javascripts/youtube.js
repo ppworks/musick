@@ -43,8 +43,11 @@ $(function() {
         $.fancybox({
           'padding'   : 0,
           'autoScale'   : false,
-          'transitionIn'  : 'none',
-          'transitionOut' : 'none',
+          'transitionIn'  : 'elastic',
+          'transitionOut' : 'elastic',
+          'speedIn'   : 200, 
+          'speedOut'    : 100,
+          'centerOnScroll' : true,
           'title'     : this.title,
           'width'     : 640,
           'height'    : 385,
