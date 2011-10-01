@@ -29,13 +29,31 @@ $(function() {
           var playerUrl = entries[i].media$group.media$content[0].url;
           var watchUrl = entries[i].media$group.media$player[0].url;
           html += '<li><article><h1><a href="' + watchUrl + '">'+ title +'</a></h1><a href="' + watchUrl 
-               + '" class="external"><img src="' + thumbnailUrl 
-               + '" width="125" height="95"/></a></li></article>';
+               + '" rel="group_youtube"><img src="' + thumbnailUrl 
+               + '" width="102" height="76" /></a></li></article>';
         }
       } else {
         html += "<p>not found</p>";
       }
-      $('<ul class="youtube_list"></ul>').html(html).appendTo('body');
+      $('<div class="youtube_list"></div>').html('<ul>' + html + '</ul>').appendTo('body');
+      $('div.youtube_list a').click(function(e) {
+        $.fancybox({
+          'padding'   : 0,
+          'autoScale'   : false,
+          'transitionIn'  : 'none',
+          'transitionOut' : 'none',
+          'title'     : this.title,
+          'width'     : 640,
+          'height'    : 385,
+          'href'      : $(this).attr('href').replace(new RegExp("watch\\?v=", "i"), 'v/'),
+          'type'      : 'swf',
+          'swf'     : {
+          'wmode'       : 'transparent',
+          'allowfullscreen' : 'true'
+          }
+        });
+    return false;
+  });
       console.info(html);
     },
     error: function(xOptions, textStatus){

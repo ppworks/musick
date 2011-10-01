@@ -943,8 +943,54 @@ div#actions nav a.button:active {
 /**
  * youtube list
  */
-ul.youtube_list {
-    position: absolute;
+div.youtube_list {
+    position: fixed;
     left: 0;
-    top: 100px;
+    bottom: 0;
+    height: 108px;
+    overflow: hidden;
+    text-align: center;
+    background: url('/images/youtube_back.png') center center;
+    z-index: 3100;
 }
+
+div.youtube_list.hide {
+    display: none;
+}
+
+div.youtube_list>ul {
+    
+}
+
+div.youtube_list>ul>li {
+    display: inline-block;
+    width: 108px;
+    height: 108px;
+    /*background: url('/images/youtube_back.png') center center;*/
+}
+
+div.youtube_list>ul>li>article {
+    position: relative;
+    margin: 16px 0px;
+    text-align: center;
+}
+
+div.youtube_list>ul>li>article>h1 {
+    position: absolute;
+    padding: 2px;
+    left: 3px;
+    bottom: 0;
+    display: block;
+    width: 98px;
+    font-size: 8px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+div.youtube_list>ul>li>article a,
+div.youtube_list>ul>li>article a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+

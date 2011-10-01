@@ -8,6 +8,22 @@ $(function(e) {
     })
   }
     
+  function listen_scroll_page() {
+    function loadOnScroll() {
+      var content = $('body');
+      var popup = $('#fancybox-wrap');
+      if (content.height() < popup.height()) {
+        content = popup;
+      }
+      if (content.offset().top + content.height() <= $(document).scrollTop() + $(window).height()) {
+        $('div.youtube_list').addClass('hide');
+      } else {
+        $('div.youtube_list').removeClass('hide');
+      }
+    }
+    
+    $(window).scroll(loadOnScroll);
+  }
   function listen_auto_paging() {
     function loadOnScroll() {
       var content = $('.pagination_content');
@@ -371,6 +387,7 @@ $(function(e) {
   
   function init() {
     //listen_auto_paging();
+    listen_scroll_page();
     listen_auto_grow();
     listen_remote_true();
     listen_popup();
