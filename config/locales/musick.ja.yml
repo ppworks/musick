@@ -19,17 +19,17 @@ ja:
     search:
       placeholder: "アーティスト名で検索"
     users_artist:
-      index: "お気に入りアーティスト"
-      create: "お気に入りアーティストへ追加"
-      destroy: "お気に入りアーティストから外す"
+      index: "クリップしたアーティスト"
+      create: "クリップする"
+      destroy: "クリップから外す"
     users_artist_item:
-      index: "お気に入り作品"
-      create: "お気に入り作品へ追加"
-      destroy: "お気に入り作品から外す"
+      index: "クリップした作品"
+      create: "クリップする"
+      destroy: "クリップから外す"
     users_artist_track:
-      index: "お気に入り楽曲"
-      create: "お気に入り楽曲へ追加"
-      destroy: "お気に入り楽曲から外す"
+      index: "クリップした楽曲"
+      create: "クリップする"
+      destroy: "クリップから外す"
     artist:
       update: "アーティスト情報を更新"
       share: "このアーティストを友人にオススメする"

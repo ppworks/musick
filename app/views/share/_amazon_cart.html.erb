@@ -1,0 +1,7 @@
+<form method="post" action="http://www.amazon.co.jp/gp/aws/cart/add.html" target="_blank" class="amazon">
+  <input type="hidden" name="ASIN.1" value="<%=asin%>">
+  <input type="hidden" name="Quantity.1" value="1">
+  <input type="hidden" name="AssociateTag" value="<%=APP_CONFIG[:amazon_associate_tag]%>">
+  <input type="hidden" name="SubscriptionId" value="<%=ENV['AMAZON_KEY']%>">
+  <input type="image" name="submit.add-to-cart" src="http://rcm-images.amazon.com/images/G/09/extranet/associates/buttons/remote-buy-jp1.gif" alt="amazon.co.jp で買う">
+</form>

@@ -1020,4 +1020,12 @@ div.youtube_list>ul>li>article a:hover {
     text-decoration: none;
 }
 
+form.amazon input {
+    margin: 0;
+    padding: 0;
+}
 
+li.amazon {
+    height:28px;
+    vertical-align: middle;
+}

@@ -10,7 +10,8 @@
   <nav>
     <ul>
       <li><%= link_to_users_artist_items_create_or_destroy artist_item.artist_id, artist_item.asin %></li>
-      <li><%= link_to t('musick.artist.items.amazon'), artist_item.detail_page_url, :class => [:button, :external]%></li>
+      <li class="amazon"><%= link_to image_tag('http://rcm-images.amazon.com/images/G/09/extranet/associates/buttons/remote-buy-jp3.gif'), artist_item.detail_page_url, :class => [:external]%></li>
+      <li class="amazon"><%= render('share/amazon_cart', :asin => artist_item.asin)%></li>
     </ul>
   </nav>
 </aside>
