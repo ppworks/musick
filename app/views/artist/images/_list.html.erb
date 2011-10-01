@@ -1,3 +1,3 @@
 <% images.sort_by{rand}[0...24].each do |artist_image| %>
-<li><%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img2'), artist_image.extralarge, :class => 'popup', :rel => "group#{artist_image.artist_id}" %></li>
+<li><%= link_to image_tag(artist_image.largesquare, :class => 'rounded-img2'), artist_image_path(artist_image.artist_id, artist_image.id), :class => 'popup', :rel => "group#{artist_image.artist_id}" %></li>
 <% end %>

@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_one :posts_user_action
   has_one :posts_artist
+  has_one :posts_artist_image
   has_one :posts_artist_item
   has_one :posts_artist_track
   has_one :post_error
@@ -195,6 +196,7 @@ class Post < ActiveRecord::Base
   end
   
   concerned_with :artist
+  concerned_with :artist_image
   concerned_with :artist_item
   concerned_with :artist_track
 end

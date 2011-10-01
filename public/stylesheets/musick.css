@@ -604,6 +604,10 @@ section.artist time {
     text-align: right;
 }
 
+section.artist_image div.image img {
+    min-width: 512px;
+}
+
 /**
  * item search
  */

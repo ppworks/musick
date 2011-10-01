@@ -24,12 +24,11 @@ unless Rails.env.test?
   end
 =end
 
-  if UserAction.all.count == 0
-    user_actions = File.read("#{Rails.root}/db/seeds/user_actions.yml")
-    user_actions_list = YAML.load(user_actions).symbolize_keys
-    user_actions_list[:user_actions].each do |user_action|
-      UserAction.create(user_action)
-    end
+  UserAction.delete_all unless UserAction.all.count == 0
+  user_actions = File.read("#{Rails.root}/db/seeds/user_actions.yml")
+  user_actions_list = YAML.load(user_actions).symbolize_keys
+  user_actions_list[:user_actions].each do |user_action|
+    UserAction.create(user_action)
   end
 end
 

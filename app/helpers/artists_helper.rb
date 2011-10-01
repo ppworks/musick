@@ -36,27 +36,51 @@ module ArtistsHelper
   end
   
   def link_to_artist label, artist
-    attributes = {
-      :class => [:popup_action, :with_tooltip],
-      'data-target-attributes' => [artist.id].to_yaml,
-      'data-target-object' => 'artist',
-      'data-target-name' => artist.name,
-      'data-target-image' => artist.artist_lastfm.thumbnail_image,
-      'data-tooltip' => t('musick.post.tooltip', :target => artist.name),
-    }
-    link_to label, artist_path(artist.id), attributes
+    if user_signed_in?
+      attributes = {
+        :class => [:popup_action, :with_tooltip],
+        'data-target-attributes' => [artist.id].to_yaml,
+        'data-target-object' => 'artist',
+        'data-target-name' => artist.name,
+        'data-target-image' => artist.artist_lastfm.thumbnail_image,
+        'data-tooltip' => t('musick.post.tooltip', :target => artist.name),
+      }
+      link_to label, artist_path(artist.id), attributes
+    else
+      link_to label, login_path, :class => 'popup'
+    end
+  end
+  
+  def link_to_artist_image label, artist_image
+    if user_signed_in?
+      attributes = {
+        :class => [:popup_action, :with_tooltip],
+        'data-target-attributes' => [artist_image.id].to_yaml,
+        'data-target-object' => 'artist_image',
+        'data-target-name' => artist_image.artist.name,
+        'data-target-image' => artist_image.largesquare,
+        'data-tooltip' => t('musick.post.tooltip', :target => artist_image.artist.name),
+      }
+      link_to label, artist_image_path(artist_image.artist_id, artist_image.id), attributes
+    else
+      link_to label, login_path, :class => 'popup'
+    end
   end
   
   def link_to_artist_item label, artist_item
-    attributes = {
-      :class => [:popup_action, :with_tooltip],
-      'data-target-attributes' => [artist_item.artist_id, artist_item.asin].to_yaml,
-      'data-target-object' => 'artist_item',
-      'data-target-name' => artist_item.title,
-      'data-target-image' => artist_item.medium_image_url,
-      'data-tooltip' => t('musick.post.tooltip', :target => artist_item.title),
-    }
-    link_to label, artist_item_path(artist_item.artist_id, artist_item.asin), attributes
+    if user_signed_in?
+      attributes = {
+        :class => [:popup_action, :with_tooltip],
+        'data-target-attributes' => [artist_item.artist_id, artist_item.asin].to_yaml,
+        'data-target-object' => 'artist_item',
+        'data-target-name' => artist_item.title,
+        'data-target-image' => artist_item.medium_image_url,
+        'data-tooltip' => t('musick.post.tooltip', :target => artist_item.title),
+      }
+      link_to label, artist_item_path(artist_item.artist_id, artist_item.asin), attributes
+    else
+      link_to label, login_path, :class => 'popup'
+    end
   end
   
   def list_artist_tracks artist_tracks
@@ -80,17 +104,24 @@ module ArtistsHelper
   end
   
   def link_to_artist_track artist_track
-    attributes = {
-      :class => [:popup_action, :with_tooltip],
-      'data-target-attributes' => [artist_track.artist_id, artist_track.asin, artist_track.disc, artist_track.track].to_yaml,
-      'data-target-object' => 'artist_track',
-      'data-target-name' => artist_track.title,
-      'data-tooltip' => t('musick.post.tooltip', :target => artist_track.title),
-    }
-    content_tag(:a, nil, attributes) {
-      concat content_tag :small, "#{artist_track.track}. "
-      concat artist_track.title
-    }
+    if user_signed_in?
+      attributes = {
+        :class => [:popup_action, :with_tooltip],
+        'data-target-attributes' => [artist_track.artist_id, artist_track.asin, artist_track.disc, artist_track.track].to_yaml,
+        'data-target-object' => 'artist_track',
+        'data-target-name' => artist_track.title,
+        'data-tooltip' => t('musick.post.tooltip', :target => artist_track.title),
+      }
+      content_tag(:a, nil, attributes) {
+        concat content_tag :small, "#{artist_track.track}. "
+        concat artist_track.title
+      }
+      else
+      link_to login_path, :class => 'popup' do
+        concat content_tag :small, "#{artist_track.track}. "
+        concat artist_track.title
+      end
+    end
   end
   
   # unofficial solution to fetch image from amazon.

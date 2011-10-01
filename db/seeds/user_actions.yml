@@ -11,3 +11,7 @@ user_actions:
     id: 3
     name: 'post'
     target: 'artist_track'
+  -
+    id: 4
+    name: 'post'
+    target: 'artist_image'

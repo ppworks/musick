@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110929110103) do
+ActiveRecord::Schema.define(:version => 20111001095940) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -157,6 +157,16 @@ ActiveRecord::Schema.define(:version => 20110929110103) do
   end
 
   add_index "posts", ["user_id", "show_flg"], :name => "idx_user_id_show_flg_on_posts"
+
+  create_table "posts_artist_images", :force => true do |t|
+    t.integer  "post_id",         :null => false
+    t.integer  "artist_image_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts_artist_images", ["artist_image_id"], :name => "idx_artist_image_id_on_posts_artist_images"
+  add_index "posts_artist_images", ["post_id"], :name => "idx_post_id_on_posts_artist_images"
 
   create_table "posts_artist_items", :force => true do |t|
     t.integer  "post_id",        :null => false

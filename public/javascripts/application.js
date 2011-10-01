@@ -85,6 +85,7 @@ $(function(e) {
       'showCloseButton': false,
       'showNavArrows' : 'no',
       'scrolling': 'auto',
+      'autoScale': true,
       'padding': 0,
       'onComplete': function() {
         $('div#fancybox-overlay').css({'height' : $(document).height()});

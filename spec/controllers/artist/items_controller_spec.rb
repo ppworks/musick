@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Artist::ItemesController do
+describe Artist::ItemsController do
   describe "GET 'index'" do
     it "should be success" do
       ArtistItem.stub(:find_items) {{}}
