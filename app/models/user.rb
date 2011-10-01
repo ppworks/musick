@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   has_many :users_artist_tracks
   has_many :artist_tracks, :through => :users_artist_tracks
   
+  has_many :search_logs
+  
   def self.find_for_facebook_oauth(auth, current_user = nil)
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.facebook.id, auth['uid']
     begin

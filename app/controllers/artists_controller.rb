@@ -9,6 +9,7 @@ class ArtistsController < ApplicationController
   
   def search
     keyword = params[:keyword]
+    SearchLog.log(:user => current_user, :keyword => keyword, :kind => SearchLog::ARTIST)
     @artists = Artist
       .search_name(params[:keyword])
       .page params[:page]

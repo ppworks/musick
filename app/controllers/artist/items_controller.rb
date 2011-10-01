@@ -17,6 +17,7 @@ class Artist::ItemsController < ApplicationController
   def _search keyword = ''
     @artist_id = params[:artist_id]
     @artist_items = ArtistItem.find_items params[:artist_id], params[:page], keyword
+    SearchLog.log(:user => current_user, :keyword => keyword, :kind => SearchLog::ARTIST_ITEM, :target_id => @artist_id)
     render :layout => !request.xhr?
   end
 end
