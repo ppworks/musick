@@ -1,3 +1,6 @@
+<section class="artist_item_search">
+  <%=render 'search_form', :artist_id => @artist_id, :remote => true %>
+</section>
 <ul class="items">
 <%@artist_items.each do |artist_item|%>
   <li>

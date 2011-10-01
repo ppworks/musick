@@ -17,7 +17,8 @@ ja:
     more_lastfm: "もっと検索する"
     less: "たたむ"
     search:
-      placeholder: "アーティスト名で検索"
+      artist_placeholder: "アーティスト名で検索"
+      item_placeholder: "このアーティストの作品名で検索"
     users_artist:
       index: "クリップしたアーティスト"
       create: "クリップする"

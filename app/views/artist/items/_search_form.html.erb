@@ -1,0 +1,3 @@
+<%= form_tag artist_search_items_path(artist_id), :class => 'search_form', :method => :get, :remote => remote do %>
+  <%= text_field_tag :keyword, nil, :placeholder => t('musick.search.item_placeholder') %>
+<% end %>

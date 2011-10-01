@@ -1,7 +1,9 @@
 $(function() {
-  function searchVideo(){
-    var query = $('.youtube').data('search-keyword');
-    var maxResults = 14;
+  var maxResults = 14;
+  function search_video(query){
+    if (!query) {
+      return;
+    }
     listVideos(query, maxResults);
   }
 
@@ -33,8 +35,9 @@ $(function() {
                + '" width="102" height="76" /></a></li></article>';
         }
       } else {
-        html += "<p>not found</p>";
+        html += "";
       }
+      $('div.youtube_list').remove();
       $('<div class="youtube_list"></div>').html('<ul>' + html + '</ul>').appendTo('body');
       $('div.youtube_list a').click(function(e) {
         $.fancybox({
@@ -54,11 +57,11 @@ $(function() {
         });
     return false;
   });
-      console.info(html);
     },
     error: function(xOptions, textStatus){
     }
     });
   }
-  searchVideo();
+  search_video($('.youtube').data('search-keyword'));
+  $.youtube_search = search_video;
 });

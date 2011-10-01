@@ -81,7 +81,6 @@ $(function(e) {
       'transitionOut' : 'ease.out',
       'overlayColor': '#000',
       'overlayOpacity': 0.3,
-      'centerOnScroll': 'yes',
       'showCloseButton': false,
       'showNavArrows' : 'no',
       'scrolling': 'auto',

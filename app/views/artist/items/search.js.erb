@@ -1,0 +1,13 @@
+if ('<%=params[:page].nil?%>' == 'true') {
+  $('ul.items').html('');
+}
+<%@artist_items.each do |artist_item|%>
+$('<li><%= escape_javascript render 'artists/artist_item', :artist_item => artist_item, :artist_id => params[:artist_id] %></li>').appendTo('ul.items');
+<%end%>
+$('div#paginator').html('<%=escape_javascript(paginate @artist_items, :remote => true, :keyword => params[:keyword]||'') %>');
+$.musick.init();
+$.fancybox.hideActivity();
+setTimeout(function() {
+  $('div#fancybox-overlay').css({'height' : $(document).height()});
+}, 300);
+$.youtube_search('<%=escape_javascript "#{@artist.name} #{params[:keyword]}"%>');

@@ -634,6 +634,17 @@ section.artist_image div.image img {
 /**
  * item search
  */
+section.artist_item_search {
+    margin: 20px auto;
+    width: 680px;
+}
+
+section.artist_item_search form input {
+    display: block;
+    margin: 0 auto;
+    width: 640px;
+}
+
 ul.items {
     margin: 20px;
 }

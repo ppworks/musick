@@ -16,6 +16,8 @@ Musick::Application.routes.draw do
     get '/:artist_id/images/:id' => 'images#show', :constraints => {:artist_id => /[0-9]+/, :id => /[0-9]+/}, :as => :image
     get '/:artist_id/items/page/:page' => 'items#index', :constraints => {:artist_id => /[0-9]+/, :page => /[0-9]+/}, :as => :items
     get '/:artist_id/items' => 'items#index', :constraints => {:artist_id => /[0-9]+/}, :as => :items
+    get '/:artist_id/items/search/page/:page/' => 'items#search', :constraints => {:artist_id => /[0-9]+/, :page => /[0-9]+/}, :as => :search_items
+    get '/:artist_id/items/search/' => 'items#search', :constraints => {:artist_id => /[0-9]+/}, :as => :search_items
     get '/:artist_id/items/:item_asin' => 'items#show', :constraints => {:artist_id => /[0-9]+/}, :as => :item
   end
   
