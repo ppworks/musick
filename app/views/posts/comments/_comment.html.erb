@@ -2,6 +2,7 @@
   <div class="image"><%= comment_user_image comment %></div>
   <div class="name"><%=comment_user_name comment %></div>
   <time><%= time_ago_in_words(comment.created_at, true) + t('before') %></time>
+  <div class="provider <%=comment.provider.name%> show_bg"></div>
   <div class="content_container clearfix">
   <div class="content"><%=comment.content%></div>
   </div>

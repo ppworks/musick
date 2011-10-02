@@ -3,6 +3,7 @@ class PostsComment < ActiveRecord::Base
   
   belongs_to :post
   belongs_to :user
+  belongs_to :provider
   has_many :posts_comments_likes, :include => :user
   
   # post to remote 

@@ -28,17 +28,17 @@ ul.comment_like li {
 }
 
 ul.like li.facebook,
-ul.comment_like li.facebook  {
+ul.comment_like li.facebook
     background: url('/images/facebook_like.png') no-repeat 0 0;
 }
 
 ul.like li.twitter,
-ul.comment_like li.twitter  {
+ul.comment_like li.twitter {
     background: url('/images/twitter_like.png') no-repeat 0 0;
 }
 
 ul.like li.mixi,
-ul.comment_like li.mixi  {
+ul.comment_like li.mixi {
     background: url('/images/mixi_like.png') no-repeat 0 0;
 }
 
@@ -307,7 +307,7 @@ div.new_comment textarea {
 }
 
 div.new_comment textarea.focus {
-    width: 488px;
+    width: 472px;
 }
 
 div.new_comment input.posts_comment_submit{
@@ -374,4 +374,26 @@ section.posts_artist_track {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+ul.providers>li {
+    display: inline-block;
+}
+
+.provider.facebook {
+    width: 14px;
+    padding-top: 14px;
+    background: url('/images/provider_select_facebook.png');
+}
+
+.provider.twitter {
+    width: 14px;
+    padding-top: 14px;
+    background: url('/images/provider_select_twitter.png');
+}
+
+.provider.mixi {
+    width: 14px;
+    padding-top: 14px;
+    background: url('/images/provider_select_mixi.png');
 }

@@ -2,6 +2,11 @@
   <div class="image user" data-id="<%=post.user.id%>"><%=image_tag post.user.image %></div>
   <div class="name"><%=link_to post.user.name, users_posts_path(post.user.id) %></div>
   <time><%= link_to (time_ago_in_words post.created_at, true) + t('before'), post_path(post.id) %></time>
+  <ul class="providers">
+    <% post.posts_providers.each do |posts_provider|%>
+      <li class="provider <%=posts_provider.provider.name%> show_bg"><%= posts_provider.provider.name %></li>
+    <% end %>
+  </ul>
   <div class="content_container clearfix">
     <div class="content"><%=post.content%><span class="suffix"></span></div>
   </div>
@@ -18,14 +23,6 @@
     </span>
     <% end %>
   </div>
-  <nav class="providers ">
-    <h1><%= t('musick.post.comment_list')%></h1>
-    <ul class="tab">
-      <% post.posts_providers.each do |posts_provider|%>
-        <li><%= posts_provider.provider.name %></li>
-      <% end %>
-    </ul>
-  </nav>
   <ul class="comment">
     <%= like_people post %>
     <% if post.posts_comments.length > 0 %>

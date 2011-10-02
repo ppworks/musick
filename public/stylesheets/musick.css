@@ -144,7 +144,15 @@ label.radio.selected {
     background-position: bottom left;
 }
 
-
+/**
+ * 背景に画像を割り当てたい時に使うclass
+ * .show_bgした要素にwidth: 画像の幅, padding-top: 画像の高さ, background: 画像uriを指定をすること
+ */
+.show_bg {
+    height:0;
+    overflow:hidden;
+    display:block;
+}
 
 ul.tab {
     margin: 0 0 20px 0;
