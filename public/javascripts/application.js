@@ -7,7 +7,19 @@ $(function(e) {
         xfbml: true
     })
   }
-    
+  
+  function listen_window_resize() {
+    $(window).resize(function() {
+        var width = parseInt($(this).width());
+        if (width < 1170) {
+          $('aside.activity').hide();
+        } else {
+          $('aside.activity').show();
+        }
+    });
+    $(window).resize();
+  }
+  
   function listen_scroll_page() {
     function loadOnScroll() {
       var content = $('body');
@@ -389,6 +401,7 @@ $(function(e) {
   }
   
   function init() {
+    listen_window_resize();
     //listen_auto_paging();
     listen_scroll_page();
     listen_auto_grow();
