@@ -1,4 +1,6 @@
 Musick::Application.routes.draw do
+  get "user_voices/create"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
   devise_scope :user do
     match '/users/sign_out(.:format)', {:action=>"destroy", :controller=>"devise/sessions", :via => :delete, :as => :destroy_user_session }
@@ -73,6 +75,8 @@ Musick::Application.routes.draw do
   namespace :providers do
     get ':id/profiles' => 'profiles#index', :as => :profiles
   end
+  
+  resources :user_voices, :only => [:create]
   
   get 'about' => 'pages#about', :as => :about_page
   get 'privacy' => 'pages#privacy', :as => :privacy_page

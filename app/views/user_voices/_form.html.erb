@@ -1,0 +1,5 @@
+<%=form_for UserVoice.new, :remote => true do |f|%>
+  <h1>みなさまのご意見・ご感想をお寄せください。</h1>
+  <%=f.text_area :message, :class => [:auto_grow, :auto_clear] %>
+  <%=submit_tag t('musick.user_voice.send') %>
+<% end %>

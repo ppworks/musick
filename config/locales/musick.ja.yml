@@ -136,3 +136,8 @@ ja:
       gov:
         label: '運営組織'
         link: ''
+    user_voice:
+      send: "送信します"
+      complete:
+        title: "ご意見・ご感想ありがとうございます。"
+        content: "今後ともよろしくお願いいたします。"

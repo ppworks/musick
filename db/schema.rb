@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001161326) do
+ActiveRecord::Schema.define(:version => 20111002094314) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -318,6 +318,16 @@ ActiveRecord::Schema.define(:version => 20111001161326) do
   end
 
   add_index "user_actions", ["name", "target"], :name => "idx_name_target_on_user_actions", :unique => true
+
+  create_table "user_voices", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.string   "ip_address"
+    t.string   "path"
+    t.string   "referer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

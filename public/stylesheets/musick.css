@@ -1107,3 +1107,23 @@ section.static_page h1 {
     background:#6D6D6D;
 }
 
+/**
+ * ご意見
+ */
+form.new_user_voice {
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
+
+form.new_user_voice h1 {
+    text-align: left;
+}
+
+form.new_user_voice textarea {
+    display: block;
+    margin: 10px 0;
+    width: 300px;
+    height: 40px;
+    text-align: left;
+}
