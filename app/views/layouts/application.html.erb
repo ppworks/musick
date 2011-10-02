@@ -28,8 +28,12 @@
 <% if user_signed_in?%>
   <h1><%=image_tag current_user.image, :size => '30x30' %><%= link_to current_user.name, '#', :class => :name %></h1>
   <ul>
-    <li><%= link_to t('musick.logout.label'), destroy_user_session_path, :method => :delete %></li>
     <li><%= link_to t('musick.social.posts.my_list'), users_posts_path(current_user.id)%></li>
+    <li><%= link_to t('musick.users_artist.index'), users_artists_path(current_user.id) %></li>
+    <li><%= link_to t('musick.users_artist_item.index'), users_artist_items_path(current_user.id) %></li>
+    <li><%= link_to t('musick.users_artist_track.index'), users_artist_tracks_path(current_user.id) %></li>
+
+    <li><%= link_to t('musick.logout.label'), destroy_user_session_path, :method => :delete %></li>
   </ul>
 <% end %>
 </nav>
