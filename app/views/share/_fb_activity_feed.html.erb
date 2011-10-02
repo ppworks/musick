@@ -1,7 +1,8 @@
 <aside class="activity">
   <h1>facebook activities</h1>
   <div class="fb-activity"
-    data-site="<%=current_url%>"
+    data-site="<%=APP_CONFIG[:domain]%>"
+    data-filter="<%=request.path%>"
     data-width="142"
     data-height="600"
     data-header="false"
