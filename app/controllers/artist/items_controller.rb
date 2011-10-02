@@ -5,6 +5,7 @@ class Artist::ItemsController < ApplicationController
   
   def show
     @artist_item = ArtistItem.find_or_create params[:artist_id], params[:item_asin]
+    render :layout => !request.xhr?
   end
   
   def search

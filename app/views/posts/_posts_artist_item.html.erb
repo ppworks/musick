@@ -1,0 +1,8 @@
+<section class="posts_artist_item">
+<%
+ artist_item = ArtistItem.find(posts_artist_item.artist_item_id)
+ artist = artist_item.artist
+%>
+<h1><%=link_to artist.name, artist_path(artist.id) %> - <%=link_to artist_item.title, artist_item_path(artist.id, artist_item.asin), :class=> :popup %></h1>
+<%=link_to image_tag(artist_item.medium_image_url), artist_item_path(artist.id, artist_item.asin), :class=> :popup %>
+</section>

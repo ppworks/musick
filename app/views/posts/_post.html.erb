@@ -5,6 +5,10 @@
   <div class="content_container clearfix">
     <div class="content"><%=post.content%><span class="suffix"></span></div>
   </div>
+  <%= render('posts/posts_artist', :posts_artist => post.posts_artist) if post.posts_artist.present? %>
+  <%= render('posts/posts_artist_image', :posts_artist_image => post.posts_artist_image) if post.posts_artist_image.present? %>
+  <%= render('posts/posts_artist_item', :posts_artist_item => post.posts_artist_item) if post.posts_artist_item.present? %>
+  <%= render('posts/posts_artist_track', :posts_artist_track => post.posts_artist_track) if post.posts_artist_track.present? %>
   <div class="actions">
     <%=like_link post %>
     <span class="comment_action"><%= link_to t('musick.post.comment'), '#'%></span>

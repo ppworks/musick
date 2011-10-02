@@ -1,0 +1,7 @@
+<section class="posts_artist">
+<%
+ artist = Artist.find(posts_artist.artist_id)
+%>
+<h1><%=link_to artist.name, artist_path(artist.id) %></h1>
+<%=link_to image_tag(artist.artist_lastfm.thumbnail_image), artist_path(artist.id) %>
+</section>

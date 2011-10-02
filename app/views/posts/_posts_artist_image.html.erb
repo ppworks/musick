@@ -1,0 +1,8 @@
+<section class="posts_artist_image">
+<%
+ artist_image = ArtistImage.find(posts_artist_image.artist_image_id)
+ artist = artist_image.artist
+%>
+<h1><%=link_to artist.name, artist_path(artist.id) %> - Image</h1>
+<%=link_to image_tag(artist_image.largesquare), artist_image_path(artist.id, artist_image.id), :class=> :popup %>
+</section>

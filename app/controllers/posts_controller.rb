@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     @posts = Post
       .includes(:user)
       .includes(:posts_likes)
+      .includes(:posts_artist)
+      .includes(:posts_artist_image)
+      .includes(:posts_artist_item)
+      .includes(:posts_artist_track)
       .where(:user_id => user_ids)
       .exists
       .order('id DESC')

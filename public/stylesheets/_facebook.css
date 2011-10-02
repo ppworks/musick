@@ -361,4 +361,17 @@ ul.post ul.comment li:not(:first-child) {
     border-top: solid 0px #E9E9E9;
 }
 
-
+section.posts_artist,
+section.posts_artist_image,
+section.posts_artist_item,
+section.posts_artist_track {
+    display: inline-block;
+    margin: 10px auto;
+    position: relative;
+    background: #ffffff;
+    background-clip: padding-box;
+    border: 15px solid #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
