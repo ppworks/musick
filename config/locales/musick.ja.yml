@@ -39,6 +39,7 @@ ja:
         search: "Amazonから作品検索"
         amazon: "Amazonで見る"
       youtube: "youtubeから動画検索"
+    followee: "友達一覧"
     home:
       welcome:
         h1: "Musick.infoって？"
