@@ -49,8 +49,8 @@ Musick::Application.routes.draw do
     delete 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track' => 'artist_tracks#destroy', :constraints => {:artist_id => /[0-9]+/, :disc => /[0-9]+/, :track => /[0-9]+/}, :as => :destroy_artist_track
     get ':user_id/artist_tracks/page/:page' => 'artist_tracks#index', :constraints => {:user_id => /[0-9]+/, :page => /[0-9]+/}, :as => :artist_tracks
     get ':user_id/artist_tracks' => 'artist_tracks#index', :constraints => {:user_id => /[0-9]+/}, :as => :artist_tracks
-    get ':user_id/posts/page/:page' => 'posts#index', :as => :posts
-    get ':user_id/posts' => 'posts#index', :as => :posts
+    get ':user_id/posts/page/:page' => 'posts#index', :constraints => {:user_id => /[0-9]+/}, :as => :posts
+    get ':user_id/posts' => 'posts#index', :constraints => {:user_id => /[0-9]+/}, :as => :posts
   end
   
   resources :posts, :only => [:destroy, :show, :index] do

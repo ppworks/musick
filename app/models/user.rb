@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   
   has_many :users_artist_tracks
   has_many :artist_tracks, :through => :users_artist_tracks
-  
+  has_many :posts
   has_many :search_logs
   
   def self.find_for_facebook_oauth(auth, current_user = nil)

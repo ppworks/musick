@@ -55,6 +55,7 @@ ja:
     social:
       posts:
         create: "投稿する"
+        my_list: "自分の投稿一覧"
         placeholder: "このサイトをオススメする一言をどうぞ！"
         web:
           label: "Musick.infoをオススメする"
