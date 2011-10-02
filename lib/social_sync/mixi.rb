@@ -180,7 +180,8 @@ module SocialSync
       )
       retry_count = 0
       begin
-        token = OAuth2::AccessToken.new(client, providers_user.access_token)
+        access_token = providers_user.access_token
+        token = OAuth2::AccessToken.new(client, access_token)
         res = yield token
       rescue => e
         token = client.web_server.refresh_access_token(providers_user.refresh_token, :grant_type => "refresh_token")

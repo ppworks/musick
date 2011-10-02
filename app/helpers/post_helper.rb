@@ -6,6 +6,15 @@ module PostHelper
     end
     content_tag(:ul, :class => 'like') do
       Provider.all.each do |provider|
+        unless post.has_provider?(provider.id)
+          next
+        end
+        unless current_user.has_provider?(provider.id)
+          next
+        end
+        if provider.id == Provider.mixi.id && current_user.id == post.user_id
+          next
+        end
         if posts_likes[provider.id].present?
           concat render 'posts/likes/unlike_link', :post => post, :provider => provider
         else

@@ -195,6 +195,10 @@ class Post < ActiveRecord::Base
     return true
   end
   
+  def has_provider? provider_id
+    self.posts_providers.select(:provider_id).map{|posts_provider|posts_provider.provider_id}.include? provider_id
+  end
+  
   concerned_with :artist
   concerned_with :artist_image
   concerned_with :artist_item
