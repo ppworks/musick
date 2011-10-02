@@ -20,6 +20,7 @@ $(function() {
     },
     dataType:    'jsonp',
     success: function(data) {
+      $.fancybox.hideActivity();
       var html = '';
       if(data.feed.openSearch$totalResults.$t > 0){
         var entries = data.feed.entry;
@@ -62,9 +63,16 @@ $(function() {
   });
     },
     error: function(xOptions, textStatus){
+      $.fancybox.hideActivity();
     }
     });
   }
-  search_video($('.youtube').data('search-keyword'));
+  
+  $('a.youtube').live('click', function(e) {
+    e.preventDefault();
+    $.fancybox.showActivity();
+    search_video($('.youtube').data('search-keyword'));
+  });
+  
   $.youtube_search = search_video;
 });

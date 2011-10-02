@@ -36,14 +36,17 @@ ja:
       share: "このアーティストを友人にオススメする"
       update_images: "Last.fmから最新アーティスト画像を取得する"
       items:
-        search: "作品検索"
+        search: "Amazonから作品検索"
         amazon: "Amazonで見る"
+      youtube: "youtubeから動画検索"
     home:
       welcome:
         h1: "Musick.infoって？"
         content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。\n\n現在招待制のため、Musick利用者から招待して頂きご利用ください。"
       login:
-        h1: "ログインしてみよう！"
+        first: "ログインしてみよう！"
+        add: "アカウントを接続しよう！"
+        add_description: "更に接続アカウントを増やすことで複数のサイトに投稿連携が出来るようになります。"
         facebook: "Facebookのアカウントでログインします。"
         twitter: "Twitterのアカウントでログインします。"
         mixi: "mixiのアカウントでログインします。"

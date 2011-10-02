@@ -1,6 +1,9 @@
 <% if  !user_signed_in? || !current_user.has_all_provider?%>
 <section class="login">
-  <h1><%=t('musick.home.login.h1')%></h1>
+  <h1><%=user_signed_in? ? t('musick.home.login.add'):t('musick.home.login.first')%></h1>
+  <% if user_signed_in? %>
+  <p><%= t('musick.home.login.add_description')%></p>
+  <% end %>
   <ul>
     <% if !user_signed_in? || !current_user.has_provider?(Provider.facebook.id) %>
     <li>

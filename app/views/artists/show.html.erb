@@ -14,14 +14,15 @@
     <hgroup>
       <h1 class="name youtube" data-search-keyword="<%= @artist.name %>"><%= @artist.name %></h1>
     </hgroup>
-  <%= link_to_artist image_tag(@artist.artist_lastfm.main_image), @artist %>
+    <%= link_to_artist image_tag(@artist.artist_lastfm.main_image), @artist %>
+    <nav>
+      <ul>
+        <li><%=link_to_users_artists_create_or_destroy @artist.id %></li>
+        <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
+        <li><%=link_to t('musick.artist.youtube'), '', :class => 'button youtube' %>
+      </ul>
+    </nav>
   </header>
-  <nav>
-    <ul>
-      <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
-      <li><%=link_to_users_artists_create_or_destroy @artist.id %></li>
-    </ul>
-  </nav>
   <div class="description">
     <%=simple_format(@artist.artist_lastfm.summary, :class => 'summary') %>
     <%=link_to t('musick.more'), '#more', :class => :read_more if @artist.artist_lastfm.content.present? %>

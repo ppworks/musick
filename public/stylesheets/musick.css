@@ -425,7 +425,7 @@ nav.like_page li.hatena_bookmark {
 }
 
 .login {
-    height: 360px;
+    
 }
 
 .welcome p,
@@ -584,7 +584,7 @@ section.artist .images li {
 }
 
 .artist header img {
-    margin: -5px auto 10px auto;
+    margin: -5px auto -5px auto;
     max-width: 600px;
     max-height: 400px;
     padding: 10px 10px 25px 10px;
@@ -599,7 +599,17 @@ section.artist .images li {
 }
 
 .artist nav {
-    margin:30px 0 30px 0;
+    display: inline-block;
+    margin:0 auto 0;
+    padding: 10px;
+    background-clip: padding-box;
+    border: 15px solid rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 1.6em;
+    color: #333333;
+    background: #fcfcfc;
 }
 
 .artist nav li {
