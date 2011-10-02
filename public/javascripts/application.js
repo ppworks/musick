@@ -332,18 +332,18 @@ $(function(e) {
       .css('display', 'inline')
       .fadeIn(200);
     })
-    .live('mouseover', function(e) {
+    .live('hover', function(e) {
       e.preventDefault();
-      $(this).next('ul')
-      .css('display', 'inline')
-      .fadeIn(200);
-    })
-    .live('mouseout', function(e) {
-      e.preventDefault();
-      $(this)
-      .next('ul')
-      .fadeOut(200);
-    })
+      if (e.type == 'mouseover') {
+        $(this).next('ul')
+        .css('display', 'inline')
+        .fadeIn(200);
+      } else {
+        $(this)
+        .next('ul')
+        .fadeOut(200);
+      }
+    });
   }
   
   function fetch_providers_profiles() {
@@ -392,7 +392,7 @@ $(function(e) {
     });
     $('.radio').change(function(){
       if($(this).is(':checked')){
-        $('.selected:not(:checked)').removeClass('selected');
+        $(this).closest('form').find('label.selected:not(:checked)').removeClass('selected');
         $(this).next('label').addClass('selected');
       }
     });

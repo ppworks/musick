@@ -68,12 +68,12 @@ class PostsController < ApplicationController
   def sync
     @post = Post.find params[:id]
     res = @post.sync!
+    unless res
+      head :ok
+      return
+    end
     respond_to do |format|
-      if res
-        format.js
-      else
-        head :ok
-      end
+      format.js
     end
   end
 end

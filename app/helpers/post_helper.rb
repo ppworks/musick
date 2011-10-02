@@ -31,6 +31,9 @@ module PostHelper
     end
     content_tag(:ul, :class => 'comment_like') do
       Provider.all.each do |provider|
+        unless posts_comment.provider_id == provider.id
+          next
+        end
         if provider.id == Provider.mixi.id
           next
         end

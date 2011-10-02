@@ -10,7 +10,7 @@ class Posts::CommentsController < ApplicationController
     @posts_comment.user = current_user
     
     respond_to do |format|
-      res = @posts_comment.remote!
+      res = @posts_comment.remote! params[:provider_id]
       if res
         format.js
       else

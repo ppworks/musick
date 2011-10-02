@@ -1,8 +1,19 @@
 var opened_comment = $('div.post[data-id="<%= @post.id %>"]').find('.show_all_comment').size();
 var comment_text = $('div.post[data-id="<%= @post.id %>"] textarea').val();
+var checked_provider = $('div.post[data-id="<%= @post.id %>"]').find('input[name="provider"]:checked').val();
+var posts_comment_content_focus = $('div.post[data-id="<%= @post.id %>"]').find('#posts_comment_content').hasClass('focus');
+
 $('div.post[data-id="<%= @post.id %>"]')
 .html('<%=escape_javascript (render :partial => 'posts/post', :locals => {:post => @post}) %>')
+$.musick.init();
 if (opened_comment == 0) {
   $('div.post[data-id="<%= @post.id %>"]').find('.show_all_comment a').click();
 }
 $('div.post[data-id="<%= @post.id %>"] textarea').autogrow().val(comment_text);
+
+$('div.post[data-id="<%= @post.id %>"] input[name="provider"]').val([checked_provider]);
+$('div.post[data-id="<%= @post.id %>"] input[name="provider"]:checked').change();
+
+if (posts_comment_content_focus) {
+  $('div.post[data-id="<%= @post.id %>"] textarea').focus();
+}

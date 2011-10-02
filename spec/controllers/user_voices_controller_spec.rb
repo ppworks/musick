@@ -4,7 +4,7 @@ describe UserVoicesController do
 
   describe "GET 'create'" do
     it "should be successful" do
-      get 'create'
+      get 'create', :format => :js
       response.should be_success
     end
   end

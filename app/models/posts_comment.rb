@@ -10,9 +10,10 @@ class PostsComment < ActiveRecord::Base
   def remote! provider_id = nil
     return false unless (self.valid?)
     if provider_id.nil?
-      posts_provider = self.post.posts_providers.first
-      provider_id = posts_provider.provider_id
+      return false
     end
+    posts_provider = self.post.posts_providers.where(:provider_id => provider_id).first
+    provider_id = posts_provider.provider_id
     return false if posts_provider.blank?
     
     post_key = posts_provider.post_key
