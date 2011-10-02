@@ -13,7 +13,7 @@ namespace :lastfm do
           next if artist_names.nil?
           artist_names.each do |artist_name|
             begin
-              res = LastfmWrapper::Base.api.artist.get_images :artist => artist_name, :autocorrect => 1, :limit => 5
+              res = LastfmWrapper::Base.api.artist.get_images :artist => artist_name, :autocorrect => 1, :limit => 25
             rescue
               next
             end
