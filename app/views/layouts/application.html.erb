@@ -71,10 +71,10 @@ $(function(){
 <div id="fb-root"></div>
 <footer class="clearfix">
   <ul>
-    <li><%=link_to t('musick.footer.about.label'), '' %></li>
-    <li><%=link_to t('musick.footer.privacy.label'), '' %></li>
-    <li><%=link_to t('musick.footer.rule.label'), '' %></li>
-    <li><%=link_to t('musick.footer.gov.label'), '' %></li>
+    <li><%=link_to_unless_current t('musick.footer.about.label'), about_page_path %></li>
+    <li><%=link_to_unless_current t('musick.footer.privacy.label'), privacy_page_path %></li>
+    <li><%=link_to_unless_current t('musick.footer.rule.label'), rule_page_path %></li>
+    <li><%=link_to_unless_current t('musick.footer.gov.label'), gov_page_path %></li>
   </ul>
   <small>&copy; Copyright 2011 <a href="http://twitter.com/musickinfo">Musick</a> All rights reserved.</small>
 </footer>

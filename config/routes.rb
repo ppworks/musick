@@ -73,7 +73,11 @@ Musick::Application.routes.draw do
   namespace :providers do
     get ':id/profiles' => 'profiles#index', :as => :profiles
   end
-
+  
+  get 'about' => 'pages#about', :as => :about_page
+  get 'privacy' => 'pages#privacy', :as => :privacy_page
+  get 'rule' => 'pages#rule', :as => :rule_page
+  get 'gov' => 'pages#gov', :as => :gov_page
   get 'login' => 'home#login', :as => :login
   root :to => 'home#index'
 end

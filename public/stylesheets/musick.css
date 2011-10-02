@@ -1056,3 +1056,43 @@ li.amazon {
     height:28px;
     vertical-align: middle;
 }
+
+
+/**
+ * static page
+ */
+section.static_page article {
+    margin-bottom: 2.0em;
+    padding: 10px;
+    background-clip: padding-box;
+    border: 15px solid rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 1.6em;
+    color: #333333;
+    background: #fcfcfc;
+}
+
+section.static_page article ol li {
+    margin: 0.5em 2.0em;
+    list-style-type:decimal;
+    list-style-position: outside;
+}
+
+section.static_page h1 {
+    margin: -13px 0 10px -40px;
+    padding: 10px 8px;
+    width: 262px;
+    border-width:0 0 0 5px;
+    border-style:solid;
+    line-height:140%;
+    font-size: 1.2em;
+    font-weight:bold;
+    letter-spacing: 0.2em;
+    border-color: #dddddd;
+    border-style:solid;
+    color: #ffffff;
+    background:#6D6D6D;
+}
+
