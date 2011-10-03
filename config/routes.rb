@@ -82,6 +82,7 @@ Musick::Application.routes.draw do
   get 'privacy' => 'pages#privacy', :as => :privacy_page
   get 'rule' => 'pages#rule', :as => :rule_page
   get 'gov' => 'pages#gov', :as => :gov_page
+  get 'sorry' => 'pages#sorry', :as => :sorry_page
   get 'login' => 'home#login', :as => :login
   root :to => 'home#index'
 end

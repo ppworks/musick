@@ -145,9 +145,18 @@ class Invite < ActiveRecord::Base
     end
   end
   
+  def self.exists_for? provider_id, user_key
+    return true unless APP_CONFIG[:need_invitation]
+    raise NoInvitationException, 'not exists' unless self.where(:to_provider_id => provider_id, :to_user_key => user_key).exists?
+    true
+  end
+  
   protected
   def send_to_provider
     return if self.delivered_at.present?
     self.delay.send_to_provider_delayed
   end
+end
+
+class NoInvitationException < Exception
 end
