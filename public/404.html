@@ -1,26 +1,92 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
 
-<body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
-  </div>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="ja"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="ja"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="ja"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="ja"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. -->
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="content-language" content="ja">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<link rel="stylesheet" type="text/css" href="/_/css/style.css">
+<link rel="stylesheet" type="text/css" href="/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link href="/stylesheets/__reset-fonts.css?1317645622" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/_facebook.css?1317645622" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/_tooltip.css?1317645622" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/musick.css?1317645622" media="screen" rel="stylesheet" type="text/css" />
+<script src="/_/js/modernizr-1.7.min.js"></script>
+<script src="/javascripts/jquery.js?1317645622" type="text/javascript"></script>
+<script src="/javascripts/jquery_ujs.js?1317645622" type="text/javascript"></script>
+<script src="/fancybox/jquery.mousewheel-3.0.4.pack.js?1317645621" type="text/javascript"></script>
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js?1317645621" type="text/javascript"></script>
+<script src="/javascripts/jquery_auto_grow.js?1317645622" type="text/javascript"></script>
+<script src="/javascripts/application.js?1317645622" type="text/javascript"></script>
+
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="+10H2wnhWuOsteh3oPCNW2cOPiRFLINUNr4u3LlwXMU="/>
+</head>
+<body id="" class="">
+<header>
+<h1><a href="/"><img alt="Musick_logo" src="/images/musick_logo.png?1317645622" /></a></h1>
+<nav id="user">
+</nav>
+
+</header>
+<div id="container">
+
+<section class="static_page">
+<article>
+  <h1>ページが見つかりません。</h1>
+  <p>
+    お探しのページは見つかりませんでした。<br />
+    <a href="/">トップへ戻る</a>
+  </p>
+</article>
+</section>
+
+
+</div>
+<section id="fancybox_inline">
+  <h1></h1>
+  <article></article>
+</section>
+<div id="actions">
+</div>
+<script>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25643488-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+$(function(){
+    var facebookJs = document.location.protocol + '//connect.facebook.net/ja_JP/all.js';
+    $.getScript(facebookJs);
+    $.fb_app_id = '205236182851501';
+})
+</script>
+<div id="fb-root"></div>
+<footer class="clearfix">
+  <ul>
+    <li><a href="/about">Musickについて</a></li>
+    <li><a href="/privacy">プライバシーポリシー</a></li>
+    <li><a href="/rule">利用規約</a></li>
+    <li><a href="/gov">運営組織</a></li>
+  </ul>
+  <small>&copy; Copyright 2011 <a href="http://twitter.com/musickinfo">Musick</a> All rights reserved.</small>
+</footer>
 </body>
 </html>
