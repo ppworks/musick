@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :artist_tracks, :through => :users_artist_tracks
   has_many :posts
   has_many :search_logs
+  has_many :user_access_logs
   
   def self.find_for_facebook_oauth(auth, current_user = nil)
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.facebook.id, auth['uid']
@@ -64,6 +65,10 @@ class User < ActiveRecord::Base
         :image => image
       })
     else
+      if current_user.nil?
+        user.default_provider_id = Provider.facebook.id
+        user.save!
+      end
       user = User.find providers_user[:user_id]
       if user.default_provider_id == Provider.facebook.id
         user.name = name
@@ -110,6 +115,10 @@ class User < ActiveRecord::Base
       })
     else
       user = User.find providers_user[:user_id]
+      if current_user.nil?
+        user.default_provider_id = Provider.mixi.id
+        user.save!
+      end
       if user.default_provider_id == Provider.mixi.id
         user.name = name
         user.image = image
@@ -157,6 +166,10 @@ class User < ActiveRecord::Base
       })
     else
       user = User.find providers_user[:user_id]
+      if current_user.nil?
+        user.default_provider_id = Provider.twitter.id
+        user.save!
+      end
       if user.default_provider_id == Provider.twitter.id
         user.name = name
         user.image = image
