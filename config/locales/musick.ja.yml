@@ -12,7 +12,7 @@ ja:
     validation_error: "おや？何か変ですよ。入力内容をご確認下さい"
     people: "人"
     person: "人"
-    description: "Musick.infoはアーティスト・作品・楽曲を中心に音楽で繋がるためのサイトです。"
+    description: "Musickはアーティスト・作品・楽曲を中心に音楽で繋がるためのサイトです。"
     more: "もっとみる"
     more_lastfm: "もっと検索する"
     less: "たたむ"
@@ -42,7 +42,7 @@ ja:
     followee: "友達一覧"
     home:
       welcome:
-        h1: "Musick.infoって？"
+        h1: "Musickって？"
         content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。\n\n現在招待制のため、Musick利用者から招待して頂きご利用ください。"
       login:
         first: "ログインしてみよう！"
@@ -59,9 +59,9 @@ ja:
         my_list: "自分の投稿一覧"
         placeholder: "このサイトをオススメする一言をどうぞ！"
         web:
-          label: "Musick.infoをオススメする"
-          h1: "Musick.infoを始めたことを友人に教えよう！"
-          content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusickを始めたことを投稿して、みんなにMusick.infoを知ってもらおう！"
+          label: "Musickをオススメする"
+          h1: "Musickを始めたことを友人に教えよう！"
+          content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusickを始めたことを投稿して、みんなにMusickを知ってもらおう！"
         facebook:
           message: "%{message}\n\n"
           name: "Musickからの投稿"
