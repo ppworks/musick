@@ -229,6 +229,8 @@ $(function(e) {
       $(this).addClass('hover');
     }, function(e) {
       $(this).removeClass('hover');
+    }).click(function(e) {
+      location.href = $(this).find('a').attr('href');
     });
     
     $('a.with_tooltip').live('hover', function(e) {
