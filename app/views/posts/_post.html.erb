@@ -16,7 +16,6 @@
   <%= render('posts/posts_artist_track', :posts_artist_track => post.posts_artist_track) if post.posts_artist_track.present? %>
   <div class="actions">
     <%=like_link post %>
-    <span class="comment_action"><%= link_to t('musick.post.comment'), '#'%></span>
     <% if post.user_id == current_user.id %>
     <span class="delete_action">
     <%=link_to t('musick.post.delete'), post_path(post.id), :method => :delete, :remote => true, :confirm => t('musick.post.delete_confirm') %>
