@@ -10,6 +10,7 @@ class Users::PostsController < ApplicationController
         .includes(:posts_artist_image)
         .includes(:posts_artist_item)
         .includes(:posts_artist_track)
+        .exists
         .order('id DESC')
         .page params[:page]
     rescue ActiveRecord::RecordNotFound => e
