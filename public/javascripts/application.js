@@ -100,7 +100,7 @@ $(function(e) {
       'overlayOpacity': 0.3,
       'showCloseButton': false,
       'showNavArrows' : 'no',
-      'scrolling': 'auto',
+      'scrolling': 'no',
       'autoDimensions' : true,
       'padding': 0,
       'onComplete': function() {
