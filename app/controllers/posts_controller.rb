@@ -50,8 +50,8 @@ class PostsController < ApplicationController
     end
     respond_to do |format|
       begin
-        @post.show_flg = 0
-        @post.save!
+        @post.show_flg = FALSE
+        res = @post.save
         if res
           format.js
         else
