@@ -663,7 +663,6 @@ section.artist time {
 }
 
 section.artist_image div.image img {
-    min-width: 512px;
 }
 
 /**

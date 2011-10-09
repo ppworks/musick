@@ -12,6 +12,7 @@ gem 'twitter'
 gem 'devise'
 gem 'delayed_job'
 gem 'amazon-ecs', '>= 2.2.0'
+gem 'image_size'
 
 group :development, :test do
   gem 'heroku'

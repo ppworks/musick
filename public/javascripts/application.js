@@ -101,12 +101,14 @@ $(function(e) {
       'showCloseButton': false,
       'showNavArrows' : 'no',
       'scrolling': 'auto',
+      'autoDimensions' : true,
       'padding': 0,
       'onComplete': function() {
         $('div#fancybox-overlay').css({'height' : $(document).height()});
         $('div#fancybox-wrap').unbind('mousewheel.fb');
         //$.musick.init();
         $.fancybox.resize();
+        $.fancybox.center();
       }
     });
     

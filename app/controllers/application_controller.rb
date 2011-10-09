@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale
-  rescue_from Exception, :with => :catch_exceptions #if Rails.env.production?
+  rescue_from Exception, :with => :catch_exception if Rails.env.production?
   rescue_from Invite::NoInvitationException, :with => :catch_no_invitation_exception
   protected
   def set_locale
