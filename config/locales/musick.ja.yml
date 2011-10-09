@@ -137,6 +137,7 @@ ja:
         label: '運営組織'
         link: ''
     user_voice:
+      h1: "ご意見・ご感想"
       send: "送信します"
       complete:
         title: "ご意見・ご感想ありがとうございます。"

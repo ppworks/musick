@@ -13,8 +13,10 @@ $(function(e) {
         var width = parseInt($(this).width());
         if (width < 1170) {
           $('aside.activity').hide();
+          $('aside.user_voice').hide();
         } else {
           $('aside.activity').show();
+          $('aside.user_voice').show();
         }
     });
     $(window).resize();
@@ -213,7 +215,7 @@ $(function(e) {
         $(this).find('ul').fadeIn(100);
         $(this).addClass('hover');
       } else {
-        $(this).find('ul').fadeOut(100);
+        $(this).find('ul').fadeOut(160);
         $(this).removeClass('hover');
       }
       $(this).toggleClass('clicked');
@@ -223,7 +225,7 @@ $(function(e) {
       $(this).find('ul').fadeIn(100);
     }, function(e) {
       $(this).removeClass('hover');
-      $(this).find('ul').fadeOut(100);
+      $(this).find('ul').fadeOut(160);
     });
     $('nav#user li').hover(function(e) {
       $(this).addClass('hover');

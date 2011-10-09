@@ -262,6 +262,7 @@ nav#user a {
 nav#user a:hover {
     color: #ffffff;
     text-shadow: none;
+    text-decoration: none;
 }
 
 nav#user h1 {
@@ -269,7 +270,7 @@ nav#user h1 {
     top: 10px;
     right: 0;
     display: block;
-    width: 170px;
+    width: 168px;
     height: 42px;
     font-weight: bold;
     font-size: 0.85em;
@@ -316,11 +317,13 @@ nav#user ul {
 
 nav#user ul li {
     display: block;
-    margin-top: 2px;
-    width: 170px;
+    margin-top: 1px;
+    padding: 4px 0;
+    width: 168px;
     height: 20px;
     background: #333333;
     border: solid 3px transparent;
+    cursor: pointer;
 }
 
 nav#user ul li a {
@@ -329,10 +332,6 @@ nav#user ul li a {
 
 nav#user ul li.hover {
     background: #444444;
-}
-
-nav#user ul li.hover a {
-    text-decoration: underline;
 }
 
 nav#user ul li:last-child {
@@ -390,8 +389,12 @@ body>footer a {
 div#container {
     clear: both;
     width: 788px;
-    min-height: 660px;
+    min-height: 400px;
     margin: 0 auto 10px;
+}
+
+body#home div#container {
+    min-height: 700px;
 }
 
 /**
@@ -528,7 +531,7 @@ aside.activity>h1 {
 .fb-activity {
     margin-bottom: 40px;
     width: 142px;
-    height: 600px;
+    height: 500px;
     background-clip: padding-box;
     border: 15px solid rgba(0, 0, 0, 0.1);
     -webkit-border-radius: 5px;
@@ -1135,4 +1138,35 @@ form.new_user_voice textarea {
     width: 300px;
     height: 40px;
     text-align: left;
+}
+
+aside.user_voice {
+    position: absolute;
+    top: 680px;
+    right: 0;
+    width: 172px;
+}
+
+aside.user_voice form.new_user_voice {
+    width: 170px;
+}
+
+aside.user_voice form.new_user_voice textarea {
+    width: 158px;
+}
+
+aside.user_voice>h1 {
+    margin-left: -10px;
+    padding: 5px 8px;
+    border-width:0 0 0 5px;
+    border-style:solid;
+    line-height:140%;
+    font-size: 1.0em;
+    font-weight:bold;
+    letter-spacing: 0.2em;
+    color: #EFEFEF;
+    border-color: #DDD;
+    background: #6D6D6D;
+    color:#d8dfea;
+    z-index: 100;
 }
