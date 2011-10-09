@@ -1,3 +1,4 @@
+<% if post.posts_providers.present? %>
 <%= form_for(post.posts_comments.new, :url => posts_comment_path(post.id), :remote => true) do |f| %>
   <%=providers_raido_button post %>
   <div class="image">
@@ -10,3 +11,4 @@
   <%= submit_tag t('musick.post.comment'), :class => [:posts_comment_submit, :mini] %>
 <% end %>
 <div class="clear"></div>
+<% end %>
