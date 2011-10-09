@@ -15,3 +15,16 @@ user_actions:
     id: 4
     name: 'post'
     target: 'artist_image'
+  -
+    id: 5
+    name: 'clip'
+    target: 'artist'
+  -
+    id: 6
+    name: 'clip'
+    target: 'artist_item'
+  -
+    id: 7
+    name: 'clip'
+    target: 'artist_track'
+
