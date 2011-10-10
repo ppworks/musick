@@ -1227,3 +1227,14 @@ section.stream section.item h1 {
 section.stream section.item img {
     width: 126px;
 }
+
+/**
+ * facebook add to timeline
+ */
+/*
+aside.add_to_timeline {
+    position: absolute;
+    top: 100px;
+    left: 15px;
+}
+*/
