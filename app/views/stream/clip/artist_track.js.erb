@@ -1,0 +1,5 @@
+<% @users_artist_tracks.each do |users_artist_item| %>
+  $('ul.artist_tracks').append('<li><%=escape_javascript(render 'artist_track', :artist_track => users_artist_item.artist_track)%></li> ');
+<% end %>
+$('section#clip_artist_track').show().fadeIn(100);
+$.musick.init();
