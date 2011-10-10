@@ -2,4 +2,5 @@
   $('ul.artist_tracks').append('<li><%=escape_javascript(render 'artist_track', :artist_track => users_artist_item.artist_track)%></li> ');
 <% end %>
 $('section#clip_artist_track').show().fadeIn(100);
+$('div#paginator').html('<%=escape_javascript(paginate @users_artist_tracks, :remote => true) %>');
 $.musick.init();

@@ -407,12 +407,15 @@ $(function(e) {
   }
   
   function get_stream() {
-    $('section.stream').each(function(i, elm) {
+    $('section.stream.auto').each(function(i, elm) {
       var act = $(this).data('act');
       var target = $(this).data('target');
       var filters = $(this).data('filters');
       $.ajax({
         url : '/stream/' + act + '/' + target + '/' + filters,
+        data : {
+          per : 6
+        },
         dataType : 'script'
       });
     });

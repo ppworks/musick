@@ -1,6 +1,5 @@
 class Stream::ClipController < ApplicationController
   def artist
-    UsersArtist.paginates_per(6)
     @users_artists = UsersArtist
       .includes(:artist)
     if params[:filters] =~ /other/
@@ -9,11 +8,10 @@ class Stream::ClipController < ApplicationController
     @users_artists = @users_artists
       .order('id DESC')
       .page(params[:page])
-      .all
+      .per(params[:per])
   end
   
   def artist_item
-    UsersArtistItem.paginates_per(6)
     @users_artist_items = UsersArtistItem
       .includes(:artist_item)
     if params[:filters] =~ /other/
@@ -22,11 +20,10 @@ class Stream::ClipController < ApplicationController
     @users_artist_items = @users_artist_items
       .order('id DESC')
       .page(params[:page])
-      .all
+      .per(params[:per])
   end
   
   def artist_track
-    UsersArtistTrack.paginates_per(6)
     @users_artist_tracks = UsersArtistTrack
       .includes(:artist_track)
     if params[:filters] =~ /other/
@@ -35,6 +32,6 @@ class Stream::ClipController < ApplicationController
     @users_artist_tracks = @users_artist_tracks
       .order('id DESC')
       .page(params[:page])
-      .all
+      .per(params[:per])
   end
 end

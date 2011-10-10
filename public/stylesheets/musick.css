@@ -1177,8 +1177,9 @@ aside.user_voice>h1 {
 /**
  * stream
  */
-body#home section.stream>h1 {
+section.stream>h1 {
     margin-left: -10px;
+    margin-bottom: 10px;
     width: 252px;
     padding: 5px 8px;
     border-width:0 0 0 5px;
@@ -1196,21 +1197,28 @@ body#home section.stream>h1 {
 
 body#home section.stream {
     display: none;
+    position: relative;
 }
 
-body#home section.stream section.artist {
+section.stream a.more {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+section.stream section.artist {
     margin: 0;
 }
 
-body#home section.stream ul li {
+section.stream ul li {
     display: inline-block;
     margin: 0 0 20px 0;
 }
 
-body#home section.stream section.item h1 {
+section.stream section.item h1 {
     width: 128px;
 }
 
-body#home section.stream section.item img {
+section.stream section.item img {
     width: 126px;
 }

@@ -1,0 +1,11 @@
+<section id="clip_artist_track" class="stream">
+  <h1><%=t'musick.stream.clips.artist_track.h1'%></h1>
+  <ul class="artist_tracks">
+    <% @users_artist_tracks.each do |users_artist_track| %>
+      <li><%= render 'artist_track', :artist_track => users_artist_track.artist_track %></li>
+    <% end %>
+  </ul>
+</section>
+<div id="paginator">
+  <%= paginate @users_artist_tracks, :remote => true %>
+</div>
