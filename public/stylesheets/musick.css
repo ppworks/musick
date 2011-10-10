@@ -412,6 +412,11 @@ nav.like_page li {
     vertical-align: top;
 }
 
+nav.like_page li.mixi_check {
+    margin-left: 80px;
+    margin-right: 10px;
+}
+
 nav.like_page li.hatena_bookmark {
     position: absolute;
     top: 0;
