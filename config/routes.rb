@@ -78,6 +78,12 @@ Musick::Application.routes.draw do
   
   resources :user_voices, :only => [:create]
   
+  namespace :stream do
+    get 'clip/artist/(:filters)' => 'clip#artist', :defaults => {:filters => ''}
+    get 'clip/artist_item/(:filters)' => 'clip#artist_item', :defaults => {:filters => ''}
+    get 'clip/artist_track/(:filters)' => 'clip#artist_track', :defaults => {:filters => ''}
+  end
+  
   get 'about' => 'pages#about', :as => :about_page
   get 'privacy' => 'pages#privacy', :as => :privacy_page
   get 'rule' => 'pages#rule', :as => :rule_page

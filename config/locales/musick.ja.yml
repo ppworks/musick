@@ -56,7 +56,7 @@ ja:
     social:
       posts:
         create: "投稿する"
-        my_list: "自分の投稿一覧"
+        my_list: "自分のヒトコト投稿一覧"
         placeholder: "このサイトをオススメする一言をどうぞ！"
         web:
           label: "Musickをオススメする"
@@ -142,3 +142,13 @@ ja:
       complete:
         title: "ご意見・ご感想ありがとうございます。"
         content: "今後ともよろしくお願いいたします。"
+    stream:
+      clips:
+        artist:
+          h1: 最近クリップされたアーティスト
+        artist_item:
+          h1: 最近クリップされた作品
+        artist_track:
+          h1: 最近クリップされた楽曲
+      posts:
+        h1: 最近のヒトコト

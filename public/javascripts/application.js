@@ -406,6 +406,18 @@ $(function(e) {
     $('.radio').change();
   }
   
+  function get_stream() {
+    $('section.stream').each(function(i, elm) {
+      var act = $(this).data('act');
+      var target = $(this).data('target');
+      var filters = $(this).data('filters');
+      $.ajax({
+        url : '/stream/' + act + '/' + target + '/' + filters,
+        dataType : 'script'
+      });
+    });
+  }
+  
   function init() {
     listen_window_resize();
     //listen_auto_paging();
@@ -422,6 +434,7 @@ $(function(e) {
     listen_like_all();
     sync_post();
     listen_form_element();
+    get_stream();
     $.musick = {};
     $.musick.popup = popup;
     $.musick.init = function() {

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def catch_exception e
-  
+    logger.info e.to_yaml
   end
   def catch_no_invitation_exception e
     redirect_to sorry_page_path

@@ -652,6 +652,10 @@ section.artist .images li {
     display: none;
 }
 
+li>section.artist>h1 {
+    width: 128px;
+}
+
 body.index .artist .images li img {
     width: 60px;
     height: 60px;
@@ -1168,4 +1172,45 @@ aside.user_voice>h1 {
     background: #6D6D6D;
     color:#d8dfea;
     z-index: 100;
+}
+
+/**
+ * stream
+ */
+body#home section.stream>h1 {
+    margin-left: -10px;
+    width: 252px;
+    padding: 5px 8px;
+    border-width:0 0 0 5px;
+    border-style:solid;
+    line-height:140%;
+    font-size: 1.0em;
+    font-weight:bold;
+    letter-spacing: 0.2em;
+    color: #EFEFEF;
+    border-color: #DDD;
+    background: #6D6D6D;
+    color:#d8dfea;
+    z-index: 100;
+}
+
+body#home section.stream {
+    display: none;
+}
+
+body#home section.stream section.artist {
+    margin: 0;
+}
+
+body#home section.stream ul li {
+    display: inline-block;
+    margin: 0 0 20px 0;
+}
+
+body#home section.stream section.item h1 {
+    width: 128px;
+}
+
+body#home section.stream section.item img {
+    width: 126px;
 }
