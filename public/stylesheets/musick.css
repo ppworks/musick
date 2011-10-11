@@ -549,9 +549,10 @@ aside.activity>h1 {
  * facebook page
  */
 aside.facebook_page>h1 {
+    margin-top: 20px;
     margin-left: -10px;
     padding: 5px 8px;
-    width: 777px;
+    width: 787px;
     border-width:0 0 0 5px;
     border-style:solid;
     line-height:140%;
