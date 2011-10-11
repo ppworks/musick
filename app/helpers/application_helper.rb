@@ -19,6 +19,8 @@ module ApplicationHelper
   end
   
   def current_url
-    request.url.gsub(/(#|\?).*/, '')
+    url = request.url.gsub(/(#|\?).*/, '')
+    url = "#{url}/"
+    url.gsub(/\/\/$/, '/')
   end
 end
