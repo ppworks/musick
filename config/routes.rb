@@ -53,6 +53,8 @@ Musick::Application.routes.draw do
     get ':user_id/artist_tracks' => 'artist_tracks#index', :constraints => {:user_id => /[0-9]+/}, :as => :artist_tracks
     get ':user_id/posts/page/:page' => 'posts#index', :constraints => {:user_id => /[0-9]+/}, :as => :posts
     get ':user_id/posts' => 'posts#index', :constraints => {:user_id => /[0-9]+/}, :as => :posts
+    get 'faces' => 'faces#index', :as => :faces
+    get ':user_id/' => 'home#index', :as => :home
   end
   
   resources :posts, :only => [:destroy, :show, :index] do

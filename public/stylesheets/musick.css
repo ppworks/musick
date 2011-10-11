@@ -546,6 +546,38 @@ aside.activity>h1 {
 }
 
 /**
+ * facebook page
+ */
+aside.facebook_page>h1 {
+    margin-left: -10px;
+    padding: 5px 8px;
+    width: 777px;
+    border-width:0 0 0 5px;
+    border-style:solid;
+    line-height:140%;
+    font-size: 1.0em;
+    font-weight:bold;
+    letter-spacing: 0.2em;
+    border-color: #d8dfea;
+    background:#3b5998;
+    color:#d8dfea;
+    z-index: 100;
+}
+
+.fb-like-box {
+    margin-bottom: 40px;
+    width: 758px;
+    height: 560px;
+    background-clip: padding-box;
+    border: 15px solid rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #fcfcfc;
+}
+
+
+/**
  * comment
  */
 aside.comments {
@@ -1227,14 +1259,3 @@ section.stream section.item h1 {
 section.stream section.item img {
     width: 126px;
 }
-
-/**
- * facebook add to timeline
- */
-/*
-aside.add_to_timeline {
-    position: absolute;
-    top: 100px;
-    left: 15px;
-}
-*/
