@@ -9,6 +9,7 @@ ja:
   musick:
     user:
       you: "あなた"
+    signed_in_before: ログイン
     validation_error: "おや？何か変ですよ。入力内容をご確認下さい"
     people: "人"
     person: "人"
@@ -22,14 +23,17 @@ ja:
     users_artist:
       index: "クリップしたアーティスト"
       create: "クリップする"
+      created_at_before: "前クリップ"
       destroy: "クリップから外す"
     users_artist_item:
       index: "クリップした作品"
       create: "クリップする"
+      created_at_before: "前クリップ"
       destroy: "クリップから外す"
     users_artist_track:
       index: "クリップした楽曲"
       create: "クリップする"
+      created_at_before: "前クリップ"
       destroy: "クリップから外す"
     artist:
       update: "アーティスト情報を更新"

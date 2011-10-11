@@ -242,12 +242,16 @@ $(function(e) {
     $('a.with_tooltip').live('hover', function(e) {
       var tooltip = $(this).data('tooltip');
       tooltip = tooltip.replace(/\n/g, '<br />');
+      var tooltip_class = $(this).data('tooltip_class');
+      if (!tooltip_class) {
+        tooltip_class = 'ui-tooltip-top';
+      }
       var a = $(this);
-      $('.ui-tooltip-top').remove();
+      $('.' + tooltip_class).remove();
 
       if (e.type == 'mouseenter') {
         
-        var span = $('<span class="ui-tooltip-top" style="display:none;">' + tooltip + '</span>')
+        var span = $('<span class="' + tooltip_class + '" style="display:none;">' + tooltip + '</span>')
         .css('position', 'absolute')
         .css('z-index', 3010)
         .appendTo($('body'));

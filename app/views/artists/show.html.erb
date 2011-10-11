@@ -33,3 +33,15 @@
     <%= render 'artist/images/list', :images => @artist.artist_images %>
   </ul>
 </section>
+<% if @users_artists.present? %>
+<aside class="faces">
+  <ul>
+    <% @users_artists.each do |users_artist| %>
+    <% user = users_artist.user %>
+    <li><%=link_to image_tag(user.image), users_home_path(user.id), 
+      'data-tooltip' => (time_ago_in_words users_artist.updated_at, true) + t('musick.users_artist.created_at_before'),
+      :class => :with_tooltip %></li>
+    <% end %>
+  </ul>
+</aside>
+<% end %>
