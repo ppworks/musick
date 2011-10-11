@@ -14,9 +14,11 @@ $(function(e) {
         if (width < 1170) {
           $('aside.activity').hide();
           $('aside.user_voice').hide();
+          $('aside.faces').hide();
         } else {
           $('aside.activity').show();
           $('aside.user_voice').show();
+          $('aside.faces').show();
         }
     });
     $(window).resize();

@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def index
+    @users = Rails::cache.fetch('home_controller__index__users', :expires_in => 5.minutes) do
+      User.order('current_sign_in_at DESC').limit(30).all
+    end
     if user_signed_in?
       render 'index_signed_in'
     else

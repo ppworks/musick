@@ -32,6 +32,4 @@
   <ul class="images">
     <%= render 'artist/images/list', :images => @artist.artist_images %>
   </ul>
-  <%= render 'share/fb_comment_page', :url => current_url %>
-  <time><%= time_ago_in_words @artist.created_at, true %></time>
 </section>
