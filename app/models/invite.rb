@@ -145,8 +145,15 @@ class Invite < ActiveRecord::Base
     end
   end
   
-  def self.exists_for? provider_id, user_key
+  def self.exists_for? provider_id, auth
+    user_key = auth['uid']
     return true unless APP_CONFIG[:need_invitation]
+    
+    if provider_id == Provider.facebook.id
+      user = FbGraph::User.me(auth['credentials']['token'])
+      return true if user.like?(FbGraph::Page.fetch APP_CONFIG[:facebook_page_id])
+    end
+    
     raise Invite::NoInvitationException, 'not exists' unless self.where(:to_provider_id => provider_id, :to_user_key => user_key).exists?
     true
   end

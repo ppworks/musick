@@ -5,6 +5,8 @@ development:
   hash_tag: '#xtxexsxt'
   comment_count: 2
   need_invitation: true
+  facebook_page_id: 225793390809113
+  facebook_site_page_id: 159678854124951
 test:
   domain: test.host
   ga_id: 'UA-XXXXXX-XX'
@@ -26,3 +28,5 @@ production:
   hash_tag: '#musick'
   comment_count: 2
   need_invitation: true
+  facebook_page_id: 225793390809113
+  facebook_site_page_id: 159678854124951

@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     
     if providers_user.nil?
       if current_user.nil?
-        Invite.exists_for? Provider.facebook.id, auth['uid']
+        Invite.exists_for? Provider.facebook.id, auth
         user = User.create!({
           :email => auth['extra']['user_hash']['email'],
           :password => Devise.friendly_token[0,20],
@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
     
     if providers_user.nil?
       if current_user.nil?
-        Invite.exists_for? Provider.mixi.id, auth['uid']
+        Invite.exists_for? Provider.mixi.id, auth
         user = User.create!({
           :email => email,
           :password => Devise.friendly_token[0,20],
@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
     
     if providers_user.nil?
       if current_user.nil?
-        Invite.exists_for? Provider.twitter.id, auth['uid']
+        Invite.exists_for? Provider.twitter.id, auth
         user = User.create!({
           :email => email,
           :password => Devise.friendly_token[0,20],
