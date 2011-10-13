@@ -40,9 +40,12 @@ class Post < ActiveRecord::Base
         opts = params.merge(:provider_id => provider_id, :message => self.content + "\n\n")
       else
         if params[:link]
-          opts = {:provider_id => provider_id, :message => self.content + " #{params[:link]} #{APP_CONFIG[:hash_tag]}"}
+          opts = {:provider_id => provider_id, :message => self.content + " #{params[:link]}"}
         else
           opts = {:provider_id => provider_id, :message => self.content}
+        end
+        if provider_id == Provider.twitter.id
+          opts[:message] = "#{opts[:message]} #{APP_CONFIG[:hash_tag]}"
         end
       end
       begin
