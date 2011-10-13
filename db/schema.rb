@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003111338) do
+ActiveRecord::Schema.define(:version => 20111013113810) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -310,6 +310,15 @@ ActiveRecord::Schema.define(:version => 20111003111338) do
   add_index "search_logs", ["kind", "target_id"], :name => "idx_kind_target_id_on_search_logs"
   add_index "search_logs", ["user_id"], :name => "idx_user_id_on_search_logs"
 
+  create_table "tags", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], :name => "idx_name_on_tags", :unique => true
+
   create_table "user_access_logs", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "kind",       :null => false
@@ -394,5 +403,17 @@ ActiveRecord::Schema.define(:version => 20111003111338) do
   add_index "users_artists", ["artist_id"], :name => "idx_artist_id_on_users_artists"
   add_index "users_artists", ["user_id", "artist_id"], :name => "idx_user_id_artist_id_on_users_artists", :unique => true
   add_index "users_artists", ["user_id", "priority"], :name => "idx_user_id_priority_on_users_artists"
+
+  create_table "users_artists_tags", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "artist_id",  :null => false
+    t.integer  "tag_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_artists_tags", ["artist_id"], :name => "idx_artist_id_on_users_artists_tags"
+  add_index "users_artists_tags", ["tag_id"], :name => "idx_tag_id_on_users_artists_tags"
+  add_index "users_artists_tags", ["user_id"], :name => "idx_user_id_on_users_artists_tags"
 
 end

@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :search_logs, :dependent => :destroy
   has_many :user_access_logs, :dependent => :destroy
   
+  has_many :tags
+  
   def self.find_for_facebook_oauth(auth, current_user = nil)
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.facebook.id, auth['uid']
     begin
