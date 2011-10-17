@@ -1043,9 +1043,9 @@ div#actions>div.wrapper.right:after {
 }
 
 div#actions nav {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #cccccc;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cccccc;
 }
 
 div#actions nav a.button {

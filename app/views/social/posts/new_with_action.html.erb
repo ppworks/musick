@@ -1,12 +1,12 @@
   <div class="wrapper">
-  <section class="new_post">
-    <h1><%=params['data-target-name']%></h1>
-    <%=image_tag params['data-target-image'] if params['data-target-image'].present? %>
-  <%=render 'form_with_action', :placeholder => ''%>
   <nav>
     <ul>
       <li><%=send(@link_to_clip_helper, *@clip_helper_params) if respond_to? @link_to_clip_helper%></li>
     </ul>
   </nav>
+  <section class="new_post">
+    <h1><%=params['data-target-name']%></h1>
+    <%=image_tag params['data-target-image'] if params['data-target-image'].present? %>
+  <%=render 'form_with_action', :placeholder => ''%>
   </section>
   </div>
