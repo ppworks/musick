@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013113810) do
+ActiveRecord::Schema.define(:version => 20111017102428) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -311,13 +311,15 @@ ActiveRecord::Schema.define(:version => 20111013113810) do
   add_index "search_logs", ["user_id"], :name => "idx_user_id_on_search_logs"
 
   create_table "tags", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "user_id",    :null => false
+    t.integer  "user_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_public",  :default => true
+    t.integer  "counter",    :default => 0,    :null => false
+    t.integer  "kind",                         :null => false
+    t.string   "name_ja"
+    t.string   "name_en"
   end
-
-  add_index "tags", ["name"], :name => "idx_name_on_tags", :unique => true
 
   create_table "user_access_logs", :force => true do |t|
     t.integer  "user_id",    :null => false

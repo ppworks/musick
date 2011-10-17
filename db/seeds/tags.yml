@@ -1,0 +1,36 @@
+tags:
+  -
+    id: 1
+    user_id: 0
+    is_public: 1
+    kind: 1
+    name_ja: 気になる
+    name_en: interested
+  -
+    id: 2
+    user_id: 0
+    is_public: 1
+    kind: 1
+    name_ja: ファン
+    name_en: fan
+  -
+    id: 3
+    user_id: 0
+    is_public: 1
+    kind: 1
+    name_ja: 持ってる
+    name_en: have
+  -
+    id: 4
+    user_id: 0
+    is_public: 1
+    kind: 1
+    name_ja: 聴いた
+    name_en: listened
+  -
+    id: 5
+    user_id: 0
+    is_public: 1
+    kind: 1
+    name_ja: 欲しい
+    name_en: want

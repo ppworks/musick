@@ -33,6 +33,15 @@ if UserAction.all.count == 0
     UserAction.create(user_action)
   end
 end
+
+if Tag.all.count == 0
+  tags = File.read("#{Rails.root}/db/seeds/tags.yml")
+  tags_list = YAML.load(tags).symbolize_keys
+  tags_list[:tags].each do |tag|
+    Tag.create(tag)
+  end
+end
+
 # providers
 if Provider.all.count == 0
   Provider.create :id =>1, :name => 'facebook'
