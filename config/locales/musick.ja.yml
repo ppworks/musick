@@ -36,17 +36,17 @@ ja:
       created_at_before: "前クリップ"
       destroy: "クリップから外す"
     users_artists_tag:
-      create: "タグを付ける"
+      create: "[%{tag}]タグを付ける"
       created_at_before: "前タグ付け"
-      destroy: "このタグを外す"
+      destroy: "[%{tag}]タグを外す"
     users_artist_items_tag:
-      create: "タグを付ける"
+      create: "[%{tag}]タグを付ける"
       created_at_before: "前タグ付け"
-      destroy: "このタグを外す"
+      destroy: "[%{tag}]タグを外す"
     users_artist_track:
-      create: "タグを付ける"
+      create: "[%{tag}]タグを付ける"
       created_at_before: "前タグ付け"
-      destroy: "このタグを外す"
+      destroy: "[%{tag}]タグを外す"
     artist:
       update: "アーティスト情報を更新"
       share: "このアーティストを友人にオススメする"
