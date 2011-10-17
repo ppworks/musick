@@ -43,7 +43,7 @@ ja:
       create: "[%{tag}]タグを付ける"
       created_at_before: "前タグ付け"
       destroy: "[%{tag}]タグを外す"
-    users_artist_track:
+    users_artist_tracks_tag:
       create: "[%{tag}]タグを付ける"
       created_at_before: "前タグ付け"
       destroy: "[%{tag}]タグを外す"
