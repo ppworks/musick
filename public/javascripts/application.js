@@ -448,7 +448,6 @@ $(function(e) {
     $.musick.popup = popup;
     $.musick.init = function() {
       round_image();
-      listen_popup();
       fetch_providers_profiles();
       listen_form_element();
     };
