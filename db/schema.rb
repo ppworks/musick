@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017102428) do
+ActiveRecord::Schema.define(:version => 20111018113504) do
 
   create_table "artist_aliases", :force => true do |t|
     t.integer  "artist_id",  :null => false
@@ -382,6 +382,18 @@ ActiveRecord::Schema.define(:version => 20111017102428) do
   add_index "users_artist_items", ["user_id", "artist_item_id"], :name => "idx_user_id_artist_item_id_on_users_artist_items", :unique => true
   add_index "users_artist_items", ["user_id", "priority"], :name => "idx_user_id_priority_on_users_artist_items"
 
+  create_table "users_artist_items_tags", :force => true do |t|
+    t.integer  "user_id",        :null => false
+    t.integer  "artist_item_id", :null => false
+    t.integer  "tag_id",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_artist_items_tags", ["artist_item_id"], :name => "idx_artist_item_id_on_users_artist_items_tags"
+  add_index "users_artist_items_tags", ["tag_id"], :name => "idx_tag_id_on_users_artist_items_tags"
+  add_index "users_artist_items_tags", ["user_id"], :name => "idx_user_id_on_users_artist_items_tags"
+
   create_table "users_artist_tracks", :force => true do |t|
     t.integer  "user_id",                        :null => false
     t.integer  "artist_track_id",                :null => false
@@ -393,6 +405,18 @@ ActiveRecord::Schema.define(:version => 20111017102428) do
   add_index "users_artist_tracks", ["artist_track_id"], :name => "idx_artist_track_id_on_users_artist_tracks"
   add_index "users_artist_tracks", ["user_id", "artist_track_id"], :name => "idx_user_id_artist_track_id_on_users_artist_tracks", :unique => true
   add_index "users_artist_tracks", ["user_id", "priority"], :name => "idx_user_id_priority_on_users_artist_tracks"
+
+  create_table "users_artist_tracks_tags", :force => true do |t|
+    t.integer  "user_id",         :null => false
+    t.integer  "artist_track_id", :null => false
+    t.integer  "tag_id",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_artist_tracks_tags", ["artist_track_id"], :name => "idx_artist_track_id_on_users_artist_tracks_tags"
+  add_index "users_artist_tracks_tags", ["tag_id"], :name => "idx_tag_id_on_users_artist_tracks_tags"
+  add_index "users_artist_tracks_tags", ["user_id"], :name => "idx_user_id_on_users_artist_tracks_tags"
 
   create_table "users_artists", :force => true do |t|
     t.integer  "user_id",                   :null => false
