@@ -2,7 +2,7 @@ require 'nkf'
 class ArtistItem < ActiveRecord::Base
   belongs_to :artist
   has_many :artist_tracks
-  
+  has_many :users_artist_items_tags
   def self.find_items artist_id, page, keyword = ''
     artist = Artist.find artist_id
     search_artist = artist.name
