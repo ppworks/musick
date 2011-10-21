@@ -1,8 +1,11 @@
   <div class="wrapper">
   <nav>
     <ul>
-      <li><%=send(@link_to_clip_helper, *@clip_helper_params) if respond_to? @link_to_clip_helper%></li>
+      <li><%=link_to_clip @target_object, @target_attributes %></li>
     </ul>
+  </nav>
+  <nav>
+    <%= link_to_tags @target_object, @target_attributes, @tags %>
   </nav>
   <section class="new_post">
     <h1><%=params['data-target-name']%></h1>

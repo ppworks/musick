@@ -891,7 +891,7 @@ section.new_post {
 section.new_post form textarea {
     padding: 5px;
     width: 348px;
-    height: 20px;
+    height: 40px;
     overflow: hidden;
 }
 
@@ -1044,13 +1044,27 @@ div#actions>div.wrapper.right:after {
 
 div#actions nav {
     margin: 10px;
+    width: 360px;
     padding-bottom: 10px;
     border-bottom: 1px solid #cccccc;
+}
+
+div#actions li {
+    display: inline-block;
+}
+
+div#actions li:not(:last-child) {
+    margin-right: 5px;
 }
 
 div#actions nav a.button {
     padding: 4px 6px;
     font-size: 11px;
+}
+
+div#actions nav a.button.destroy {
+    color: #999;
+    text-decoration: line-through;
 }
 
 div#actions nav a.button:active {

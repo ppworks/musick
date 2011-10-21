@@ -1,4 +1,10 @@
 module ArtistsHelper
+  
+  def link_to_clip target_object, target_attributes
+    link_to_clip_helper = "link_to_users_#{target_object}_create_or_destroy"
+    send(link_to_clip_helper, *target_attributes) if respond_to? link_to_clip_helper
+  end
+  
   def link_to_users_artists_create_or_destroy artist_id
     if user_signed_in?
       if current_user.artists.exists? artist_id

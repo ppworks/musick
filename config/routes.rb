@@ -55,6 +55,12 @@ Musick::Application.routes.draw do
     get ':user_id/posts' => 'posts#index', :constraints => {:user_id => /[0-9]+/}, :as => :posts
     get 'faces' => 'faces#index', :as => :faces
     get ':user_id/' => 'home#index', :as => :home
+    post 'artists/:artist_id/tags/:tag_id' => 'artists_tags#create', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/}, :as => :create_artists_tag
+    delete 'artists/:artist_id/tags/:tag_id' => 'artists_tags#destroy', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/}, :as => :destroy_artists_tag
+    post 'artists/:artist_id/items/:item_asin/tags/:tag_id' => 'artist_items_tags#create', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/}, :as => :create_artist_items_tag
+    delete 'artists/:artist_id/items/:item_asin/tags/:tag_id' => 'artist_items_tags#destroy', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/}, :as => :destroy_artist_items_tag
+    post 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track/tags/:tag_id' => 'artist_tracks_tags#create', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/, :disc => /[0-9]+/, :track => /[0-9]+/}, :as => :create_artist_tracks_tag
+    delete 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track/tags/:tag_id' => 'artist_tracks_tags#destroy', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/, :disc => /[0-9]+/, :track => /[0-9]+/}, :as => :destroy_artist_tracks_tag
   end
   
   resources :posts, :only => [:destroy, :show, :index] do

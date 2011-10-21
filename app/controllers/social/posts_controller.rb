@@ -5,13 +5,13 @@ class Social::PostsController < ApplicationController
   end
   
   def new_with_action
+    @target_object = params["data-target-object"]||''
+    @target_object = @target_object.pluralize
+    @target_attributes = params["data-target-attributes"]||[].to_yaml
+    @target_attributes = YAML.load @target_attributes
     
-    target_object = params["data-target-object"]||''
-    target_object = target_object.pluralize
-    target_attributes = params["data-target-attributes"]||[].to_yaml
-    target_attributes = YAML.load target_attributes
-    @link_to_clip_helper = "link_to_users_#{target_object}_create_or_destroy"
-    @clip_helper_params = target_attributes
+    @tags = Tag.order(:id).all
+    
     render :layout => !request.xhr?
   end
 
