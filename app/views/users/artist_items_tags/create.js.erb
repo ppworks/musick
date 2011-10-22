@@ -1,0 +1,2 @@
+$('a[href="<%=users_create_artist_items_tag_path(params[:artist_id], params[:item_asin], params[:tag_id])%>"]')
+  .replaceWith('<%=escape_javascript(link_to_users_artist_items_tags_create_or_destroy(params[:artist_id], params[:item_asin], params[:tag_id], @tag.send("name_#{css_locale}")))%>');
