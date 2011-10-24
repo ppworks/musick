@@ -23,7 +23,7 @@ ja:
     users_artist:
       index: "クリップしたアーティスト"
       create: "クリップする"
-      created_at_before: "前クリップ"
+      created_at_before: "前\nクリップ"
       destroy: "クリップから外す"
     users_artist_item:
       index: "クリップした作品"
@@ -35,9 +35,10 @@ ja:
       create: "クリップする"
       created_at_before: "前クリップ"
       destroy: "クリップから外す"
+    tag: タグ
     users_artists_tag:
       create: "%{tag}"
-      created_at_before: "前タグ付け"
+      created_at_before: "前\n[%{tag}]\nタグ付け"
       destroy: "%{tag}"
     users_artist_items_tag:
       create: "%{tag}"
@@ -168,3 +169,7 @@ ja:
           h1: 最近クリップされた楽曲
       posts:
         h1: 最近のヒトコト
+    faces:
+      recently_login: 最近ログインしたユーザー
+      recently_clip: 最近クリップしたユーザー
+      recently_tag: 最近タグ付けしたユーザー

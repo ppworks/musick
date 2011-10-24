@@ -1290,21 +1290,29 @@ section.stream section.item img {
     width: 126px;
 }
 
-aside.faces>ul {
+aside.faces {
     position: absolute;
     top: 100px;
     left: 15px;
     width: 200px;
 }
 
-aside.faces>ul>li {
-    display: inline-block;
-    width: 34px;
+aside.faces h1 {
+    margin-bottom: 5px;
 }
 
-aside.faces>ul>li img {
-    width: 32px;
-    height: 32px;
+aside.faces>section>ul>li {
+    display: inline-block;
+    width: 38px;
+}
+
+aside.faces>section>ul {
+    margin-bottom: 15px;
+}
+
+aside.faces>section>ul>li img {
+    width: 36px;
+    height: 36px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;

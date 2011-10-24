@@ -5,7 +5,8 @@ class ArtistsController < ApplicationController
   
   def show
     @artist = Artist.find_and_update_lastfm params[:id]
-    @users_artists = UsersArtist.includes(:user).where(:artist_id => params[:id]).order('updated_at DESC').limit(30).all
+    @users_artists = UsersArtist.includes(:user).where(:artist_id => params[:id]).order('updated_at DESC').limit(16).all
+    @users_artists_tags = UsersArtistsTag.includes(:tag).includes(:user).where(:artist_id => params[:id]).order('updated_at DESC').limit(16).all
   end
   
   def search

@@ -35,13 +35,26 @@
 </section>
 <% if @users_artists.present? %>
 <aside class="faces">
-  <ul>
-    <% @users_artists.each do |users_artist| %>
-    <% user = users_artist.user %>
-    <li><%=link_to image_tag(user.image), users_home_path(user.id), 
-      'data-tooltip' => (time_ago_in_words users_artist.updated_at, true) + t('musick.users_artist.created_at_before'),
-      :class => :with_tooltip %></li>
-    <% end %>
-  </ul>
+  <section>
+    <h1><%=t 'musick.faces.recently_clip'%></h1>
+    <ul>
+      <% @users_artists.each do |users_artist| %>
+      <% user = users_artist.user %>
+      <li><%=link_to image_tag(user.image), users_home_path(user.id), 
+        'data-tooltip' => (time_ago_in_words users_artist.updated_at, true) + t('musick.users_artist.created_at_before'),
+        :class => :with_tooltip %></li>
+      <% end %>
+    </ul>
+  </section>
+  <section>
+    <h1><%=t 'musick.faces.recently_tag'%></h1>
+    <ul>
+      <% @users_artists_tags.each do |users_artists_tag| %>
+      <% user = users_artists_tag.user %>
+      <li><%=link_to image_tag(user.image), users_home_path(user.id), 
+        'data-tooltip' => (time_ago_in_words users_artists_tag.updated_at, true) + t('musick.users_artists_tag.created_at_before', :tag => users_artists_tag.tag.send("name_#{css_locale}")), :class => :with_tooltip %></li>
+      <% end %>
+    </ul>
+  </section>
 </aside>
 <% end %>
