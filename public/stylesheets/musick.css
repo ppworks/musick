@@ -48,24 +48,6 @@ input[type=reset] {
     -moz-box-shadow: inset 0 1px 3px #F1F1F1, inset 0 -15px #DFDFDF, 1px 1px 2px #E7E7E7;
 }
 
-a.button.mini,
-button.mini,
-input[type=submit].mini,
-input[type=button].mini,
-input[type=reset].mini {
-    padding: 2px 6px;
-    font-size: 11px;
-}
-
-a.button.mini:active,
-button.mini:active,
-input[type=submit].mini:active,
-input[type=button].mini:active,
-input[type=reset].mini:active {
-    background: #ccc;
-    padding: 3px 6px 1px;
-}
-
 a.button:hover,
 button:hover,
 input[type=submit]:hover,
@@ -89,8 +71,27 @@ input[type=reset]:active {
 a.button {
     text-decoration: none;
 }
+
 nav li a.button {
     display: inline-block;
+}
+
+a.button.mini,
+button.mini,
+input[type=submit].mini,
+input[type=button].mini,
+input[type=reset].mini {
+    padding: 2px 6px;
+    font-size: 11px;
+}
+
+a.button.mini:active,
+button.mini:active,
+input[type=submit].mini:active,
+input[type=button].mini:active,
+input[type=reset].mini:active {
+    background: #ccc;
+    padding: 3px 6px 1px;
 }
 
 time {
@@ -1051,6 +1052,7 @@ div#actions nav {
 
 div#actions li {
     display: inline-block;
+    vertical-align: middle;
 }
 
 div#actions li:not(:last-child) {
@@ -1062,7 +1064,20 @@ div#actions nav a.button {
     font-size: 11px;
 }
 
+div#actions nav.tag a.button {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
 div#actions nav a.button.destroy {
+    background: #ccc;
+    padding: 5px 6px 3px;
+    -webkit-box-shadow: inset 0 1px 3px #e1e1e1, inset 0 -15px #cfcfcf, 1px 1px 2px #E7E7E7;
+    -moz-box-shadow: inset 0 1px 3px #e1e1e1, inset 0 -15px #cfcfcf, 1px 1px 2px #E7E7E7;
+}
+
+div#actions nav a.button.destroy:hover {
     color: #999;
     text-decoration: line-through;
 }
@@ -1284,12 +1299,12 @@ aside.faces>ul {
 
 aside.faces>ul>li {
     display: inline-block;
-    width: 50px;
+    width: 34px;
 }
 
 aside.faces>ul>li img {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
