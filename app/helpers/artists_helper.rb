@@ -1,5 +1,13 @@
 module ArtistsHelper
   
+  def link_to_detail_page target_object, target_attributes
+    if target_object == "artist_items"
+      link_to t('musick.detail_page'), artist_item_path(*target_attributes)
+    elsif target_object == "artist_tracks"
+      link_to t('musick.detail_page'), artist_item_path(target_attributes[0], target_attributes[1])
+    end
+  end
+  
   def link_to_clip target_object, target_attributes
     link_to_clip_helper = "link_to_users_#{target_object}_create_or_destroy"
     send(link_to_clip_helper, *target_attributes) if respond_to? link_to_clip_helper

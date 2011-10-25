@@ -48,6 +48,7 @@ ja:
       create: "%{tag}"
       created_at_before: "前タグ付け"
       destroy: "%{tag}"
+    detail_page: 詳細ページ
     artist:
       update: "アーティスト情報を更新"
       share: "このアーティストを友人にオススメする"
