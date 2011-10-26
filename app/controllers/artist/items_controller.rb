@@ -5,6 +5,8 @@ class Artist::ItemsController < ApplicationController
   
   def show
     @artist_item = ArtistItem.find_or_create params[:artist_id], params[:item_asin]
+    @users_artist_items = UsersArtistItem.includes(:user).where(:artist_item_id => @artist_item.id).order('updated_at DESC').limit(16).all
+    @users_artist_items_tags = UsersArtistItemsTag.includes(:tag).includes(:user).where(:artist_item_id => @artist_item.id).order('updated_at DESC').limit(16).all
     render :layout => !request.xhr?
   end
   

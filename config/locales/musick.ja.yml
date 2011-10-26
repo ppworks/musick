@@ -28,12 +28,12 @@ ja:
     users_artist_item:
       index: "クリップした作品"
       create: "クリップする"
-      created_at_before: "前クリップ"
+      created_at_before: "前\nクリップ"
       destroy: "クリップから外す"
     users_artist_track:
       index: "クリップした楽曲"
       create: "クリップする"
-      created_at_before: "前クリップ"
+      created_at_before: "前\nクリップ"
       destroy: "クリップから外す"
     tag: タグ
     users_artists_tag:
@@ -42,11 +42,11 @@ ja:
       destroy: "%{tag}"
     users_artist_items_tag:
       create: "%{tag}"
-      created_at_before: "前タグ付け"
+      created_at_before: "前\n[%{tag}]\nタグ付け"
       destroy: "%{tag}"
     users_artist_tracks_tag:
       create: "%{tag}"
-      created_at_before: "前タグ付け"
+      created_at_before: "前\n[%{tag}]\nタグ付け"
       destroy: "%{tag}"
     detail_page: 詳細ページ
     artist:

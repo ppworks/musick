@@ -1,5 +1,8 @@
 <section class="item clearfix">
-  <h1 class="name"><%= link_to_artist_item artist_item.title, artist_item %></h1>
+  <h1 class="name">
+    <%= link_to artist_item.artist.name, artist_path(artist_item.artist_id) %> - 
+    <%= link_to_artist_item artist_item.title, artist_item %>
+  </h1>
   <div class="image">
   <%= link_to_artist_item image_tag(artist_item.medium_image_url, :class => 'rounded-img1'), artist_item %>
   </div>
@@ -16,3 +19,30 @@
   </nav>
 </aside>
 </section>
+<aside class="faces">
+  <% if @users_artist_items.present? %>
+  <section>
+    <h1><%=t 'musick.faces.recently_clip'%></h1>
+    <ul>
+      <% @users_artist_items.each do |users_artist_item| %>
+      <% user = users_artist_item.user %>
+      <li><%=link_to image_tag(user.image), users_home_path(user.id), 
+        'data-tooltip' => (time_ago_in_words users_artist_item.updated_at, true) + t('musick.users_artist_item.created_at_before'),
+        :class => :with_tooltip %></li>
+      <% end %>
+    </ul>
+  </section>
+  <% end %>
+  <% if @users_artist_items_tags.present? %>
+  <section>
+    <h1><%=t 'musick.faces.recently_tag'%></h1>
+    <ul>
+      <% @users_artist_items_tags.each do |users_artist_items_tag| %>
+      <% user = users_artist_items_tag.user %>
+      <li><%=link_to image_tag(user.image), users_home_path(user.id), 
+        'data-tooltip' => (time_ago_in_words users_artist_items_tag.updated_at, true) + t('musick.users_artist_items_tag.created_at_before', :tag => users_artist_items_tag.tag.send("name_#{css_locale}")), :class => :with_tooltip %></li>
+      <% end %>
+    </ul>
+  </section>
+  <% end %>
+</aside>
