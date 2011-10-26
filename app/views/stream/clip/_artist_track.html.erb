@@ -1,6 +1,6 @@
 <section class="item clearfix">
-  <h1 class="name"><%= link_to artist_track.title, artist_item_path(artist_track.artist_id, artist_track.asin) %></h1>
+  <h1 class="name"><%= link_to artist_track.title, artist_track_path(artist_track.artist_id, artist_track.asin, artist_track.disc, artist_track.track) %></h1>
   <div class="image">
-  <%= link_to image_tag(artist_track.artist_item.medium_image_url, :class => 'rounded-img1 tiny'), artist_item_path(artist_track.artist_id, artist_track.asin) %>
+  <%= link_to image_tag(artist_track.artist_item.medium_image_url, :class => 'rounded-img1 tiny'), artist_track_path(artist_track.artist_id, artist_track.asin, artist_track.disc, artist_track.track) %>
   </div>
 </section>
