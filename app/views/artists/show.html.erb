@@ -23,6 +23,7 @@
       </ul>
     </nav>
   </header>
+  <%= render 'share/artist_stream', :filters => "all,artist#{@artist.id}"%>
   <div class="description">
     <%=simple_format(@artist.artist_lastfm.summary, :class => 'summary') %>
     <%=link_to t('musick.more'), '#more', :class => :read_more if @artist.artist_lastfm.content.present? %>

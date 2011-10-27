@@ -1,0 +1,12 @@
+  <section class="clip_stream">
+    <section id="clip_artist_item" class="stream auto" data-act="clip" data-target="artist_item" data-filters="<%=filters%>">
+      <h1><%=t'musick.stream.clips.artist_item.h1'%></h1>
+      <ul class="artist_items"></ul>
+      <%= link_to t('musick.more'), stream_artist_item_clip_path(:filters => "all,artist#{params[:id]}") + '?per=24', :class => :more %>
+    </section>
+    <section id="clip_artist_track" class="stream auto" data-act="clip" data-target="artist_track" data-filters="<%=filters%>">
+      <h1><%=t'musick.stream.clips.artist_track.h1'%></h1>
+      <ul class="artist_tracks"></ul>
+      <%= link_to t('musick.more'), stream_artist_track_clip_path(:filters => "all,artist#{params[:id]}") + '?per=24', :class => :more %>
+    </section>
+  </section>
