@@ -1,16 +1,23 @@
 <section class="item clearfix">
   <h1 class="name">
-    <%#= link_to artist_item.artist.name, artist_path(artist_item.artist_id) %> - 
-    <%#= link_to artist_item.title, artist_item_path(artist_item.artist_id, artist_item.asin) %> - 
-    <%= link_to_artist_item artist_track.artist_item.title, artist_track.artist_item %>
+    <%= link_to artist_track.artist_item.artist.name, artist_path(artist_track.artist_item.artist_id) %> - 
+    <%= link_to artist_track.artist_item.title, artist_item_path(artist_track.artist_item.artist_id, artist_track.artist_item.asin) %> - 
+    <%= link_to_artist_track artist_track %>
   </h1>
   <div class="image">
-  <%= link_to_artist_item image_tag(url_artist_item_image(artist_track.artist_item, 30), :class => 'rounded-img1 tiny'), artist_track.artist_item %>
+  <%= link_to_artist_item image_tag(artist_track.artist_item.medium_image_url, :class => 'rounded-img1'), artist_track.artist_item %>
   </div>
 <aside>
   <section  class="tracks">
-  <%= link_to_artist_track artist_track %>
+  <% list_artist_tracks artist_track.artist_item.artist_tracks, artist_track %>
   </section>
+  <nav>
+    <ul>
+      <li><%= link_to_users_artist_items_create_or_destroy artist_track.artist_item.artist_id, artist_track.artist_item.asin %></li>
+      <li class="amazon"><%= link_to image_tag('http://rcm-images.amazon.com/images/G/09/extranet/associates/buttons/remote-buy-jp3.gif'), artist_track.artist_item.detail_page_url, :class => [:external]%></li>
+      <li class="amazon"><%= render('share/amazon_cart', :asin => artist_track.artist_item.asin)%></li>
+    </ul>
+  </nav>
 </aside>
 </section>
 <aside class="faces">

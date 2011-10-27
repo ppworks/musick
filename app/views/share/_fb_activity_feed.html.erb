@@ -2,7 +2,7 @@
   <h1>facebook activities</h1>
   <div class="fb-activity"
     data-site="<%=APP_CONFIG[:domain]%>"
-    data-filter="<%=request.path%>"
+    data-filter="<%=filter_url.present? ? filter_url : ''%>"
     data-width="142"
     data-height="500"
     data-header="false"

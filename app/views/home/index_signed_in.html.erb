@@ -4,7 +4,7 @@
 <% content_for :like_page, render('share/like_page') %>
 <% content_for :og_meta, render('share/og_common', :image => nil) %>
 <% content_for :user_voice, render('share/user_voice') %>
-<% content_for :fb_activity, render('share/fb_activity_feed') %>
+<% content_for :fb_activity, render('share/fb_activity_feed', :filter_url => nil) %>
 <div class="main">
   <%= render 'share/login_button'%>
   <%= render 'share/top_stream', :filters => 'other' %>

@@ -2,7 +2,6 @@
   <nav>
     <ul>
       <li><%=link_to_clip @target_object, @target_attributes %></li>
-      <li><%=link_to_detail_page @target_object, @target_attributes %></li>
     </ul>
   </nav>
   <nav class="tag">
@@ -10,7 +9,7 @@
     <%= link_to_tags @target_object, @target_attributes, @tags %>
   </nav>
   <section class="new_post">
-    <h1><%=params['data-target-name']%></h1>
+    <h1><%=link_to_detail_page params['data-target-name'], @target_object, @target_attributes %></h1>
     <%=image_tag params['data-target-image'] if params['data-target-image'].present? %>
   <%=render 'form_with_action', :placeholder => ''%>
   </section>

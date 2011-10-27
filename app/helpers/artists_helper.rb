@@ -1,10 +1,10 @@
 module ArtistsHelper
   
-  def link_to_detail_page target_object, target_attributes
+  def link_to_detail_page label, target_object, target_attributes
     if target_object == "artist_items"
-      link_to t('musick.detail_page'), artist_item_path(*target_attributes)
+      link_to label, artist_item_path(*target_attributes)
     elsif target_object == "artist_tracks"
-      link_to t('musick.detail_page'), artist_item_path(target_attributes[0], target_attributes[1])
+      link_to label, artist_track_path(*target_attributes)
     end
   end
   
@@ -97,7 +97,7 @@ module ArtistsHelper
     end
   end
   
-  def list_artist_tracks artist_tracks
+  def list_artist_tracks artist_tracks, selected_artist_track = nil
     discs = {}
     artist_tracks.each do |artist_track|
       discs["disc#{artist_track.disc.to_s}"] ||= []
@@ -109,7 +109,8 @@ module ArtistsHelper
       end
       concat content_tag(:ul, nil, :class => disc) {
         artist_tracks.each do |artist_track|
-          concat content_tag(:li) {
+          selected_class = selected_artist_track.present? && (artist_track.id == selected_artist_track.id) ? 'selected':''
+          concat content_tag(:li, :class => selected_class) {
             concat link_to_artist_track artist_track
           }
         end

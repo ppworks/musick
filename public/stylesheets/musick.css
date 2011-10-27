@@ -734,6 +734,10 @@ ul.items>li>.item {
     margin-bottom: 15px;
 }
 
+ul.items>li>.item>h1 {
+    margin: 0 0 20px 0;
+}
+
 ul.items>li>.item>div.image {
     float: left;
     width: 160px;
@@ -766,6 +770,12 @@ ul.tracks>li>.item>aside section.tracks>a {
     box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
     color: #ffffff;
     background: #999;
+}
+
+ul.items>li>.item>aside section.tracks>ul>li.selected {
+    padding: 2px 6px;
+    background: #666;
+    font-size:1.6em;
 }
 
 ul.items>li>.item>aside section.tracks ul>li:not(:last-child) {
