@@ -76,7 +76,7 @@ class Invite < ActiveRecord::Base
         invite = Invite.new(
           :user_id => current_user.id,
           :message => params[:message],
-          :to_provider_id => Provider.send(params[:provider]),
+          :to_provider_id => Provider.send(params[:provider]).id,
           :to_invite_kind => params[:to_invite_kind],
           :to_user_key => to_provider_user_key
         )
