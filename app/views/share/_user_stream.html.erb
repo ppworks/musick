@@ -1,0 +1,18 @@
+<% filters = "user#{user.id}"%>
+  <section class="clip_stream">
+    <section id="clip_artist" class="stream auto" data-act="clip" data-target="artist" data-filters="<%=filters%>">
+      <h1><%=t'musick.stream.clips.user_artist.h1'%>(<%=user.users_artists.size%>)</h1>
+      <ul class="artists"></ul>
+      <%= link_to t('musick.more'), users_artists_path(user.id), :class => :more %>
+    </section>
+    <section id="clip_artist_item" class="stream auto" data-act="clip" data-target="artist_item" data-filters="<%=filters%>">
+      <h1><%=t'musick.stream.clips.user_artist_item.h1'%>(<%=user.users_artist_items.size%>)</h1>
+      <ul class="artist_items"></ul>
+      <%= link_to t('musick.more'), users_artist_items_path(user.id), :class => :more %>
+    </section>
+    <section id="clip_artist_track" class="stream auto" data-act="clip" data-target="artist_track" data-filters="<%=filters%>">
+      <h1><%=t'musick.stream.clips.user_artist_track.h1'%>(<%=user.users_artist_tracks.size%>)</h1>
+      <ul class="artist_tracks"></ul>
+      <%= link_to t('musick.more'), users_artist_tracks_path(user.id), :class => :more %>
+    </section>
+  </section>

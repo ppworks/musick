@@ -168,6 +168,12 @@ ja:
           h1: 最近クリップされた作品
         artist_track:
           h1: 最近クリップされた楽曲
+        user_artist:
+          h1: 最近クリップしたアーティスト
+        user_artist_item:
+          h1: 最近クリップした作品
+        user_artist_track:
+          h1: 最近クリップした楽曲
       posts:
         h1: 最近のヒトコト
     faces:

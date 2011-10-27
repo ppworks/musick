@@ -1,2 +1,5 @@
-<%=image_tag(@user.image)%>
-<%=@user.name%>
+<% content_for :title, "#{@user.name} on Musick" %>
+<% content_for :body_class, 'show'%>
+<% content_for :like_page, render('share/like_page') %>
+<%= render 'users/user', :user => @user %>
+<%= render 'share/user_stream', :user => @user%>

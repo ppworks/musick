@@ -4,5 +4,6 @@
     <%=user.name%>
   </h1>
   </hgroup>
-  <%= link_to image_tag(user.image, :name => user.name, :title => user.name, :class => :square), users_home_path(user.id) %>
+  <%=connected_providers user%>
+  <%= link_to image_tag(user.image, :name => user.name, :title => user.name, :class => [:face, :square]), users_home_path(user.id) %>
 </section>

@@ -62,4 +62,17 @@ module SocialHelper
     end
   end
   
+  def connected_providers user
+    content_tag :ul, nil, {:class => [:providers]} {
+      if user.has_provider?(Provider.facebook.id)
+        concat content_tag :li, image_tag('/images/provider_select_facebook.png')
+      end
+      if user.has_provider?(Provider.twitter.id)
+        concat content_tag :li, image_tag('/images/provider_select_twitter.png')
+      end
+      if user.has_provider?(Provider.mixi.id)
+        concat content_tag :li, image_tag('/images/provider_select_mixi.png')
+      end
+    }
+  end
 end

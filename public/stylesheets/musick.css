@@ -983,7 +983,7 @@ form#social_invite_friends>input[type=submit] {
     width: 100px;
 }
 
-ul.friends section.profile {
+section.profile {
     position: relative;
     margin: 2px;
     padding: 10px;
@@ -1000,32 +1000,42 @@ ul.friends>li.selected section.profile {
     border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
-ul.friends section.profile h1 {
+section.profile h1 {
     position: absolute;
     top: 10px;
     left: 68px;
 }
 
-ul.friends section.profile h2 {
+section.profile h2 {
     position: absolute;
     top: 30px;
     left: 68px;
     color: #666666;
 }
 
-ul.friends section.profile button {
+section.profile button {
     position: absolute;
     bottom: 10px;
     right: 10px;
 }
 
-ul.friends section.profile img {
+section.profile img.face {
     position:absolute;
     width: 48px;
     height: 48px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+section.profile ul.providers {
+    position: absolute;
+    bottom: 10px;
+    left: 68px;
+}
+
+body.show section.profile {
+    margin-bottom: 20px;
 }
 
 /**
