@@ -1354,3 +1354,7 @@ aside.faces>section>ul>li img {
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+.fb-comments {
+    margin-top: 100px;
+}

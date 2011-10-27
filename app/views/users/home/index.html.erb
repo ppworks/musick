@@ -3,3 +3,4 @@
 <% content_for :like_page, render('share/like_page') %>
 <%= render 'users/user', :user => @user %>
 <%= render 'share/user_stream', :user => @user%>
+<%= render 'share/fb_comment_page', :url => current_url %>
