@@ -61,7 +61,7 @@ ja:
     home:
       welcome:
         h1: "Musickって？"
-        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。\n\n現在テスト中のため、一般公開まで今しばらくお待ちください。"
+        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。\n\nMusickは現在招待制のため、招待されたSNSのアカウントのみでログイン可能となっております。"
       login:
         first: "ログインしてみよう！"
         add: "アカウントを接続しよう！"

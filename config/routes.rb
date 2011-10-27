@@ -1,12 +1,6 @@
 Musick::Application.routes.draw do
   get "user_voices/create"
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
-  devise_scope :user do
-    match '/users/sign_out(.:format)', {:action=>"destroy", :controller=>"devise/sessions", :via => :delete, :as => :destroy_user_session }
-    match '/(.:format)', {:action=>"index", :controller=>"home", :via => :get, :as => :new_user_session }
-  end
-
   resources :artists, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
     get 'search', :action => :search, :on => :collection
@@ -62,6 +56,12 @@ Musick::Application.routes.draw do
     delete 'artists/:artist_id/items/:item_asin/tags/:tag_id' => 'artist_items_tags#destroy', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/}, :as => :destroy_artist_items_tag
     post 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track/tags/:tag_id' => 'artist_tracks_tags#create', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/, :disc => /[0-9]+/, :track => /[0-9]+/}, :as => :create_artist_tracks_tag
     delete 'artists/:artist_id/items/:item_asin/discs/:disc/tracks/:track/tags/:tag_id' => 'artist_tracks_tags#destroy', :constraints => {:artist_id => /[0-9]+/, :tag_id => /[0-9]+/, :disc => /[0-9]+/, :track => /[0-9]+/}, :as => :destroy_artist_tracks_tag
+  end
+  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
+  devise_scope :user do
+    match '/users/sign_out(.:format)', {:action=>"destroy", :controller=>"devise/sessions", :via => :delete, :as => :destroy_user_session }
+    match '/(.:format)', {:action=>"index", :controller=>"home", :via => :get, :as => :new_user_session }
   end
   
   resources :posts, :only => [:destroy, :show, :index] do

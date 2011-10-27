@@ -33,6 +33,7 @@
     <li><%= link_to t('musick.users_artist_item.index'), users_artist_items_path(current_user.id) %></li>
     <li><%= link_to t('musick.users_artist_track.index'), users_artist_tracks_path(current_user.id) %></li>
     <li><%= link_to t('musick.followee'), users_friends_path(current_user.id) %></li>
+    <li><%= link_to t('musick.social.friends.label'), social_friends_path %></li>
     <li><%= link_to t('musick.logout.label'), destroy_user_session_path, :method => :delete %></li>
   </ul>
 <% end %>
