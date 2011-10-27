@@ -390,7 +390,7 @@ body>footer a {
 div#container {
     clear: both;
     width: 788px;
-    min-height: 400px;
+    min-height: 560px;
     margin: 0 auto 10px;
 }
 
@@ -405,7 +405,7 @@ nav.like_page {
     position: relative;
     margin: 20px 0;
     width: 788px;
-    height: 60px;
+    height: 20px;
 }
 
 nav.like_page li {
@@ -751,10 +751,19 @@ ul.items>li>.item>aside {
     height: 190px;
 }
 
+body.show ul.items>li>.item>aside {
+    height: auto;
+}
+
 ul.items>li>.item>aside section.tracks {
     overflow: auto;
     padding-bottom: 20px;
     height: 142px;
+}
+
+body.show ul.items>li>.item>aside section.tracks {
+    overflow: hidden;
+    height: auto;
 }
 
 ul.items>li>.item>aside section.tracks>ul>li,
@@ -791,6 +800,10 @@ ul.items>li>.item>aside nav {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+body.show ul.items>li>.item>aside nav {
+    position: static;
 }
 
 ul.items>li>.item>aside nav>ul>li {
