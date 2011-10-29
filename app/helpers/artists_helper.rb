@@ -49,19 +49,25 @@ module ArtistsHelper
     end
   end
   
-  def link_to_artist label, artist
+  def link_to_artist label, artist, show_tooltip = 'with_tooltip'
     if user_signed_in?
       attributes = {
-        :class => [:popup_action, :with_tooltip],
+        :class => [:popup_action],
         'data-target-attributes' => [artist.id].to_yaml,
         'data-target-object' => 'artist',
         'data-target-name' => artist.name,
         'data-target-image' => artist.artist_lastfm.thumbnail_image,
-        'data-tooltip' => t('musick.post.tooltip', :target => artist.name),
+        
       }
+      if show_tooltip.present?
+        attributes[:class] = [:popup_action, show_tooltip]
+      end
+      if show_tooltip == 'with_tooltip'
+        attributes[:'data-tooltip'] = t('musick.post.tooltip', :target => artist.name)
+      end
       link_to label, artist_path(artist.id), attributes
     else
-      link_to label, login_path, :class => 'popup'
+      link_to label, login_path, :class => ['popup', show_tooltip]
     end
   end
   

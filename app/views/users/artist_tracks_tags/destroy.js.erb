@@ -1,2 +1,3 @@
 $('a[href="<%=users_destroy_artist_tracks_tag_path(params[:artist_id], params[:item_asin], params[:disc], params[:track], params[:tag_id])%>"]')
   .replaceWith('<%=escape_javascript(link_to_users_artist_tracks_tags_create_or_destroy(params[:artist_id], params[:item_asin], params[:disc], params[:track], params[:tag_id], @tag.send("name_#{css_locale}")))%>');
+$.musick.notification('<%=escape_javascript t('musick.users_artist_tracks_tag.destroyed', :target => "#{@artist_track.artist.name} - #{@artist_track.artist_item.title} - #{@artist_track.title}", :tag => @tag.send("name_#{css_locale}"))%>');

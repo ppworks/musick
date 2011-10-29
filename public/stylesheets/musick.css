@@ -1358,3 +1358,35 @@ aside.faces>section>ul>li img {
 .fb-comments {
     margin-top: 100px;
 }
+
+section#notification {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    color: white;
+    background-color: black;
+    filter: alpha(opacity=80) -moz-opacity:0.8;
+    opacity: 0.8;
+    z-index: 10001;
+    text-align: center;
+}
+
+section#notification>p {
+    margin: 14px auto auto auto;
+    width: 788px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+nav.user_home {
+    margin: 20px 0 20px 10px;
+}
+
+nav.user_home>ul>li {
+    margin-right: 15px;
+    display: inline-block;
+}

@@ -18,6 +18,12 @@
     <nav>
       <ul>
         <li><%=link_to_users_artists_create_or_destroy @artist.id %></li>
+        <li><%=link_to_artist t('musick.social.posts.create'), @artist, 'button' %></li>
+        <li><%=link_to_artist t('musick.tag'), @artist, 'button' %></li>
+      </ul>
+    </nav>
+    <nav>
+      <ul>
         <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
         <li><%=link_to t('musick.artist.youtube'), '', :class => 'button youtube' %>
       </ul>

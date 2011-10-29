@@ -25,29 +25,41 @@ ja:
       create: "クリップする"
       created_at_before: "前\nクリップ"
       destroy: "クリップから外す"
+      created: "%{target}をクリップしました"
+      destroyed: "%{target}をクリップから外しました"
     users_artist_item:
       index: "クリップした作品"
       create: "クリップする"
       created_at_before: "前\nクリップ"
       destroy: "クリップから外す"
+      created: "%{target}をクリップしました"
+      destroyed: "%{target}をクリップから外しました"
     users_artist_track:
       index: "クリップした楽曲"
       create: "クリップする"
       created_at_before: "前\nクリップ"
       destroy: "クリップから外す"
-    tag: タグ
+      created: "%{target}をクリップしました"
+      destroyed: "%{target}をクリップから外しました"
+    tag: タグ付ける
     users_artists_tag:
       create: "%{tag}"
       created_at_before: "前\n[%{tag}]\nタグ付け"
       destroy: "%{tag}"
+      created: "%{target}に[%{tag}]タグを付けしました"
+      destroyed: "%{target}から[%{tag}]タグを外しました"
     users_artist_items_tag:
       create: "%{tag}"
       created_at_before: "前\n[%{tag}]\nタグ付け"
       destroy: "%{tag}"
+      created: "%{target}に[%{tag}]タグを付けしました"
+      destroyed: "%{target}から[%{tag}]タグを外しました"
     users_artist_tracks_tag:
       create: "%{tag}"
       created_at_before: "前\n[%{tag}]\nタグ付け"
       destroy: "%{tag}"
+      created: "%{target}に[%{tag}]タグを付けしました"
+      destroyed: "%{target}から[%{tag}]タグを外しました"
     detail_page: "%{target} 詳細ページ"
     artist:
       update: "アーティスト情報を更新"
@@ -61,7 +73,7 @@ ja:
     home:
       welcome:
         h1: "Musickって？"
-        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。\n\nMusickは現在招待制のため、招待されたSNSのアカウントのみでログイン可能となっております。"
+        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。"
       login:
         first: "ログインしてみよう！"
         add: "アカウントを接続しよう！"
@@ -73,7 +85,8 @@ ja:
       label: "ログアウトする"
     social:
       posts:
-        create: "投稿する"
+        create: "ヒトコト投稿する"
+        list: "ヒトコト投稿一覧"
         my_list: "自分のヒトコト投稿一覧"
         placeholder: "このサイトをオススメする一言をどうぞ！"
         web:

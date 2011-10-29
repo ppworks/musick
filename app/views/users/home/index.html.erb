@@ -2,5 +2,11 @@
 <% content_for :body_class, 'show'%>
 <% content_for :like_page, render('share/like_page') %>
 <%= render 'users/user', :user => @user %>
+<nav class="user_home">
+  <ul>
+    <li><%= link_to t('musick.social.posts.list', :name => @user.name), users_posts_path(@user.id)%></li>
+    <li><%= link_to t('musick.followee'), users_friends_path(@user.id) %></li>
+  </ul>
+</nav>
 <%= render 'share/user_stream', :user => @user%>
 <%= render 'share/fb_comment_page', :url => current_url %>

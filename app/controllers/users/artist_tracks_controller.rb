@@ -1,18 +1,18 @@
 class Users::ArtistTracksController < ApplicationController
   def create
-    artist_track = ArtistTrack.find_or_create params[:artist_id], params[:item_asin], params[:disc], params[:track]
-    if artist_track.nil?
+    @artist_track = ArtistTrack.find_or_create params[:artist_id], params[:item_asin], params[:disc], params[:track]
+    if @artist_track.nil?
       raise Exception
     end
-    current_user.artist_tracks << artist_track
+    current_user.artist_tracks << @artist_track
   end
   
   def destroy
-    artist_track = ArtistTrack.find_or_create params[:artist_id], params[:item_asin], params[:disc], params[:track]
-    if artist_track.nil?
+    @artist_track = ArtistTrack.find_or_create params[:artist_id], params[:item_asin], params[:disc], params[:track]
+    if @artist_track.nil?
       raise Exception
     end
-    current_user.artist_tracks.delete artist_track
+    current_user.artist_tracks.delete @artist_track
   end
   
   def index

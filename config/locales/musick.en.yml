@@ -1,28 +1,195 @@
-en:
+ja:
+  after: 後
+  before: 前
   attributes:
-    name: "content"
+    name: "内容"
+    message: "メッセージ内容"
+    to_invite_kind: "招待方法"
+    to_user_key: "招待ユーザー"
   musick:
-    description: "Musick.info is community for music lovers"
-    more: "more"
-    more_lastfm: "search more"
-    less: "close"
+    user:
+      you: "あなた"
+    signed_in_before: ログイン
+    validation_error: "おや？何か変ですよ。入力内容をご確認下さい"
+    people: "人"
+    person: "人"
+    description: "Musickはアーティスト・作品・楽曲を中心に音楽で繋がるためのサイトです。"
+    more: "もっとみる"
+    more_lastfm: "もっと検索する"
+    less: "たたむ"
     search:
-      placeholder: "search for artist name"
-    nav:
-      artist:
-        add: "Add favorite artist"
-        update: "Update artist info"
-        share: "Share artist info"
-      album:
-        search: "Search alubm or track"
-      lastfm:
-        update: "Update artist images fetch from Last.fm"
+      artist_placeholder: "アーティスト名で検索"
+      item_placeholder: "このアーティストの作品名で検索"
+    users_artist:
+      index: "クリップしたアーティスト"
+      create: "クリップする"
+      created_at_before: "前\nクリップ"
+      destroy: "クリップから外す"
+      created: "%{target}をクリップしました"
+      destroyed: "%{target}をクリップから外しました"
+    users_artist_item:
+      index: "クリップした作品"
+      create: "クリップする"
+      created_at_before: "前\nクリップ"
+      destroy: "クリップから外す"
+      created: "%{target}をクリップしました"
+      destroyed: "%{target}をクリップから外しました"
+    users_artist_track:
+      index: "クリップした楽曲"
+      create: "クリップする"
+      created_at_before: "前\nクリップ"
+      destroy: "クリップから外す"
+      created: "%{target}をクリップしました"
+      destroyed: "%{target}をクリップから外しました"
+    tag: タグ付ける
+    users_artists_tag:
+      create: "%{tag}"
+      created_at_before: "前\n[%{tag}]\nタグ付け"
+      destroy: "%{tag}"
+      created: "%{target}に[%{tag}]タグを付けしました"
+      destroyed: "%{target}から[%{tag}]タグを外しました"
+    users_artist_items_tag:
+      create: "%{tag}"
+      created_at_before: "前\n[%{tag}]\nタグ付け"
+      destroy: "%{tag}"
+      created: "%{target}に[%{tag}]タグを付けしました"
+      destroyed: "%{target}から[%{tag}]タグを外しました"
+    users_artist_tracks_tag:
+      create: "%{tag}"
+      created_at_before: "前\n[%{tag}]\nタグ付け"
+      destroy: "%{tag}"
+      created: "%{target}に[%{tag}]タグを付けしました"
+      destroyed: "%{target}から[%{tag}]タグを外しました"
+    detail_page: "%{target} 詳細ページ"
+    artist:
+      update: "アーティスト情報を更新"
+      share: "このアーティストを友人にオススメする"
+      update_images: "Last.fmから最新アーティスト画像を取得する"
+      items:
+        search: "Amazonから作品検索"
+        amazon: "Amazonで見る"
+      youtube: "youtubeから動画検索"
+    followee: "友達一覧"
     home:
       welcome:
-        h1: "What's Musick.info"
-        content: "Musick.info is community for music lovers\n\nUse your facebook, twitter, or mixi account to sign in, you can comunicate with friends"
+        h1: "Musickって？"
+        content: "Musickは、アーティスト・作品・楽曲を中心に音楽で繋がるサイトです。\nご利用頂けるアカウントはFacebook、Mixi、Twitterとなっております。"
       login:
-        h1: "Check out!"
-        facebook: "Use your facebook account"
-        twitter: "User your twitter account"
-        mixi: "User your mixi account"
+        first: "ログインしてみよう！"
+        add: "アカウントを接続しよう！"
+        add_description: "更に接続アカウントを増やすことで複数のサイトに投稿連携が出来るようになります。"
+        facebook: "Facebookのアカウントでログインします。"
+        twitter: "Twitterのアカウントでログインします。"
+        mixi: "mixiのアカウントでログインします。"
+    logout:
+      label: "ログアウトする"
+    social:
+      posts:
+        create: "ヒトコト投稿する"
+        list: "ヒトコト投稿一覧"
+        my_list: "自分のヒトコト投稿一覧"
+        placeholder: "このサイトをオススメする一言をどうぞ！"
+        web:
+          label: "Musickをオススメする"
+          h1: "Musickを始めたことを友人に教えよう！"
+          content: "Facebookの自分のウォール、Twitterのタイムライン、MixiのボイスにMusickを始めたことを投稿して、みんなにMusickを知ってもらおう！"
+        facebook:
+          message: "%{message}\n\n"
+          name: "Musickからの投稿"
+          link: "http://%{domain}/users/auth/facebook"
+          description: ""
+          actions:
+            name: "使ってみる"
+            link: "http://%{domain}/users/auth/facebook"
+          properties:
+            name1: "みてみよう！"
+            text1: "%{user_name}さんの投稿をもっと見る"
+            href1: "http://%{domain}/users/%{user_id}/posts"
+      friends:
+        label: "友達を招待する"
+        invite_select: "選択する"
+        invite_unselect: "解除する"
+        invite: "招待する"
+        invite_count: "招待した回数: %count"
+        invite_description: "招待したい友達を、下のリストから[選択する]ボタンで選んでください。同時に%{count}人まで招待できます。"
+        invite_title: "Musickからの招待です。"
+        invite_message:
+          placeholder: "添えるメッセージを入力してください。"
+        invite_kind:
+          label: "== 招待方法を選択 =="
+          facebook:
+            message: "メッセージを送る"
+            friend_wall: "友人のウォールへ書き込む"
+            invite_app: "アプリ招待を送る"
+          twitter:
+            message: "DMを送る"
+            reply: "@付きリプライを送る"
+          mixi:
+            message: "メッセージを送る"
+        search_placeholder: "名前で絞り込む"
+        invite_success:
+          h1: "招待しました。"
+          content: "実際にメッセージが反映されるまでしばらく時間がかかることがあります。"
+    post:
+      like:
+        1: "いいね！"
+        2: "お気に入り"
+        3: "イイネ！"
+      unlike:
+        1: "いいね！を取り消す"
+        2: "お気に入りから外す"
+        3: "イイネ！を削除する"
+      like_count_label:
+        person: "%{count}人がいいね！と言っています"
+        people: "%{count}人がいいね！と言っています"
+      comment_like_count_label:
+        person: " %{count}人"
+        people: " %{count}人"
+      delete: "投稿を削除する"
+      comment_list: "コメント"
+      comment: "コメントする"
+      show_all_comment: "コメント%{count}件をすべてみる"
+      delete_confirm: "この投稿を削除してもよろしいですか？"
+      more: "更に見る"
+      complete: "投稿しました。"
+      error: "投稿先はすでに削除されたか、何かエラーが発生したようです。"
+      tooltip: "クリックすると、\n「%{target}」\nについてヒトコト投稿出来ます。"
+    footer:
+      about:
+        label: "Musickについて"
+        link: ''
+      privacy:
+        label: "プライバシーポリシー"
+        link: ''
+      rule:
+        label: '利用規約'
+        link: ''
+      gov:
+        label: '運営組織'
+        link: ''
+    user_voice:
+      h1: "ご意見・ご感想"
+      send: "送信します"
+      complete:
+        title: "ご意見・ご感想ありがとうございます。"
+        content: "今後ともよろしくお願いいたします。"
+    stream:
+      clips:
+        artist:
+          h1: 最近クリップされたアーティスト
+        artist_item:
+          h1: 最近クリップされた作品
+        artist_track:
+          h1: 最近クリップされた楽曲
+        user_artist:
+          h1: 最近クリップしたアーティスト
+        user_artist_item:
+          h1: 最近クリップした作品
+        user_artist_track:
+          h1: 最近クリップした楽曲
+      posts:
+        h1: 最近のヒトコト
+    faces:
+      recently_login: 最近ログインしたユーザー
+      recently_clip: 最近クリップしたユーザー
+      recently_tag: 最近タグ付けしたユーザー

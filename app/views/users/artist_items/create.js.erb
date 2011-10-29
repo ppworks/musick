@@ -1,2 +1,3 @@
 $('a[href="<%=users_create_artist_item_path(params[:artist_id], params[:item_asin])%>"]')
   .replaceWith('<%=escape_javascript(link_to_users_artist_items_create_or_destroy(params[:artist_id], params[:item_asin]))%>');
+$.musick.notification('<%=escape_javascript t('musick.users_artist_item.created', :target => "#{@artist_item.artist.name} - #{@artist_item.title}")%>');

@@ -304,6 +304,17 @@ $(function(e) {
     });
   }
   
+ function notification(content) {
+    $('#notification>p').html(content);
+    $('#notification').stop();
+    $('#notification').slideDown(300);
+    setTimeout(function() {
+      $('#notification>p').html('');
+      $('#notification').stop();
+      $('#notification').slideUp(500);
+    }, 2000);
+  }
+  
   function fix_url() {
     if (window.location.href.match(/#_=_/)) {
       window.location.hash = '#\\(^o^)/';
@@ -446,6 +457,7 @@ $(function(e) {
     get_stream();
     $.musick = {};
     $.musick.popup = popup;
+    $.musick.notification = notification;
     $.musick.init = function() {
       round_image();
       fetch_providers_profiles();
