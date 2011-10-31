@@ -681,7 +681,7 @@ section.artist .images li {
     -webkit-column-gap: 40px;
     -moz-column-gap: 40px;
     column-gap: 40px;
-    background: #fefefe;
+    background: #dddddd;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -1312,6 +1312,7 @@ section.stream section.artist {
 
 section.stream {
     position: relative;
+    min-height: 4.0em;
 }
 
 section.stream ul li {

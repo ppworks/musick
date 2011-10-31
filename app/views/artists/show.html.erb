@@ -24,8 +24,8 @@
     </nav>
     <nav>
       <ul>
-        <li><%=link_to t('musick.artist.items.search'), artist_items_path(@artist.id), :class => 'button popup' %></li>
-        <li><%=link_to t('musick.artist.youtube'), '', :class => 'button youtube' %>
+        <li><%=link_to t('musick.artist.items.search', :artist => @artist.name), artist_items_path(@artist.id), :class => 'button popup' %></li>
+        <li><%=link_to t('musick.artist.youtube', :artist => @artist.name), '', :class => 'button youtube' %>
       </ul>
     </nav>
   </header>

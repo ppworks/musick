@@ -18,7 +18,7 @@ ja:
     more_lastfm: "もっと検索する"
     less: "たたむ"
     search:
-      artist_placeholder: "アーティスト名で検索"
+      artist_placeholder: "好きなアーティスト名を入れて検索しよう！"
       item_placeholder: "このアーティストの作品名で検索"
     users_artist:
       index: "クリップしたアーティスト"
@@ -66,9 +66,9 @@ ja:
       share: "このアーティストを友人にオススメする"
       update_images: "Last.fmから最新アーティスト画像を取得する"
       items:
-        search: "Amazonから作品検索"
+        search: "%{artist}の作品一覧を見る"
         amazon: "Amazonで見る"
-      youtube: "youtubeから動画検索"
+      youtube: "%{artist}の動画をyoutubeで見る"
     followee: "友達一覧"
     home:
       welcome:
