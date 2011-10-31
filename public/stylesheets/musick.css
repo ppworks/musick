@@ -726,6 +726,10 @@ section.artist_item_search form input {
     border-radius: 15px;
 }
 
+section.item {
+    position: relative;
+}
+
 ul.items {
     margin: 20px;
 }
@@ -1307,12 +1311,24 @@ section.stream a.more {
 }
 
 section.stream section.artist {
+    position: relative;
     margin: 0;
 }
 
 section.stream {
     position: relative;
     min-height: 4.0em;
+}
+
+section.stream section>a>img.face {
+    position:absolute;
+    bottom: 8px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 section.stream ul li {

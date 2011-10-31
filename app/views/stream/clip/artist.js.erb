@@ -1,5 +1,5 @@
 <% @users_artists.each do |users_artist| %>
-  $('ul.artists').append('<li><%=escape_javascript(render 'artist', :artist => users_artist.artist)%></li> ');
+  $('ul.artists').append('<li><%=escape_javascript(render 'artist', :artist => users_artist.artist, :user => users_artist.user)%></li> ');
 <% end %>
 $('section#clip_artist').show().fadeIn(100);
 $('div#paginator').html('<%=escape_javascript(paginate @users_artists, :remote => true) %>');

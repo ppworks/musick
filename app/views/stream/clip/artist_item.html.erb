@@ -2,7 +2,7 @@
   <h1><%=t'musick.stream.clips.artist_item.h1'%></h1>
   <ul class="artist_items">
     <% @users_artist_items.each do |users_artist_item| %>
-      <li><%= render 'artist_item', :artist_item => users_artist_item.artist_item %></li>
+      <li><%= render 'artist_item', :artist_item => users_artist_item.artist_item, :user => users_artist_item.user %></li>
     <% end %>
   </ul>
 </section>

@@ -3,4 +3,5 @@
   <% if artist.artist_lastfm.present? && artist.artist_lastfm.thumbnail_image.present? %>
     <%= link_to image_tag(artist.artist_lastfm.thumbnail_image, :class => 'rounded-img1'), artist_path(artist.id) %>
   <% end %>
+  <%= link_to image_tag(user.image, :class => :face), users_home_path(user.id) %>
 </section>
