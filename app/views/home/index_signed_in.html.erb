@@ -7,7 +7,14 @@
 <% content_for :fb_activity, render('share/fb_activity_feed', :filter_url => nil) %>
 <div class="main">
   <%= render 'share/login_button'%>
-  <%= render 'share/top_stream', :filters => 'other' %>
+  <%= render 'share/top_stream', :filters => 'all' %>
   <%#= render 'share/add_to_timeline' %>
+  <section class="posts">
+    <h1><%=t('musick.social.posts.list')%></h1>
+    <ul class="post">
+    </ul>
+    <div id="paginator">
+    </div>
+  </div>
 </div>
 <%= render 'share/login_faces' %>

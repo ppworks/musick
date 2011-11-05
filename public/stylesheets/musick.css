@@ -1281,7 +1281,8 @@ aside.user_voice>h1 {
 /**
  * stream
  */
-section.stream>h1 {
+section.stream>h1,
+section.posts>h1 {
     margin-left: -10px;
     margin-bottom: 10px;
     width: 787px;
