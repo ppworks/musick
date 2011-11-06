@@ -4,7 +4,7 @@ development:
   amazon_associate_tag: 'musick0f-22'
   hash_tag: '#xtxexsxt'
   comment_count: 2
-  need_invitation: true
+  need_invitation: false
   facebook_page_id: 225793390809113
   facebook_site_page_id: 159678854124951
 test:
@@ -13,20 +13,20 @@ test:
   amazon_associate_tag: 'musick0f-22'
   hash_tag: '#musick'
   comment_count: 2
-  need_invitation: true
+  need_invitation: false
 staging:
   domain: musick-dev.herokuapp.com
   a_id: 'UA-XXXXXX-XX'
   amazon_associate_tag: 'musick0f-22'
   hash_tag: '#musick'
   comment_count: 2
-  need_invitation: true
+  need_invitation: false
 production:
   domain: musick.info
   ga_id: 'UA-25643488-1'
   amazon_associate_tag: 'musick0f-22'
   hash_tag: '#_Musick_'
   comment_count: 2
-  need_invitation: true
+  need_invitation: false
   facebook_page_id: 225793390809113
   facebook_site_page_id: 159678854124951
