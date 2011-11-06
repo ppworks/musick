@@ -3,6 +3,10 @@ class ArtistsController < ApplicationController
     @artists = Artist.page params[:page]
   end
   
+  def show_redirect
+    redirect_to "/artist/#{params[:id]}", :status=>301
+  end
+  
   def show
     @artist = Artist.find_and_update_lastfm params[:id]
     @users_artists = UsersArtist.includes(:user).where(:artist_id => params[:id]).order('updated_at DESC').limit(16).all

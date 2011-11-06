@@ -1,11 +1,12 @@
 Musick::Application.routes.draw do
   get "user_voices/create"
 
-  resources :artists, :only => [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection
-    get 'search', :action => :search, :on => :collection
-    get 'search_lastfm', :action => :search_lastfm, :on => :collection
-  end
+  get 'artists/page/:page' => 'artists#index', :as => :artists
+  get 'artists' => 'artists#index', :as => :artists
+  get 'artists/search' => 'artists#search', :as => :search_artists
+  get 'artists/search_lastfm' => 'artists#search_lastfm', :as => :search_lastfm_artists
+  get 'artists/:id' => 'artists#show_redirect'
+  get 'artist/:id' => 'artists#show', :as => :artist
   
   namespace :artist do
     get '/:artist_id/images' => 'images#index', :constraints => {:artist_id => /[0-9]+/}, :as => :images
