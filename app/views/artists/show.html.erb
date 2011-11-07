@@ -39,6 +39,7 @@
   <ul class="images">
     <%= render 'artist/images/list', :images => @artist.artist_images %>
   </ul>
+  <%= render 'share/artist_post', :filters => "all,artist#{@artist.id}"%>
 </section>
 
 <aside class="faces">

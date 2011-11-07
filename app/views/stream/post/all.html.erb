@@ -1,0 +1,7 @@
+<%=t('musick.social.posts.list')%>
+<ul class="post">
+  <li><%= render :partial => 'posts/post', :collection => @posts, :spacer_template => 'share/li_separator' %></li>
+</ul>
+<div id="paginator">
+  <%= paginate @posts, :remote => true %>
+</div>

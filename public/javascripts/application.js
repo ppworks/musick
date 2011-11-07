@@ -438,15 +438,6 @@ $(function(e) {
     });
   }
   
-  function get_posts() {
-    if ($('ul.post li').size() == 0) {
-      $.ajax({
-        url : '/posts/',
-        dataType : 'script'
-      });
-    };
-  }
-  
   function init() {
     listen_window_resize();
     //listen_auto_paging();
@@ -464,7 +455,6 @@ $(function(e) {
     sync_post();
     listen_form_element();
     get_stream();
-    get_posts();
     $.musick = {};
     $.musick.popup = popup;
     $.musick.notification = notification;

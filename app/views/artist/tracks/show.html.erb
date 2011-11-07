@@ -11,3 +11,4 @@
 <ul class="items pagination_content">
 <li><%= render 'artists/artist_track', :artist_track => @artist_track %></li>
 </ul>
+<%= render 'share/artist_track_post', :filters => "all,artist_track#{@artist_track.id}"%>

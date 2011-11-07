@@ -10,3 +10,4 @@
 <ul class="items pagination_content">
 <li><%= render 'artists/artist_item', :artist_item => @artist_item, :artist_id => @artist_item.artist_id %></li>
 </ul>
+<%= render 'share/artist_item_post', :filters => "all,artist_item#{@artist_item.id}"%>

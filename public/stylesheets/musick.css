@@ -1332,7 +1332,7 @@ section.stream section>a>img.face {
     border-radius: 5px;
 }
 
-section.stream ul li {
+section.stream>ul>li {
     display: inline-block;
     margin: 0 0 20px 0;
 }

@@ -1,0 +1,7 @@
+  <section class="post_stream">
+    <section id="post" class="stream auto" data-act="post" data-target="artist_item" data-filters="<%=filters%>">
+      <h1><%=t('musick.social.posts.list')%></h1>
+      <ul class="post"></ul>
+      <%= link_to t('musick.more'), stream_artist_item_post_path(:filters => filters) + '?per=24', :class => :more %>
+    </section>
+  </section>
