@@ -323,6 +323,9 @@ $(function(e) {
   
   function round_image() {
     $("img.rounded-img1, img.rounded-img2").load(function() {
+      if ($(this).data('attached')) {
+        return true;
+      }
       $(this).wrap(function(){
         return '<span class="' + $(this).attr('class') + '" style="background:url(' + $(this).attr('src') + ') no-repeat center center; width: ' + $(this).width() + 'px; height: ' + $(this).height() + 'px;" />';
       });
@@ -335,6 +338,7 @@ $(function(e) {
         $(this).removeClass("rounded-img2");
         $(this).addClass("rounded-img1");
       });
+      $(this).data('attached', 1);
     });
   }
   
