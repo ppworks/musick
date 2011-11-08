@@ -425,6 +425,12 @@ $(function(e) {
     });
     $('.checkbox').change();
     $('.radio').change();
+    
+    $('ul.providers').each(function(i, elm) {
+      if ($(elm).find('li>input:checked').size() == 0) {
+        $(elm).find('li:first-child>input').click();
+      }
+    });
   }
   
   function get_stream() {
