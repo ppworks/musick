@@ -32,7 +32,7 @@ class ArtistItem < ActiveRecord::Base
         item_artist = item.get('ItemAttributes/Artist')
         item_artist = item_artist.present? ? item_artist.encode("UTF-8") : ''
         item_artist = NKF::nkf('-Z1 -Ww', CGI::unescapeHTML(item_artist))
-        next unless item_artist.downcase =~ Regexp.new(artist_name.downcase)
+        #next unless item_artist.downcase =~ Regexp.new(artist_name.downcase)
         items << self.format_amazon_item(artist_id, item)
       end
       total = result_set.total_results

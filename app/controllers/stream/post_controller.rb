@@ -34,11 +34,14 @@ class Stream::PostController < ApplicationController
       @posts = @posts.where(['user_id <> ?', current_user.id])
     end
     if params[:filters] =~ /artist([0-9]+)/
-      @posts = @posts.joins(:posts_artist).where(['posts_artists.artist_id = ?', $1])
+      artist_image_ids = ArtistImage.where(:artist_id => $1).all.map{|a|a.id}
+      @posts = @posts
+      .where(['(posts_artists.artist_id = ? OR posts_artist_images.artist_image_id IN (?))', $1, artist_image_ids])
+      
     end
     @posts = @posts
       .exists
-      .order('id DESC')
+      .order('posts.id DESC')
       .page(params[:page])
       .per(params[:per])
     render 'all'
