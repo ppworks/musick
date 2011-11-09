@@ -1,5 +1,5 @@
-<% if current_user.present? && current_user.has_provider?(Provider.facebook.id)%>
+<% if current_user.present? && current_user.has_provider?(Provider.facebook.id) && current_user.id == 1%>
 <aside class="add_to_timeline">
-<fb:add-to-timeline></fb:add-to-timeline>
+<div class="fb-add-to-timeline" data-show-faces="true"></div>
 </aside>
 <% end %>
