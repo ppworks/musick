@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
-gem 'mysql2', '~> 0.2.11'
+gem 'mysql2', '~> 0.2.0'
 gem 'jquery-rails', '>= 1.0.10'
 gem 'kaminari'
 gem 'lastfm', :git => 'git://github.com/ppworks/ruby-lastfm.git', :branch => 'master'
@@ -25,8 +25,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-spork'
   gem 'guard-rspec'
-  gem 'rb-fsevent'
-  gem 'growl'
   gem 'taps'
   # Capistrano
   gem 'capistrano', :require => nil

@@ -19,6 +19,6 @@ FactoryGirl.define do
     }
     name 'bob'
     image 'http://graph.facebook.com/100002694696581/picture?type='
-    default_provider_id Provider.facebook.id
+    default_provider_id {Provider.facebook.id}
   end
 end
