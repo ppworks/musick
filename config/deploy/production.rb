@@ -3,9 +3,8 @@ $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 # Load RVM's capistrano plugin.
 require "rvm/capistrano"
-set :rvm_ruby_string, '1.9.2-p290'
-set :rvm_type, :system
-set :rvm_bin_path, "/usr/local/bin/"
+set :rvm_ruby_string, '1.9.3-p194@musick'
+set :rvm_type, :user
 set :rvm_trust_rvmrcs_flag, 1
 
 set :deploy_to, "/shared/www/musick.info"
@@ -18,7 +17,7 @@ role :db, "musick.info", :primary => true
 set (:unicorn_config) {"#{current_path}/config/unicorn.rb"}
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
-set :repository,  "gitosis@git.ppworks.net:musick.git"
+set :repository,  "gitosis@git.koshikawa.net.net:musick.git"
 set :scm, :git
 
 
