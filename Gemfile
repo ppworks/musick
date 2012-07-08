@@ -30,6 +30,7 @@ group :development, :test do
   gem 'capistrano', :require => nil
   gem 'capistrano-ext', :require => nil
   gem 'capistrano_colors', :require => nil
+  gem 'rvm-capistrano'
 end
 
 group :production do
