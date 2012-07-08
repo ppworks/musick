@@ -1,8 +1,4 @@
-# rvm setting
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-
 # Load RVM's capistrano plugin.
-require "rvm/capistrano"
 set :rvm_ruby_string, '1.9.3-p194@musick'
 set :rvm_type, :user
 set :rvm_trust_rvmrcs_flag, 1
@@ -17,10 +13,9 @@ role :db, "musick.info", :primary => true
 set (:unicorn_config) {"#{current_path}/config/unicorn.rb"}
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
-set :repository,  "gitosis@git.koshikawa.net.net:musick.git"
+set :repository,  "gitolite@git.koshikawa.net:musick.git"
 set :scm, :git
-
-
+set :deploy_via, :remote_cache
 
 set :user, "koshikawa"
 ssh_options[:keys] = %w(~/.ssh/sakura_id_rsa)
@@ -28,6 +23,7 @@ set :runner, "koshikawa"
 set :use_sudo, false
 
 set :bundle_flags, "--quiet"
+set :bundle_dir, ENV["GEM_HOME"]
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do 
