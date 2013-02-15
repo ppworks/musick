@@ -25,14 +25,16 @@ set :use_sudo, false
 set :bundle_flags, "--quiet"
 set :bundle_dir, ""
 
+after 'deploy:update_code' do
+  run "rvm rvmrc trust #{current_release}"
+  run "rvm rvmrc trust #{current_path}"
+  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  run "ln -nfs #{shared_path}/config/unicorn.rb #{release_path}/config/unicorn.rb"
+end
+  
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do 
     run "cd #{current_path} && #{try_sudo} BUNDLE_GEMFILE=#{current_path}/Gemfile bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D"
-  end
-  
-  task :after_symlink, :roles => :app do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/unicorn.rb #{release_path}/config/unicorn.rb"
   end
   
   task :stop, :roles => :app, :except => { :no_release => true } do 
@@ -50,11 +52,6 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     stop
     start
-  end
-  
-  task :after_update_code do
-    run "rvm rvmrc trust #{current_release}"
-    run "rvm rvmrc trust #{current_path}"
   end
 end
 
